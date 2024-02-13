@@ -1,5 +1,6 @@
 import { CarType } from "@/types/type";
 import { database } from "../config/mongodb";
+import { ObjectId } from "mongodb";
 
 class CarModel {
   static dbCar() {
@@ -15,20 +16,29 @@ class CarModel {
 
   static async detailCar(slug: string) {
     const result = CarModel.dbCar();
-    const product = await result.findOne({
+    const car = await result.findOne({
       slug: slug,
     });
-    return product as CarType | null;
+    return car as CarType | null;
+  }
+
+  static async detailCarById(_id: string) {
+    const result = CarModel.dbCar();
+    const car = await result.findOne({
+      _id: new ObjectId(_id),
+    });
+
+    return car as CarType;
   }
 
   static async carSearch(search: string): Promise<CarType> {
     const result = CarModel.dbCar();
-    const product = await result
+    const car = await result
       .find({
         name: { $regex: new RegExp(search, "i") },
       })
       .toArray();
-    return product as CarType;
+    return car as CarType;
   }
 
   static async paginateCars(
@@ -36,12 +46,12 @@ class CarModel {
     pageSize: number
   ): Promise<CarType[]> {
     const result = CarModel.dbCar();
-    const products = await result
+    const cars = await result
       .find()
       .skip((page - 1) * pageSize)
       .limit(pageSize)
       .toArray();
-    return products as CarType[];
+    return cars as CarType[];
   }
 }
 

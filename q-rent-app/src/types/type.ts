@@ -6,6 +6,7 @@ export type UserType = {
   email: string;
   password: string;
   image: string;
+  gender: string;
   role: string;
 };
 
@@ -27,7 +28,7 @@ export type CarType = {
   color: string;
   plat: string;
   merk: string;
-  pricePerDay: number;
+  pricePerDay: number | undefined;
   year: string;
   BbmType: string;
   modelType: string;
@@ -42,16 +43,24 @@ export type BookingType = {
   totalPrice: number;
   UserId: ObjectId;
   CarId: ObjectId;
-  location: string;
 };
 
 export type ServiceType = {
   _id: ObjectId;
   ktp: boolean;
   sim: boolean;
-  UserId: ObjectId;
-  BookingId: ObjectId;
-  ProductId: ObjectId;
+  age: string;
+};
+
+export type InputFormType = {
+  bookingStart: string;
+  bookingEnd: string;
+  totalPrice: number | undefined;
+  CarId: ObjectId;
+  UserId: string;
+  ktp: boolean;
+  sim: boolean;
+  age: string;
 };
 
 // services
