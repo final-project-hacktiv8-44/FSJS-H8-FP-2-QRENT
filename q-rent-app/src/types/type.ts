@@ -8,9 +8,7 @@ export type UserType = {
   image: string;
   role: string;
 };
-
 export type RegisterType = Omit<UserType, "_id" | "role" | "image">;
-
 export type ProfileType = {
   _id: ObjectId;
   name: string;
@@ -19,9 +17,27 @@ export type ProfileType = {
   birth: string;
 };
 
-// services
-// booking
-// car
-// profile
-// users
-// pengembalian
+export type CarType = {
+  _id: ObjectId;
+  type: string;
+  name: string;
+  color: string;
+  plat: string;
+  merk: string;
+  pricePerDay: string;
+  year: string;
+  BbmType: string;
+  modelType: string;
+  carImage: string;
+  description: string;
+};
+
+export type SectionType = {
+  _id: ObjectId;
+  image: string;
+  excerpt: string;
+}
+
+export type MyResponse = {
+  section: SectionType[]
+}
