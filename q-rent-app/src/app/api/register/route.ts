@@ -8,6 +8,7 @@ const User = z.object({
   password: z
     .string()
     .min(5, { message: "Password must be more than 4 characters." }),
+  gender: z.string(),
 });
 
 type Body = z.infer<typeof User>;
@@ -55,6 +56,9 @@ export async function POST(request: Request) {
           _id: user._id,
           username: user.username,
           email: user.email,
+          gender: user.gender,
+          role: user.role,
+          image: user.image,
         },
       },
       {
