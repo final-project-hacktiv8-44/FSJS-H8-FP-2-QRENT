@@ -83,13 +83,13 @@ export function LoginForm({ handleLogin }: LoginProps) {
         </div>
         <div className="grid grid-cols-3 gap-3 text-xl">
           <div className="flex justify-center border-2 rounded-md p-3 text-center cursor-pointer hover:border-gray-600">
-            <FaXTwitter />
+            <FaXTwitter className="text-blue-400"/>
           </div>
           <div className="flex justify-center border-2 rounded-md p-3 text-center cursor-pointer hover:border-gray-600">
-            <FaGoogle />
+            <FaGoogle className="text-blue-400"/>
           </div>
           <div className="flex justify-center border-2 rounded-md p-3 text-center cursor-pointer hover:border-gray-600">
-            <FaInstagram />
+            <FaInstagram className="text-blue-400"/>
           </div>
         </div>
       </div>
