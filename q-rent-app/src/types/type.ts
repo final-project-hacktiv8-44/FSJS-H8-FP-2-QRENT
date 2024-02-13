@@ -9,9 +9,7 @@ export type UserType = {
   gender: string;
   role: string;
 };
-
 export type RegisterType = Omit<UserType, "_id" | "role" | "image">;
-
 export type ProfileType = {
   _id: ObjectId;
   name: string;
@@ -69,3 +67,13 @@ export type InputFormType = {
 // profile
 // users
 // pengembalian
+
+export type SectionType = {
+  _id: ObjectId;
+  image: string;
+  excerpt: string;
+}
+
+export type MyResponse = {
+  section: SectionType[]
+}
