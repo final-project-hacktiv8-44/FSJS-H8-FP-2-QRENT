@@ -1,0 +1,424 @@
+[
+  {
+    "slug": "toyota-avanza-silver",
+    "type": "LMPV",
+    "name": "Avanza",
+    "color": "Silver",
+    "plat": "Ganjil",
+    "seat": 7,
+    "region": "Jakarta Pusat",
+    "brand": "Toyota",
+    "pricePerDay": 350000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_MVP_Car_Toyota_Avanza_Variant_02_fc2349c5b7.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Avanza_Interior_03_5eb6535aa9.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Avanza_Interior_01_3e1ee3f9b3.jpg&w=3840&q=75"
+    ],
+    "kilometer": "320.000 km"
+  },
+  {
+    "slug": "toyota-avanza-putih",
+    "type": "LMPV",
+    "name": "Avanza",
+    "color": "Putih",
+    "plat": "Genap",
+    "seat": 7,
+    "region": "Jakarta Pusat",
+    "brand": "Toyota",
+    "pricePerDay": 350000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Manual",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_MVP_Car_Toyota_Avanza_Variant_01_52d706da5b.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Avanza_Interior_01_3e1ee3f9b3.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Avanza_Interior_02_0a6e130895.jpg&w=3840&q=75"
+    ],
+    "kilometer": "330.000 km"
+  },
+  {
+    "slug": "toyota-agya-putih",
+    "type": "LCGC",
+    "name": "Agya",
+    "color": "Putih",
+    "plat": "Ganjil",
+    "seat": 5,
+    "region": "Jakarta Barat",
+    "brand": "Toyota",
+    "pricePerDay": 300000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Manual",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_City_Car_Toyota_Agya_3089af640d.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_City_Car_Toyota_Agya_Interior_01_3ae568b2bd.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_City_Car_Toyota_Agya_Interior_02_d1596d8cc3.jpg&w=3840&q=75"
+    ],
+    "kilometer": "200.000 km"
+  },
+  {
+    "slug": "toyota-agya-hitam",
+    "type": "LCGC",
+    "name": "Agya",
+    "color": "Hitam",
+    "plat": "Genap",
+    "seat": 5,
+    "region": "Jakarta Timur",
+    "brand": "Toyota",
+    "pricePerDay": 300000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_City_Car_Toyota_Agya_Variant01_54caef7f61.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_City_Car_Toyota_Agya_Interior_01_3ae568b2bd.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_City_Car_Toyota_Agya_Interior_02_d1596d8cc3.jpg&w=3840&q=75"
+     
+    ],
+    "kilometer": "286.450 km"
+  },
+  {
+    "slug": "toyota-fortuner-silver",
+    "type": "SUV",
+    "name": "Fortuner",
+    "color": "Silver",
+    "plat": "Ganjil",
+    "seat": 8,
+    "brand": "Toyota",
+    "region": "Jakarta Timur",
+    "pricePerDay": 600000,
+    "year": "2022",
+    "BbmType": "Solar",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_SUV_Car_Toyota_Fortuner_28a1d3d259.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Fortuner_Interior_0_923cbb546d.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Fortuner_Interior_0_2_55c7e971fd.jpg&w=3840&q=75"
+    ],
+    "kilometer": "198.000 km"
+  },
+  {
+    "slug": "toyota-fortuner-hitam",
+    "type": "SUV",
+    "name": "Fortuner",
+    "color": "Hitam",
+    "plat": "Genap",
+    "seat": 8,
+    "brand": "Toyota",
+    "region": "Jakarta Selatan",
+    "pricePerDay": 600000,
+    "year": "2022",
+    "BbmType": "Solar",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_SUV_Car_Toyota_Fortuner_28a1d3d259.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Fortuner_Interior_0_923cbb546d.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Fortuner_Interior_0_2_55c7e971fd.jpg&w=3840&q=75"
+    ],
+    "kilometer": "186.900 km"
+  },
+  {
+    "slug": "toyota-innova-putih",
+    "type": "MPV",
+    "name": "Innova",
+    "color": "Putih",
+    "plat": "Ganjil",
+    "seat": 7,
+    "brand": "Toyota",
+    "region": "Jakarta Utara",
+    "pricePerDay": 550000,
+    "year": "2022",
+    "BbmType": "Solar",
+    "transmission": "Manual",
+    "modelType": "Trip",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_MVP_Car_Toyota_Innova_Variant_01_87de145d35.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Innova_Interior_03_56d1dd4f95.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Innova_Interior_02_3a01952131.jpg&w=3840&q=75g"
+    ],
+    "kilometer": "85.000 km"
+  },
+  {
+    "slug": "toyota-innova-hitam",
+    "type": "MPV",
+    "name": "Innova",
+    "color": "Hitam",
+    "plat": "Ganjil",
+    "seat": 7,
+    "brand": "Toyota",
+    "region":"Jakarta Pusat",
+    "pricePerDay": 550000,
+    "year": "2021",
+    "BbmType": "Solar",
+    "transmission": "Automatic",
+    "modelType": "Trip",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_MVP_Car_Toyota_Innova_Variant_02_b9533f4a52.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Innova_Interior_03_56d1dd4f95.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Toyota_Innova_Interior_01_dda4b956ff.jpg&w=3840&q=75"
+    ],
+    "kilometer": "76.000 km"
+  },
+  {
+    "slug": "toyota-camry-putih",
+    "type": "Sedan",
+    "name": "Camry",
+    "color": "Putih",
+    "plat": "Ganjil",
+    "seat": 5,
+    "brand": "Toyota",
+    "region":"Jakarta Selatan",
+    "pricePerDay": 600000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_Lux_Car_Toyota_Camry_5fc85cfd8d.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_Lux_Car_Toyota_Camry_Interior_2_407f3963c3.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_Lux_Car_Toyota_Camry_Interior_0_f5ccaf95f5.jpg&w=3840&q=75"
+    ],
+    "kilometer": "35.980 km"
+  },
+  {
+    "slug": "mitsubishi-xpander-hitam",
+    "type": "LMPV",
+    "name": "Xpander",
+    "color": "Hitam",
+    "plat": "Ganjil",
+    "seat": 7,
+    "brand": "Mitsubishi",
+    "region":"Jakarta Pusat",
+    "pricePerDay": 350000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Manual",
+    "modelType": "Standart",
+    "thumbnail": "https://img.cintamobil.com/crop/640x360/2023/05/15/20230515214706-34ab.png",
+    "carImage": [
+      "https://img.cintamobil.com/crop/640x360/2023/05/18/20230518234006-5154.png",
+      "https://s3-ap-southeast-1.amazonaws.com/carro.co/2023/09/Inventory/85249929/mitsubishi-xpander-ultimate-at-2022-hitam-D55Y20-carro-010.jpg"
+    ],
+    "kilometer": "150.000 km"
+  },
+  {
+    "slug": "suzuki-ertiga-silver",
+    "type": "LMPV",
+    "name": "Ertiga",
+    "color": "Silver",
+    "plat": "Ganjil",
+    "seat": 7,
+    "brand": "Suzuki",
+    "region":"Jakarta Utara",
+    "pricePerDay": 350000,
+    "year": "2021",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_MVP_Car_Suzuki_Ertiga_863c372f0b.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Suzuki_Ertiga_Interior_3_1_d56ca937f8.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Suzuki_Ertiga_Interior_3_1_d56ca937f8.jpg&w=3840&q=75"
+    ],
+    "kilometer": "278.000 km"
+  },
+  {
+    "slug": "suzuki-ertiga-putih",
+    "type": "LMPV",
+    "name": "Ertiga",
+    "color": "Putih",
+    "plat": "Genap",
+    "seat": 7,
+    "brand": "Suzuki",
+    "region":"Jakarta Utara",
+    "pricePerDay": 350000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_MVP_Car_Suzuki_Ertiga_2_60affec33c.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Suzuki_Ertiga_Interior_0_1_d63e5d2dda.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_MVP_Car_Suzuki_Ertiga_Interior_2_1_3c4eedca7c.jpg&w=3840&q=75"
+    ],
+    "kilometer": "285.000 km"
+  },
+  {
+    "slug": "isuzu-mux-pusilvertih",
+    "type": "SUV",
+    "name": "MUX",
+    "color": "Silver",
+    "plat": "Ganjil",
+    "seat": 7,
+    "brand": "Isuzu",
+    "region":"Jakarta Pusat",
+    "pricePerDay": 600000,
+    "year": "2023",
+    "BbmType": "Solar",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_SUV_Car_Isuzu_Mux_da4ff71b99.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Isuzu_Mux_Interior_2_0457e2e40f.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Isuzu_Mux_Interior_0_102a283a80.jpg&w=3840&q=75"
+    ],
+    "kilometer": "280.000 km"
+  },
+  {
+    "slug": "toyota-hiace-putih",
+    "type": "Minibus",
+    "name": "Hi-Ace",
+    "color": "Putih",
+    "plat": "Ganjil",
+    "seat": 14,
+    "brand": "Toyota",
+    "region":"Jakarta Utara",
+    "pricePerDay": 500000,
+    "year": "2019",
+    "BbmType": "Solar",
+    "transmission": "Manual",
+    "modelType": "Trip",
+    "thumbnail": "https://img5.icarcdn.com/7220436/gallery_new-car-mobil123-toyota-hiace-high-grade-commuter-van-indonesia_7220436_GXk5i8tevwEVSoMk7GPoOG.jpg?smia=xTM",
+    "carImage": [
+      "https://img3.icarcdn.com/7906666/gallery_new-car-mobil123-toyota-hiace-premio-van-wagon-indonesia_7906666_xRPF2emhurZgDAmOOlAWTv.jpg?smia=xTM",
+      "https://img.mobilmo.com/crop/396x297/2023/11/10/20231110053757-51a4.png",
+      "https://asset-3.tstatic.net/jualbeli/img/2020/6/2348195/2-1112566752-Toyota-Hiace-Commuter-2016-Terawat-Putih-Bekas-Bagus-Mulus-Pajak---KIR-Jalan---J.jpg"
+    ],
+    "kilometer": "600.000 km"
+  },
+  {
+    "slug": "toyota-hiace-silver",
+    "type": "Minibus",
+    "name": "Hi-Ace",
+    "color": "Silver",
+    "plat": "Genap",
+    "seat": 14,
+    "brand": "Toyota",
+    "region":"Jakarta Utara",
+    "pricePerDay": 500000,
+    "year": "2019",
+    "BbmType": "Solar",
+    "transmission": "Manual",
+    "modelType": "Trip",
+    "thumbnail": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fauto2000.co.id%2Fberita-dan-tips%2Fcrm-paa-berapa-cc-mobil-toyota-hiace-ulasan&psig=AOvVaw1XnmPx3X6CVmXrW_SoONne&ust=1707924231040000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDxw9rPqIQDFQAAAAAdAAAAABAI",
+    "carImage": [
+      "https://imgcdn.oto.com/large/gallery/interior/38/801/toyota-hiace-steering-wheel-646535.jpg",
+      "https://tourjapan.co.id/wp-content/uploads/2018/11/Toyota-Commuter-Interior.jpg"
+    ],
+    "kilometer": "650.000 km"
+  },
+  {
+    "slug": "toyota-rush-putih",
+    "type": "LSUV",
+    "name": "Rush",
+    "color": "Putih",
+    "plat": "Genap",
+    "seat": 7,
+    "brand": "Toyota",
+    "region": "Jakarta Timur",
+    "pricePerDay": 350000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Manual",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_SUV_Car_Toyota_Rush_a8ae0fd6bf.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Rush_Interior_0_011ddda690.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Rush_Interior_2_577edaa54f.jpg&w=3840&q=75"
+    ],
+    "kilometer": "200.000 km"
+  },
+  {
+    "slug": "toyota-rush-hitam",
+    "type": "LSUV",
+    "name": "Rush",
+    "color": "Hitam",
+    "plat": "Genap",
+    "seat": 7,
+    "brand": "Toyota",
+    "region": "Jakarta Timur",
+    "pricePerDay": 350000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_SUV_Car_Toyota_Rush_2_375cb376f1.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Rush_Interior_0_011ddda690.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_SUV_Car_Toyota_Rush_Interior_2_577edaa54f.jpg&w=3840&q=75"
+    ],
+    "kilometer": "249.000 km"
+  },
+  {
+    "slug": "toyota-premio-silver",
+    "type": "Minibus",
+    "name": "Hi-Ace Premio",
+    "color": "Silver",
+    "plat": "Genap",
+    "seat": 10,
+    "brand": "Toyota",
+    "region": "Jakarta Pusat",
+    "pricePerDay": 1000000,
+    "year": "2022",
+    "BbmType": "Solar",
+    "transmission": "Manual",
+    "modelType": "Trip",
+    "thumbnail": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//101/MTA-12179288/toyota_toyota_full03.jpg",
+    "carImage": [
+      "https://www.toyota.astra.co.id/sites/default/files/2023-08/interior%20fitur3%201200x675_8.jpg",
+      "https://www.toyota.astra.co.id/sites/default/files/2023-08/interior%20fitur1%201200x675_8.jpg"
+    ],
+    "kilometer": "195.000 km"
+  },
+  {
+    "slug": "toyota-alphard-putih",
+    "type": "MPV",
+    "name": "Alphard",
+    "color": "Putih",
+    "plat": "Genap",
+    "seat": 6,
+    "brand": "Toyota",
+    "region": "Jakarta Pusat",
+    "pricePerDay": 1250000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_Lux_Car_Toyota_Alphard_3a21d30d68.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_Lux_Car_Toyota_Alphard_Interior_0_2c48fffc73.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_Lux_Car_Toyota_Alphard_Interior_2_ac4e460d8f.jpg&w=3840&q=75"
+    ],
+    "kilometer": "195.000 km"
+  },
+  {
+    "slug": "toyota-alphard-hitam",
+    "type": "MPV",
+    "name": "Alphard",
+    "color": "Hitam",
+    "plat": "Ganjil",
+    "seat": 6,
+    "brand": "Toyota",
+    "region": "Jakarta Pusat",
+    "pricePerDay": 1250000,
+    "year": "2022",
+    "BbmType": "Bensin",
+    "transmission": "Automatic",
+    "modelType": "Standart",
+    "thumbnail": "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-19%2FTRAC_Lux_Car_Toyota_Alphard_var_2_83480ae5a8.png&w=3840&q=75",
+    "carImage": [
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_Lux_Car_Toyota_Alphard_Interior_0_2c48fffc73.jpg&w=3840&q=75",
+      "https://www.trac.astra.co.id/_next/image?url=https%3A%2F%2Fomnispace.blob.core.windows.net%2Fstrapi-prod%2F2022-09-09%2FTRAC_Lux_Car_Toyota_Alphard_Interior_2_ac4e460d8f.jpg&w=3840&q=75"
+    ],
+    "kilometer": "195.000 km"
+  }
+]
