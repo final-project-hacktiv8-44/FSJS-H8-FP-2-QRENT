@@ -35,27 +35,39 @@ export async function POST(
     const carRent = car.pricePerDay as number;
 
     const UserId = request.headers.get("x-UserId") as string;
+    const userRole = request.headers.get("x-role") as string;
 
-    const booking = await BookingModel.newBooking({
-      bookingStart: body.bookingStart,
-      bookingEnd: body.bookingEnd,
-      status: "pending",
-      totalPrice: (dateEnd - dateStart) * carRent,
-      CarId: car._id,
-      UserId: UserId,
-      ktp: body.ktp,
-      sim: body.sim,
-      age: body.age,
-    });
+    if (userRole !== "customer") {
+      return NextResponse.json(
+        {
+          message: "Only customers are allowed to booking car.",
+        },
+        {
+          status: 403,
+        }
+      );
+    } else {
+      const booking = await BookingModel.newBooking({
+        bookingStart: body.bookingStart,
+        bookingEnd: body.bookingEnd,
+        status: "pending",
+        totalPrice: (dateEnd - dateStart) * carRent,
+        CarId: car._id,
+        UserId: UserId,
+        ktp: body.ktp,
+        sim: body.sim,
+        age: body.age,
+      });
 
-    return NextResponse.json(
-      {
-        booking,
-      },
-      {
-        status: 201,
-      }
-    );
+      return NextResponse.json(
+        {
+          booking,
+        },
+        {
+          status: 201,
+        }
+      );
+    }
   } catch (error) {
     if (error instanceof z.ZodError) {
       const pathError = error.issues[0].path[0];
