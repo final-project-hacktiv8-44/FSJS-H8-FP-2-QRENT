@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { database } from "../config/mongodb";
-import { BookingType, InputFormType } from "@/types/type";
+import { BookingType, InputFormType, StatusType } from "@/types/type";
 
 class BookingModel {
   static dbBooking() {
@@ -23,11 +23,20 @@ class BookingModel {
     return book as BookingType;
   }
 
+  static async bookingById(_id: string) {
+    const result = BookingModel.dbBooking();
+    const book = await result.findOne({
+      _id: new ObjectId(_id),
+    });
+    return book as BookingType;
+  }
+
   static async newBooking(body: InputFormType) {
     const result = BookingModel.dbBooking();
-    const newBook = await result.insertOne({
+    await result.insertOne({
       bookingStart: body.bookingStart,
       bookingEnd: body.bookingEnd,
+      status: body.status,
       totalPrice: body.totalPrice,
       CarId: new ObjectId(body.CarId),
       UserId: new ObjectId(body.UserId),
@@ -41,6 +50,15 @@ class BookingModel {
     });
 
     return "Success Booking";
+  }
+
+  static async updateStatus(_id: string, body: StatusType) {
+    const result = BookingModel.dbBooking();
+    await result.updateOne(
+      { _id: new ObjectId(_id) },
+      { $set: { status: body.status } }
+    );
+    return "Next to payment method";
   }
 }
 

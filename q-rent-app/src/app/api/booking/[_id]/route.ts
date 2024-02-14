@@ -39,6 +39,7 @@ export async function POST(
     const booking = await BookingModel.newBooking({
       bookingStart: body.bookingStart,
       bookingEnd: body.bookingEnd,
+      status: "pending",
       totalPrice: (dateEnd - dateStart) * carRent,
       CarId: car._id,
       UserId: UserId,
