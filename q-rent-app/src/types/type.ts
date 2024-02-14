@@ -25,8 +25,10 @@ export type CarType = {
   name: string;
   color: string;
   plat: string;
-  seat: number,
+  seat: string;
   brand: string;
+  region: string;
+  merk: string;
   pricePerDay: number | undefined;
   year: string;
   BbmType: string;
@@ -64,13 +66,6 @@ export type InputFormType = {
   age: string;
 };
 
-// services
-// booking
-// car
-// profile
-// users
-// pengembalian
-
 export type SectionType = {
   _id: ObjectId;
   image: string;
@@ -80,7 +75,6 @@ export type SectionType = {
 export type MyResponse = {
   section: SectionType[]
 }
-
 
 export type FeedbackType ={
   _id: ObjectId;
