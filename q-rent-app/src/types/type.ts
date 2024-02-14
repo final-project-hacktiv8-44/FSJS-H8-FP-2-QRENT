@@ -29,13 +29,14 @@ export type CarType = {
   brand: string;
   region: string;
   merk: string;
-  pricePerDay: number;
+  pricePerDay: number | undefined;
   year: string;
   BbmType: string;
+  transmission: string;
   modelType: string;
   thumbnail: string;
   carImage: string;
-  description: string;
+  kilometer: string;
 };
 
 export type BookingType = {
@@ -75,10 +76,10 @@ export type MyResponse = {
   section: SectionType[]
 }
 
-
-// services
-// booking
-// car
-// profile
-// users
-// pengembalian
+export type FeedbackType ={
+  _id: ObjectId;
+  Username: string;
+  UserId: ObjectId;
+  BookingId: ObjectId;
+  review: string;
+}
