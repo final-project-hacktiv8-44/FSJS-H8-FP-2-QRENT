@@ -42,9 +42,7 @@ export type CarType = {
   name: string;
   color: string;
   plat: string;
-  seat: string;
   brand: string;
-  region: string;
   merk: string;
   pricePerDay: number;
   year: string;
@@ -99,10 +97,10 @@ export type MyResponse = {
   section: SectionType[];
 };
 
-export type FeedbackType ={
+export type FeedbackType = {
   _id: ObjectId;
   Username: string;
   UserId: ObjectId;
   BookingId: ObjectId;
   review: string;
-}
+};
