@@ -13,14 +13,20 @@ class BookingModel {
     return result;
   }
 
-  static async allBooking(UserId: string) {
+  static async allBooking(UserId?: string) {
     const result = BookingModel.dbBooking();
-    const book = await result
-      .find({
-        UserId: new ObjectId(UserId),
-      })
-      .toArray();
-    return book as BookingType;
+
+    if (UserId) {
+      const book = await result
+        .find({
+          UserId: new ObjectId(UserId),
+        })
+        .toArray();
+      return book as BookingType;
+    } else {
+      const book = await result.find().toArray();
+      return book as BookingType;
+    }
   }
 
   static async bookingById(_id: string) {

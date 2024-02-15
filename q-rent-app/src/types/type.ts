@@ -12,6 +12,10 @@ export type UserType = {
 
 export type RegisterType = Omit<UserType, "_id" | "role" | "image">;
 
+export type CloudinaryImage = {
+  image: string;
+};
+
 export type ProfileType = {
   _id: ObjectId;
   name: string;
