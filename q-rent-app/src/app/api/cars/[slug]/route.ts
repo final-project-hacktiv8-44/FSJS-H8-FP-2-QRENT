@@ -1,7 +1,7 @@
 import CarModel from "@/db/models/cars";
 import { NextResponse } from "next/server";
 
-export default async function GET(
+export async function GET(
   request: Request,
   { params }: { params: { slug: string } }
 ) {

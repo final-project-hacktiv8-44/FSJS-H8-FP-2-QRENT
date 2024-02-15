@@ -6,14 +6,18 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const search = searchParams.get("search");
     const page = parseInt(searchParams.get("page") || "1", 10);
-    const limit = parseInt(searchParams.get("limit") || "10", 10);
-    const skip = (page - 1) * limit;
+    const pageSize = parseInt(searchParams.get("pageSize") || "10", 10);
+    const region = searchParams.get("region");
+
 
     let products;
     if (search) {
       products = await CarModel.carSearch(search);
+    } else if (region) {
+      products = await CarModel.paginateCars(page, pageSize, region);
     } else {
-      products = await CarModel.paginateCars(limit, skip);
+      products = await CarModel.paginateCars(page, pageSize, "");
+
     }
 
     return NextResponse.json(

@@ -28,7 +28,7 @@ class UserModel {
       ...newUser,
       image:
         "https://res.cloudinary.com/daz8ay876/image/upload/v1707735219/final-project/profile.jpg",
-      role: "member",
+      role: "customer",
       password: SignPassword(newUser.password),
     });
     return {
