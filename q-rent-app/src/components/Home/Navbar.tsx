@@ -18,7 +18,7 @@ export default function Navbar() {
         </div>
         <div className="flex items-center space-x-4">
           <Link
-            href="/products"
+            href="/cars"
             className="nav-link py-5 px-5 rounded hover:bg-orange-600 hover:text-white hover:scale-110 text-orange-600 transition duration-300 font-bold text-xl"
           >
             <IoIosCar className="inline-block mr-2" /> Our Products

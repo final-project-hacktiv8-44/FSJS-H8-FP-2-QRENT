@@ -42,14 +42,18 @@ export type CarType = {
   name: string;
   color: string;
   plat: string;
+  seat: string;
+  brand: string;
+  region: string;
   merk: string;
-  pricePerDay: number | undefined;
+  pricePerDay: number;
   year: string;
   BbmType: string;
+  transmission: string;
   modelType: string;
-  thumbnile: string;
+  thumbnail: string;
   carImage: string;
-  description: string;
+  kilometer: string;
 };
 
 export type BookingType = {
@@ -85,13 +89,6 @@ export type InputFormType = {
   age: string;
 };
 
-// services
-// booking
-// car
-// profile
-// users
-// pengembalian
-
 export type SectionType = {
   _id: ObjectId;
   image: string;
@@ -101,3 +98,11 @@ export type SectionType = {
 export type MyResponse = {
   section: SectionType[];
 };
+
+export type FeedbackType ={
+  _id: ObjectId;
+  Username: string;
+  UserId: ObjectId;
+  BookingId: ObjectId;
+  review: string;
+}

@@ -5,6 +5,5 @@ export async function getSectionSwiper() {
             "Content-Type": "application/json",
         }
     })
-
     return res.json()
 } 

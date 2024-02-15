@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
     const pageSize = parseInt(searchParams.get("pageSize") || "10", 10);
     const region = searchParams.get("region");
 
+
     let products;
     if (search) {
       products = await CarModel.carSearch(search);
@@ -16,6 +17,7 @@ export async function GET(request: NextRequest) {
       products = await CarModel.paginateCars(page, pageSize, region);
     } else {
       products = await CarModel.paginateCars(page, pageSize, "");
+
     }
 
     return NextResponse.json(

@@ -21,7 +21,7 @@ export default function FooterSection() {
   const [data, setData] = useState<SectionType[]>([]);
   const fetchSection = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/section`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/section`, {
         method: "GET",
         cache: "no-store",
         headers: {
@@ -42,12 +42,11 @@ export default function FooterSection() {
   useEffect(() => {
     fetchSection();
   }, []);
-  console.log(data)
   return (
     <section className="pt-[7rem] pb-[2rem] bg-white">
       <div className="lg:mx-auto max-w-5xl">
         <h1 className="text-[3rem] font-bold text-orange-600 font-bold mb-[2rem] text-center">
-          How To Rent Our Car:
+          How To Rent Our Cars
         </h1>
         {data.length > 0 && (
           <Swiper
