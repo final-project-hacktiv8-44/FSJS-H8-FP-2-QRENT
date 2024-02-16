@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { verifyJose } from "../src/db/helpers/jwt";
 
@@ -39,3 +40,4 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: "/api/booking/:path*",
 };
+

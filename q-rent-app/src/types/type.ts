@@ -9,6 +9,7 @@ export type UserType = {
   gender: string;
   role: string;
 };
+
 export type RegisterType = Omit<UserType, "_id" | "role" | "image">;
 export type ProfileType = {
   _id: ObjectId;
@@ -29,21 +30,24 @@ export type CarType = {
   brand: string;
   region: string;
   merk: string;
-  pricePerDay: number | undefined;
+  pricePerDay: number;
   year: string;
   BbmType: string;
   transmission: string;
   modelType: string;
   thumbnail: string;
-  carImage: string;
+  carImage: ImageCar;
   kilometer: string;
 };
+
+export type ImageCar = [string, string, string];
 
 export type BookingType = {
   _id: ObjectId;
   bookingStart: Date;
   bookingEnd: Date;
   totalPrice: number;
+  status: string;
   UserId: ObjectId;
   CarId: ObjectId;
 };
@@ -59,12 +63,16 @@ export type InputFormType = {
   bookingStart: string;
   bookingEnd: string;
   totalPrice: number | undefined;
+  status: string;
   CarId: ObjectId;
   UserId: string;
   ktp: boolean;
   sim: boolean;
   age: string;
 };
+
+export type InputFormNew = Omit<InputFormType, "totalPrice" | "CarId" | "UserId" | "totalPrice">;
+
 
 export type SectionType = {
   _id: ObjectId;
@@ -83,3 +91,4 @@ export type FeedbackType ={
   BookingId: ObjectId;
   review: string;
 }
+

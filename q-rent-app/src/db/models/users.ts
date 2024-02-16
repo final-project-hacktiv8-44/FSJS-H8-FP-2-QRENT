@@ -18,7 +18,6 @@ class UserModel {
   static async userByUsername(username: string) {
     const result = UserModel.dbUser();
     const login = await result.findOne({ username: username });
-
     return login as UserType;
   }
 
@@ -28,7 +27,7 @@ class UserModel {
       ...newUser,
       image:
         "https://res.cloudinary.com/daz8ay876/image/upload/v1707735219/final-project/profile.jpg",
-      role: "member",
+      role: "customer",
       password: SignPassword(newUser.password),
     });
     return {

@@ -40,6 +40,7 @@ export async function POST(
       bookingStart: body.bookingStart,
       bookingEnd: body.bookingEnd,
       totalPrice: (dateEnd - dateStart) * carRent,
+      status: "pending",
       CarId: car._id,
       UserId: UserId,
       ktp: body.ktp,
