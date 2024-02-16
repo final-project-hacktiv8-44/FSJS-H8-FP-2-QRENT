@@ -66,6 +66,5 @@ class BookingModel {
     return "Next to payment method";
   }
 }
-
 export default BookingModel;
 
