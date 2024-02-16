@@ -67,7 +67,20 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
                 placeholder="Enter your Password"
               />
             </div>
-            <div className="flex justify-between text-sm">
+
+            <div className="flex flex-col">
+              <label className="text-sm font-bold text-gray-600 mb-1">
+                Gender
+              </label>
+              <input
+                className="border rounded-md bg-white px-3 py-2 text-black"
+                type="text"
+                name="gender"
+                placeholder="Enter your gender"
+              />
+            </div>
+
+            <div className="flex justify-between text-sm text-gray-600">
               <div className="flex items-center space-x-2">
                 <input
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"

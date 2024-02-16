@@ -14,6 +14,7 @@ export default function RegisterPage() {
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
+    const gender = formData.get("gender");
     
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/register`,
@@ -26,6 +27,7 @@ export default function RegisterPage() {
           username,
           email,
           password,
+          gender
         }),
         cache: "no-store",
       }

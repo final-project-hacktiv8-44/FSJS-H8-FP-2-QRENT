@@ -44,6 +44,7 @@ class BookingModel {
       bookingEnd: body.bookingEnd,
       status: body.status,
       totalPrice: body.totalPrice,
+      status: body.status,
       CarId: new ObjectId(body.CarId),
       UserId: new ObjectId(body.UserId),
     });
@@ -69,3 +70,4 @@ class BookingModel {
 }
 
 export default BookingModel;
+

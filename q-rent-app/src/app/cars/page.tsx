@@ -32,7 +32,7 @@ const CarsPage = () => {
       <h1 className="text-3xl font-bold mb-8 text-center text-blue-400">Available Cars</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {cars.map((car) => (
-          <Card key={car._id.toString()} cars={car} />
+          <Card key={car._id.toString()} car={car} />
         ))}
       </div>
     </div>

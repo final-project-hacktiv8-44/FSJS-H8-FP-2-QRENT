@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="items-center">
           <Link href="/">
             <div className="hover:scale-110 transition duration-300">
-              <Image src={logo} alt="Logo" className="w-28 h-22" />
+              <Image src={logo} alt="Logo" className="w-28 h-22 ml-10" />
             </div>
           </Link>
         </div>
@@ -21,7 +21,7 @@ export default function Navbar() {
             href="/cars"
             className="nav-link py-5 px-5 rounded hover:bg-orange-600 hover:text-white hover:scale-110 text-orange-600 transition duration-300 font-bold text-xl"
           >
-            <IoIosCar className="inline-block mr-2" /> Our Products
+            <IoIosCar className="inline-block mr-2" /> Select Cars
           </Link>
           <Link
             href="/about"
@@ -29,7 +29,7 @@ export default function Navbar() {
           >
             <FaInfoCircle className="inline-block mr-2" /> About
           </Link>
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end mr-20">
             <div
               tabIndex={0}
               role="button"

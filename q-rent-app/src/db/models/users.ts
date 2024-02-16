@@ -18,7 +18,6 @@ class UserModel {
   static async userByUsername(username: string) {
     const result = UserModel.dbUser();
     const login = await result.findOne({ username: username });
-
     return login as UserType;
   }
 

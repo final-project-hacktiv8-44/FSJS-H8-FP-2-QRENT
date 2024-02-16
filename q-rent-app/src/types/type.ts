@@ -50,9 +50,11 @@ export type CarType = {
   transmission: string;
   modelType: string;
   thumbnail: string;
-  carImage: string;
+  carImage: ImageCar;
   kilometer: string;
 };
+
+export type ImageCar = [string, string, string];
 
 export type BookingType = {
   _id: ObjectId;
@@ -60,6 +62,7 @@ export type BookingType = {
   bookingEnd: Date;
   status: string;
   totalPrice: number;
+  status: string;
   UserId: ObjectId;
   CarId: ObjectId;
 };
@@ -80,12 +83,16 @@ export type InputFormType = {
   bookingEnd: string;
   status: string;
   totalPrice: number | undefined;
+  status: string;
   CarId: ObjectId;
   UserId: string;
   ktp: boolean;
   sim: boolean;
   age: string;
 };
+
+export type InputFormNew = Omit<InputFormType, "totalPrice" | "CarId" | "UserId" | "totalPrice">;
+
 
 export type SectionType = {
   _id: ObjectId;
@@ -103,4 +110,5 @@ export type FeedbackType = {
   UserId: ObjectId;
   BookingId: ObjectId;
   review: string;
-};
+}
+
