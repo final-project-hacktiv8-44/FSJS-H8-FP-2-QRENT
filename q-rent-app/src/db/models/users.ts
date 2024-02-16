@@ -1,6 +1,7 @@
 import { RegisterType, UserType } from "@/types/type";
 import { database } from "../config/mongodb";
 import SignPassword from "../helpers/bcrypt";
+import { ObjectId } from "mongodb";
 
 class UserModel {
   static dbUser() {
@@ -21,6 +22,14 @@ class UserModel {
     return login as UserType;
   }
 
+  static async userById(UserId: string) {
+    const result = UserModel.dbUser();
+    const user = await result.findOne({
+      _id: UserId,
+    });
+    return user as UserType;
+  }
+
   static async register(newUser: RegisterType) {
     const result = UserModel.dbUser();
     const user = await result.insertOne({
@@ -34,6 +43,16 @@ class UserModel {
       _id: user.insertedId,
       ...newUser,
     } as UserType;
+  }
+
+  static async updateProfileImage(UserId: string, imageUrl: string) {
+    const result = UserModel.dbUser();
+    const profile = await result.updateOne(
+      { _id: new ObjectId(UserId) },
+      { $set: { image: imageUrl } }
+    );
+
+    return profile;
   }
 }
 
