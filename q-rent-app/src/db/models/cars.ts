@@ -43,14 +43,21 @@ class CarModel {
 
   static async paginateCars(
     page: number,
-    pageSize: number
+    pageSize: number,
+    region: string
   ): Promise<CarType[]> {
     const result = CarModel.dbCar();
-    const cars = await result
-      .find()
+    let query = result.find();
+
+    if (region) {
+      query = query.filter({ region: region });
+    }
+
+    const cars = await query
       .skip((page - 1) * pageSize)
       .limit(pageSize)
       .toArray();
+
     return cars as CarType[];
   }
 }
