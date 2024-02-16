@@ -62,7 +62,6 @@ export type BookingType = {
   bookingEnd: Date;
   status: string;
   totalPrice: number;
-  status: string;
   UserId: ObjectId;
   CarId: ObjectId;
 };
@@ -83,7 +82,6 @@ export type InputFormType = {
   bookingEnd: string;
   status: string;
   totalPrice: number | undefined;
-  status: string;
   CarId: ObjectId;
   UserId: string;
   ktp: boolean;
