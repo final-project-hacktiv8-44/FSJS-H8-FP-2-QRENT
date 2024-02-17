@@ -1,21 +1,39 @@
 import { BookingType } from "@/types/type";
+import { formatToRupiah } from "@/db/helpers/formatter";
 
 type BookingAllCardProps = {
   booking: BookingType;
 };
 
-const BookingAllCard = (booking: BookingAllCardProps) => {
-  console.log(booking,"<<< booking");
-    return (
-    <div className="border rounded-lg p-4 w-72">
-      <h2 className="text-lg font-semibold">Booking ID: {booking.booking._id}</h2>
-      <p>Start Date: {booking.booking.bookingStart}</p>
-      <p>End Date: {booking.booking.bookingEnd}</p>
-      <p>Status: {booking.booking.status}</p>
-      <p>Total Price: {booking.booking.totalPrice}</p>
-      <p>User ID: {booking.booking.UserId}</p>
-      <p>Car ID: {booking.booking.CarId}</p>
-    </div>
+const BookingAllCard = ({ booking }: BookingAllCardProps) => {
+  const price = formatToRupiah(booking.totalPrice);
+
+  return (
+    <tr>
+      <td>
+        <div className="font-bold">{booking._id}</div>
+      </td>
+      <td>
+        <img
+          src={booking.car.thumbnail}
+          alt="Car image"
+          style={{ maxWidth: "150px", maxHeight: "100px" }}
+        />
+      </td>
+      <td>{booking.car.name}</td>
+      <td>{booking.car.type}</td>
+      <td>{booking.car.brand}</td>
+      <td>{booking.car.color}</td>
+      <td>{booking.car.region}</td>
+      <td>{booking.bookingStart}</td>
+      <td>{booking.bookingEnd}</td>
+      <td>{price}</td>
+      <td>{booking.user.username}</td>
+      <td>
+        <button className="btn btn-primary btn-md">Pending</button>
+      </td>
+    </tr>
   );
 };
+
 export default BookingAllCard;
