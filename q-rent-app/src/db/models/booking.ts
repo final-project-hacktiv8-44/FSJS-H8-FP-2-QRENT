@@ -16,25 +16,143 @@ class BookingModel {
   static async allBooking(UserId?: string) {
     const result = BookingModel.dbBooking();
 
-    if (UserId) {
-      const book = await result
-        .find({
+    const agg = [
+      {
+        $match: {
           UserId: new ObjectId(UserId),
-        })
-        .toArray();
-      return book as BookingType;
+        },
+      },
+      {
+        $lookup: {
+          from: "cars",
+          localField: "CarId",
+          foreignField: "_id",
+          as: "car",
+        },
+      },
+      {
+        $unwind: {
+          path: "$car",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "UserId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $unwind: {
+          path: "$user",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          user: {
+            password: 0,
+          },
+        },
+      },
+    ];
+
+    const agg2 = [
+      {
+        $lookup: {
+          from: "cars",
+          localField: "CarId",
+          foreignField: "_id",
+          as: "car",
+        },
+      },
+      {
+        $unwind: {
+          path: "$car",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "UserId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $unwind: {
+          path: "$user",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          user: {
+            password: 0,
+          },
+        },
+      },
+    ];
+
+    if (UserId) {
+      const book = await result.aggregate(agg).toArray();
+      return book[0] as BookingType;
     } else {
-      const book = await result.find().toArray();
-      return book as BookingType;
+      const book = await result.aggregate(agg2).toArray();
+      return book[0] as BookingType;
     }
   }
 
   static async bookingById(_id: string) {
     const result = BookingModel.dbBooking();
-    const book = await result.findOne({
-      _id: new ObjectId(_id),
-    });
-    return book as BookingType;
+    const agg = [
+      {
+        $match: {
+          _id: new ObjectId(_id),
+        },
+      },
+      {
+        $lookup: {
+          from: "cars",
+          localField: "CarId",
+          foreignField: "_id",
+          as: "car",
+        },
+      },
+      {
+        $unwind: {
+          path: "$car",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "UserId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $unwind: {
+          path: "$user",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          user: {
+            password: 0,
+          },
+        },
+      },
+    ];
+
+    const book = await result.aggregate(agg).toArray();
+    return book[0] as BookingType;
   }
 
   static async newBooking(body: InputFormType) {
@@ -68,4 +186,3 @@ class BookingModel {
 }
 
 export default BookingModel;
-
