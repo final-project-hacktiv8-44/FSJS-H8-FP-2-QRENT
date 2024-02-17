@@ -117,4 +117,10 @@ export type FeedbackType = {
   review: string;
 };
 
-
+export type TravelType = {
+  _id: ObjectId;
+  name: string;
+  image: string;
+  location: string;
+  description: string;
+};
