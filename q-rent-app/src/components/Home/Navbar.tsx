@@ -19,22 +19,19 @@ export default function Navbar() {
         <div className="flex items-center space-x-4">
           <Link
             href="/cars"
-            className="nav-link py-5 px-5 rounded hover:bg-orange-600 hover:text-white hover:scale-110 text-orange-600 transition duration-300 font-bold text-xl"
-          >
+            className="nav-link py-5 px-5 rounded hover:bg-orange-600 hover:text-white hover:scale-110 text-orange-600 transition duration-300 font-bold text-xl">
             <IoIosCar className="inline-block mr-2" /> Select Cars
           </Link>
           <Link
             href="/about"
-            className="nav-link py-5 px-5 rounded hover:bg-blue-400 hover:text-white hover:scale-110 text-blue-400 transition duration-300 font-bold text-xl"
-          >
+            className="nav-link py-5 px-5 rounded hover:bg-blue-400 hover:text-white hover:scale-110 text-blue-400 transition duration-300 font-bold text-xl">
             <FaInfoCircle className="inline-block mr-2" /> About
           </Link>
           <div className="dropdown dropdown-end mr-20">
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
+              className="btn btn-ghost btn-circle avatar">
               <div className="w-[50] h-[50] rounded-full overflow-hidden hover:scale-150 transition duration-300">
                 <img
                   alt="Tailwind CSS Navbar component"
@@ -44,12 +41,11 @@ export default function Navbar() {
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-            >
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
               <li>
-                <a className="justify-between">
+                <Link href={"/profile"} className="justify-between">
                   Profile
-                </a>
+                </Link>
               </li>
               <li>
                 <a>Settings</a>

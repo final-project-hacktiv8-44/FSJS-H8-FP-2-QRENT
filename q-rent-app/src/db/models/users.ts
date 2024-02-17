@@ -52,7 +52,7 @@ class UserModel {
       { $set: { image: imageUrl } }
     );
 
-    return profile;
+    return profile as UserType;
   }
 }
 

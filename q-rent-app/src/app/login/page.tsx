@@ -1,4 +1,3 @@
-
 import { LoginForm } from "@/components/Login/LoginForm";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -15,20 +14,17 @@ export default function LoginPage() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        cache: "no-store",
-      }
-    );
+    const response = await fetch(`http://localhost:3000/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      cache: "no-store",
+    });
 
     const result = (await response.json()) as MyResponse;
 
