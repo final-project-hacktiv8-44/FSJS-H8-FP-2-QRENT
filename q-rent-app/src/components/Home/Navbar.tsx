@@ -4,8 +4,11 @@ import logo from "@/assets/logo.png";
 import { FaInfoCircle, FaUserAlt } from "react-icons/fa";
 import { IoIosCar } from "react-icons/io";
 import { IoLogOut } from "react-icons/io5";
+import Logout from "../Logout/logout";
+import { cookies } from "next/headers";
 
 export default function Navbar() {
+  const token = cookies().get("Authorization")?.value;
   return (
     <nav className="bg-white p-4 fixed w-full top-0 shadow-xl z-10">
       <div className="container mx-auto flex justify-between items-center">
@@ -50,9 +53,7 @@ export default function Navbar() {
               <li>
                 <a>Settings</a>
               </li>
-              <li>
-                <a>Logout</a>
-              </li>
+              <li>{token ? <Logout /> : <Link href="/login">Login</Link>}</li>
             </ul>
           </div>
         </div>
