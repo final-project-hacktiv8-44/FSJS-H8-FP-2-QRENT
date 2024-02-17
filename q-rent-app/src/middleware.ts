@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
-import { verifyJose } from "../src/db/helpers/jwt";
+import { verifyJose } from "./db/helpers/jwt";
 
 export async function middleware(request: NextRequest) {
   const access_token = cookies().get("Authorization")?.value.split(" ")[1];
@@ -38,6 +38,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/booking/:path*", "/api/users/profile/:path*"],
+  matcher: ["/api/booking/:path*", "/api/users/:path*"],
 };
-

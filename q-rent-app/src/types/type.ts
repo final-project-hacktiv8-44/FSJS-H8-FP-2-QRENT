@@ -10,6 +10,8 @@ export type UserType = {
   role: string;
 };
 
+export type UserProfileType = Omit<UserType, "password">;
+
 export type RegisterType = Omit<UserType, "_id" | "role" | "image">;
 
 export type CloudinaryImage = {
@@ -23,6 +25,7 @@ export type ProfileType = {
   bio: string;
   birth: string;
   UserId: ObjectId;
+  user: UserProfileType;
 };
 
 export type NewProfile = {
@@ -64,6 +67,8 @@ export type BookingType = {
   totalPrice: number;
   UserId: ObjectId;
   CarId: ObjectId;
+  car: CarType;
+  user: UserProfileType;
 };
 
 export type StatusType = {
@@ -89,8 +94,10 @@ export type InputFormType = {
   age: string;
 };
 
-export type InputFormNew = Omit<InputFormType, "totalPrice" | "CarId" | "UserId" | "totalPrice">;
-
+export type InputFormNew = Omit<
+  InputFormType,
+  "totalPrice" | "CarId" | "UserId" | "totalPrice"
+>;
 
 export type SectionType = {
   _id: ObjectId;
@@ -108,5 +115,4 @@ export type FeedbackType = {
   UserId: ObjectId;
   BookingId: ObjectId;
   review: string;
-}
-
+};
