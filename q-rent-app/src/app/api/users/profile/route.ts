@@ -22,6 +22,7 @@ export async function PATCH(request: Request) {
     }
 
     const buffer = Buffer.from(await (file as Blob).arrayBuffer());
+
     const filename = Date.now() + (file as File).name.replaceAll(" ", "_");
 
     const result = await imagekit.upload({
