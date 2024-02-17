@@ -99,10 +99,10 @@ class BookingModel {
 
     if (UserId) {
       const book = await result.aggregate(agg).toArray();
-      return book[0] as BookingType;
+      return book as BookingType;
     } else {
       const book = await result.aggregate(agg2).toArray();
-      return book[0] as BookingType;
+      return book as BookingType;
     }
   }
 
@@ -184,5 +184,4 @@ class BookingModel {
     return "Next to payment method";
   }
 }
-
 export default BookingModel;

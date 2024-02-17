@@ -60,7 +60,7 @@ export function LoginForm({ handleLogin }: LoginProps) {
                 name="remember"
                 id="remember"
               />
-              <label>Remember me</label>
+              <label className="text-gray-600">Remember me</label>
             </div>
             <div>
               <a className="text-indigo-600">Forgot your Password?</a>

@@ -8,7 +8,7 @@ type MyResponse<T = {}> = {
   data?: T;
 };
 
-const BookingPage = ({ params }: { params: { _id: string } }) => {
+const BookingCarId = ({ params }: { params: { _id: string } }) => {
   const handleSubmit = async (FormData: FormData) => {
     "use server";
     const bookingStart = FormData.get("bookingStart");
@@ -16,18 +16,18 @@ const BookingPage = ({ params }: { params: { _id: string } }) => {
     const ktp = FormData.get("ktp") == "on" ? true : false;
     const sim = FormData.get("sim") == "on" ? true : false;
     const age = FormData.get("age");
-    console.log(ktp, "<<< ktp")
-    const auth_wishlist_token = cookies()
+    // console.log(ktp, "<<< ktp")
+    const auth_token = cookies()
       .get("Authorization")
       ?.value.split(" ")[1];
-      console.log(auth_wishlist_token)
+      console.log(auth_token)
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/${params._id}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Cookie: `Authorization=${auth_wishlist_token}`,
+          // Cookie: `Authorization=${auth_token}`,
           Cookie : cookies().toString()
         },
         cache: "no-store",
@@ -38,9 +38,9 @@ const BookingPage = ({ params }: { params: { _id: string } }) => {
     if (!response.ok) {
       return redirect(`/booking/${params._id}?error=${result.message}`);
     }
-    return redirect(`/`);
+    return redirect(`/booking`);
   };
-  console.log(handleSubmit, "<<<< handleSubmit");
+  // console.log(handleSubmit, "<<<< handleSubmit");
   return (
     <>
     <div className="mt-20 flex flex-col items-center justify-center text-blue-400 bg-white w-full h-screen">
@@ -51,4 +51,4 @@ const BookingPage = ({ params }: { params: { _id: string } }) => {
   );
 };
 
-export default BookingPage;
+export default BookingCarId;

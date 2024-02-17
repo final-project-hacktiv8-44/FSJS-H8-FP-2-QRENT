@@ -27,7 +27,6 @@ const CarsPage = () => {
       console.error("Error fetching data:", error);
     }
   };
-
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto py-8 mt-24">
