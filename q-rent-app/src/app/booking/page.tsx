@@ -15,17 +15,14 @@ async function dataBooking(): Promise<MyResponse> {
       Cookie: cookies().toString(),
     },
   });
-
   return data.json();
 }
-
 export default async function Booking() {
   const booking = await dataBooking();
-
   return (
     <div className="bg-white w-full h-screen mt-20">
-    <h1 className="text-3xl font-bold mt-28 text-center text-blue-400">My Booking</h1>
-    <div className="bg-white w-full h-screen mt-10">
+    <div className="bg-white w-full h-screen mt-28">
+    <h1 className="text-3xl font-bold text-center text-blue-400 mb-10">My Booking</h1>
       <div className="overflow-x-auto text-black text-center">
         <table className="table">
           <thead>
