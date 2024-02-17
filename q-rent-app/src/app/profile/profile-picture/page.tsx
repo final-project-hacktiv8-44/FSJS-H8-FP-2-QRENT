@@ -94,8 +94,8 @@ export default function ProfilePicture() {
   };
 
   return (
-    <div>
-      <h1>Profile Picture</h1>
+    <div className="bg-white w-full h-screen mt-20">
+      <h1 className="text-3xl font-bold text-center text-blue-400 mb-28 ">Profile Picture</h1>
 
       <UpdateProfileImage handleUploadImage={handleUploadImage} />
     </div>

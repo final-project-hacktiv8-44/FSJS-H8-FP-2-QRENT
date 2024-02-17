@@ -3,7 +3,7 @@ type handleUpload = {
 };
 export function UpdateProfileImage({ handleUploadImage }: handleUpload) {
   return (
-    <div>
+    <div className="bg-white w-full h-screen mt-20 text-black">
       <form action={handleUploadImage}>
         <div>
           <label>Image</label>
