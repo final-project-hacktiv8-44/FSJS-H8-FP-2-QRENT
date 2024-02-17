@@ -10,19 +10,40 @@ class ProfileModel {
 
   static async userProfile(UserId: string) {
     const result = ProfileModel.dbProfile();
-    const user = await result
-      .find({
-        UserId: new ObjectId(UserId),
-      })
-      .toArray();
 
-    return user as ProfileType;
+    const agg = [
+      {
+        $match: {
+          UserId: new ObjectId(UserId),
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "UserId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $unwind: {
+          path: "$user",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          user: {
+            password: 0,
+          },
+        },
+      },
+    ];
+
+    const user = await result.aggregate(agg).toArray();
+
+    return user[0] as ProfileType;
   }
-
-  // static async userProfileById() {
-  //   const result = ProfileModel.dbProfile();
-  //   const user = await result.findOne({});
-  // }
 
   static async updateProfile(body: NewProfile) {
     const result = ProfileModel.dbProfile();
