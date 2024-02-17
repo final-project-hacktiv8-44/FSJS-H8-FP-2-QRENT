@@ -7,7 +7,6 @@ type BookingAllCardProps = {
 
 const BookingAllCard = ({ booking }: BookingAllCardProps) => {
   const price = formatToRupiah(booking.totalPrice);
-
   return (
     <tr>
       <td>
