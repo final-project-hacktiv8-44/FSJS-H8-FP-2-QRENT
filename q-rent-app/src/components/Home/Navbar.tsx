@@ -3,6 +3,7 @@ import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { FaInfoCircle, FaUserAlt } from "react-icons/fa";
 import { IoIosCar } from "react-icons/io";
+import { FaBookOpen } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 
 export default function Navbar() {
@@ -19,13 +20,18 @@ export default function Navbar() {
         <div className="flex items-center space-x-4">
           <Link
             href="/cars"
-            className="nav-link py-5 px-5 rounded hover:bg-orange-600 hover:text-white hover:scale-110 text-orange-600 transition duration-300 font-bold text-xl">
+            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600">
             <IoIosCar className="inline-block mr-2" /> Select Cars
           </Link>
           <Link
             href="/about"
-            className="nav-link py-5 px-5 rounded hover:bg-blue-400 hover:text-white hover:scale-110 text-blue-400 transition duration-300 font-bold text-xl">
-            <FaInfoCircle className="inline-block mr-2" /> About
+            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600">
+            <FaInfoCircle className="inline-block mr-2" /> About Us
+          </Link>
+          <Link
+            href="/booking"
+            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600">
+            <FaBookOpen className="inline-block mr-2" /> My Booking
           </Link>
           <div className="dropdown dropdown-end mr-20">
             <div
