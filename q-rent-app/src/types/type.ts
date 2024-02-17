@@ -116,3 +116,11 @@ export type FeedbackType = {
   BookingId: ObjectId;
   review: string;
 };
+
+export type TravelType = {
+  _id: ObjectId;
+  name: string;
+  image: string;
+  location: string;
+  description: string;
+};
