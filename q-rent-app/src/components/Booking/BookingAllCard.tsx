@@ -1,5 +1,6 @@
 import { BookingType } from "@/types/type";
 import { formatToRupiah } from "@/db/helpers/formatter";
+import Link from "next/link";
 
 type BookingAllCardProps = {
   booking: BookingType;
@@ -29,7 +30,7 @@ const BookingAllCard = ({ booking }: BookingAllCardProps) => {
       <td>{price}</td>
       <td>{booking.user.username}</td>
       <td>
-        <p className="btn btn-primary btn-md">{booking.status}</p>
+        <Link href={`/booking/car/${booking._id}`} className="btn btn-primary btn-md">Detail</Link>
       </td>
     </tr>
   );
