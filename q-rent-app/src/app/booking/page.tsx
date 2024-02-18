@@ -19,6 +19,7 @@ async function dataBooking(): Promise<MyResponse> {
 }
 export default async function Booking() {
   const booking = await dataBooking();
+
   return (
     <div className="bg-white w-full h-screen mt-20">
     <div className="bg-white w-full h-screen mt-28">
@@ -48,7 +49,6 @@ export default async function Booking() {
           </tbody>
         </table>
       </div>
-    </div>
     </div>
   );
 }
