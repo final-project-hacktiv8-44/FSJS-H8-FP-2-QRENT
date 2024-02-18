@@ -53,7 +53,15 @@ export default function Navbar() {
               <li>
                 <a>Settings</a>
               </li>
-              <li>{token ? <Logout /> : <Link href="/login">Login</Link>}</li>
+              {token ? (
+                <li>
+                  <Logout />
+                </li>
+              ) : (
+                <li>
+                  <Link href="/login">Login</Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

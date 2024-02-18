@@ -16,19 +16,15 @@ const BookingCarId = ({ params }: { params: { _id: string } }) => {
     const ktp = FormData.get("ktp") == "on" ? true : false;
     const sim = FormData.get("sim") == "on" ? true : false;
     const age = FormData.get("age");
-    // console.log(ktp, "<<< ktp")
-    const auth_token = cookies()
-      .get("Authorization")
-      ?.value.split(" ")[1];
-      console.log(auth_token)
+    const auth_token = cookies().get("Authorization")?.value.split(" ")[1];
+    console.log(auth_token);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/${params._id}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Cookie: `Authorization=${auth_token}`,
-          Cookie : cookies().toString()
+          Cookie: cookies().toString(),
         },
         cache: "no-store",
         body: JSON.stringify({ bookingStart, bookingEnd, ktp, sim, age }),
@@ -40,13 +36,12 @@ const BookingCarId = ({ params }: { params: { _id: string } }) => {
     }
     return redirect(`/booking`);
   };
-  // console.log(handleSubmit, "<<<< handleSubmit");
   return (
     <>
-    <div className="mt-20 flex flex-col items-center justify-center text-blue-400 bg-white w-full h-screen">
-      <BookingForm handleSubmit={handleSubmit} />
-    </div>
-    <ActiveSlider />
+      <div className="mt-20 flex flex-col items-center justify-center text-blue-400 bg-white w-full h-screen">
+        <BookingForm handleSubmit={handleSubmit} />
+      </div>
+      <ActiveSlider />
     </>
   );
 };
