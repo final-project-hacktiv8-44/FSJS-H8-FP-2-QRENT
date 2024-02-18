@@ -10,12 +10,9 @@ export default async function Home() {
     <>
       <Navbar />
       <div className="bg-white w-full h-screen mt-20">
-        <Hero />
         <div className="bg-white w-full h-screen">
-          <ActiveSlider />;
-          <div className="bg-white w-full h-screen">
-            <AboutSection />
-          </div>
+          <Hero />
+          <ActiveSlider />
           <FooterSection />
           <Footer />
         </div>
