@@ -31,6 +31,14 @@ class TravelModel {
     });
     return travel as TravelType;
   }
+
+  static async travelByName(name: string) {
+    const result = TravelModel.dbTravel();
+    const travel = await result.findOne({
+      name: name,
+    });
+    return travel as TravelType;
+  }
 }
 
 export default TravelModel;
