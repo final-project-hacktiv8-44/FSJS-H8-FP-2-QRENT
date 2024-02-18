@@ -8,8 +8,8 @@ type Props = {
 };
 
 type BookingCar = {
-    booking: BookingType;
-  };
+  booking: BookingType;
+};
 
 // export async function generateMetadata(
 //   { params }: Props,
@@ -32,30 +32,31 @@ type BookingCar = {
 //     },
 //   };
 // }
-
-
-async function detailProduct(_id: string): Promise<BookingType> {
-  const data = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/${_id}`,{
-      cache: "no-store",
-      method: "GET",
-      headers:{
-        "Content-Type": "application/json",
-        Cookie: cookies().toString(),
-      }
-    }
-  );
-
-  return data.json()
+type MyResponse = {
+  booking: BookingType;
 }
 
+async function detailProduct(_id: string): Promise<MyResponse> {
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/car/${_id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: cookies().toString(),
+      },
+      cache: "no-store",
+    }
+  );
+  return data.json();
+}
 export default async function Detail({ params }: { params: { _id: string } }) {
   const data = await detailProduct(params._id);
-// console.log(data, "<<<<<")
+  // console.log(data.booking, "ini data dari page")
   return (
     <div className="bg-white w-full h-screen">
       <div className="mt-20">
-      <DetailBooking data={data} />
+        <DetailBooking data={data.booking} />
       </div>
     </div>
   );

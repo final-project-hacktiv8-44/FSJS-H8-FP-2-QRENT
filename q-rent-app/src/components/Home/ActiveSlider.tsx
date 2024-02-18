@@ -59,7 +59,7 @@ export default function ActiveSlider() {
               <div className="relative flex flex-col gap-3">
                 <Link
                   href={`/travel/${item.location}`}
-                  className="text-xl lg:text-2xl absolute top-5 left-5">
+                  className="text-xl lg:text-2xl flex justify-center mt-28 top-5 left-5 hover:scale-110 transition duration-300 hover:bg-blue-400 bg-opacity-[40%] px-2 py-1 rounded-xl  ">
                   {item.name}
                 </Link>
               </div>

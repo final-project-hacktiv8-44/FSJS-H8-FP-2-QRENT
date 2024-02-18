@@ -50,5 +50,6 @@ export default async function Booking() {
         </table>
       </div>
     </div>
+    </div>
   );
 }
