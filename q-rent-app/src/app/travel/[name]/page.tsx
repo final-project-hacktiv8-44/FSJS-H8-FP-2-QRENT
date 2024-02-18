@@ -10,7 +10,7 @@ type MyResponse = {
 
 async function travelDetail(name: string): Promise<MyResponse> {
   const response = await fetch(`http://localhost:3000/api/travel/${name}`, {
-    cache: "no-store",
+    cache: 'no-store',
   });
 
   return response.json();
