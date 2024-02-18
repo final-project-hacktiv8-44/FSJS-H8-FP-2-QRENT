@@ -58,7 +58,7 @@ export default function ActiveSlider() {
               <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50 transition-all duration-100" />
               <div className="relative flex flex-col gap-3">
                 <Link
-                  href={`/travel/${item.location}`}
+                  href={`/travel/${item.name}`}
                   className="text-xl lg:text-2xl absolute top-5 left-5">
                   {item.name}
                 </Link>

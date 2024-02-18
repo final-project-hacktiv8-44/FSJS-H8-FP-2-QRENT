@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  { params }: { params: { _id: string } }
+  { params }: { params: { name: string } }
 ) {
   try {
-    const travel = await TravelModel.travelById(params._id);
+    const travel = await TravelModel.travelByName(params.name);
 
     return NextResponse.json(
       {
