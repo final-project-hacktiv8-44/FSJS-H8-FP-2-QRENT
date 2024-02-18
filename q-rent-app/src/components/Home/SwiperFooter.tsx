@@ -15,25 +15,28 @@ import "swiper/css/grid";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
-import {  MyResponse, SectionType } from "@/types/type";
+import { MyResponse, SectionType } from "@/types/type";
 
 export default function FooterSection() {
   const [data, setData] = useState<SectionType[]>([]);
   const fetchSection = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/section`, {
-        method: "GET",
-        cache: "no-store",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/section`,
+        {
+          method: "GET",
+          cache: "no-store",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
 
-      const result: MyResponse = await response.json();  
+      const result: MyResponse = await response.json();
       setData(result.section);
     } catch (error) {
       console.error(error);
@@ -45,7 +48,7 @@ export default function FooterSection() {
   return (
     <section className="pt-[7rem] pb-[2rem] bg-white">
       <div className="lg:mx-auto max-w-5xl">
-        <h1 className="text-[3rem] font-bold text-orange-600 font-bold mb-[2rem] text-center">
+        <h1 className="text-[3rem] font-bold text-orange-600 mb-[2rem] text-center">
           How To Rent Our Cars
         </h1>
         {data.length > 0 && (
@@ -64,12 +67,13 @@ export default function FooterSection() {
               rotate: 0,
               slideShadows: false,
             }}
-            className="coverflow"
-          >
+            className="coverflow">
             {data.map((section, index) => (
               <SwiperSlide key={index}>
                 <img src={section.image} alt={section.excerpt} />
-                <p className="text-center text-black font-bold">{section.excerpt}</p>
+                <p className="text-center text-black font-bold">
+                  {section.excerpt}
+                </p>
               </SwiperSlide>
             ))}
           </Swiper>
