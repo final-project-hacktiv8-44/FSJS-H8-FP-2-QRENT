@@ -1,4 +1,3 @@
-import AboutSection from "@/components/Home/AboutSection";
 import ActiveSlider from "@/components/Home/ActiveSlider";
 import Footer from "@/components/Home/Footer";
 import Hero from "@/components/Home/Hero";
@@ -10,12 +9,9 @@ export default async function Home() {
     <>
       <Navbar />
       <div className="bg-white w-full h-screen mt-20">
-        <Hero />
         <div className="bg-white w-full h-screen">
+          <Hero />
           <ActiveSlider />
-          <div className="bg-white w-full h-screen">
-            <AboutSection />
-          </div>
           <FooterSection />
           <Footer />
         </div>
