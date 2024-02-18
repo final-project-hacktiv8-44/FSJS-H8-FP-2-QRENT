@@ -12,7 +12,7 @@ export default async function Home() {
       <div className="bg-white w-full h-screen mt-20">
         <Hero />
         <div className="bg-white w-full h-screen">
-          <ActiveSlider />;
+          <ActiveSlider />
           <div className="bg-white w-full h-screen">
             <AboutSection />
           </div>
