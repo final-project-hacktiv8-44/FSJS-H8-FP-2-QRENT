@@ -1,4 +1,3 @@
-import AboutSection from "@/components/Home/AboutSection";
 import ActiveSlider from "@/components/Home/ActiveSlider";
 import Footer from "@/components/Home/Footer";
 import Hero from "@/components/Home/Hero";
