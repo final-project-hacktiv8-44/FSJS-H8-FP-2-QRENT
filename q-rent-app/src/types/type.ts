@@ -111,8 +111,13 @@ export type MyResponse = {
 
 export type FeedbackType = {
   _id: ObjectId;
-  Username: string;
   UserId: ObjectId;
+  BookingId: ObjectId;
+  review: string;
+};
+
+export type NewFeedbackType = {
+  UserId: string;
   BookingId: ObjectId;
   review: string;
 };
