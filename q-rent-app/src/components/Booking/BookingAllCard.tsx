@@ -29,7 +29,7 @@ const BookingAllCard = ({ booking }: BookingAllCardProps) => {
       <td>{price}</td>
       <td>{booking.user.username}</td>
       <td>
-        <button className="btn btn-primary btn-md">Pending</button>
+        <button className="btn btn-primary btn-md">{booking.status}</button>
       </td>
     </tr>
   );
