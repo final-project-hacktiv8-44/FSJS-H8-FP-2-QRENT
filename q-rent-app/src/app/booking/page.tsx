@@ -38,7 +38,7 @@ export default async function Booking() {
               <th>Booking End</th>
               <th>Total Price</th>
               <th>User</th>
-              <th>Status</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
