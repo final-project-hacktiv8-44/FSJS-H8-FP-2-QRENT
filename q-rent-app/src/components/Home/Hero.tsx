@@ -16,6 +16,7 @@ import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
 import "swiper/css/grid";
 import SwiperCore from "swiper/core";
+import Link from "next/link";
 
 SwiperCore.use([Navigation, Thumbs, Autoplay]);
 
@@ -45,6 +46,7 @@ export default function Hero() {
   };
 
   return (
+    <Link href="/cars">
     <div className="bg-white w-full h-screen">
     <section className="pt-[2rem] pb-[2rem]">
       <div className="mx-[5rem]">
@@ -69,7 +71,7 @@ export default function Hero() {
             {imgList.map((image, index) => {
               return (
                 <SwiperSlide key={index}>
-                  <img className="h-[40rem] w-[100rem]" src={image.img} alt="" />
+                  <img className="h-[35rem] w-[100rem]" src={image.img} alt="" />
                 </SwiperSlide>
               );
             })}
@@ -94,5 +96,6 @@ export default function Hero() {
       </div>
     </section>
     </div>
+    </Link>
   );
 }
