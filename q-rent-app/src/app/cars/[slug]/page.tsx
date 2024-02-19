@@ -1,4 +1,6 @@
 import DetailCar from "@/components/Cars/detailProduct";
+import Footer from "@/components/Home/Footer";
+import Navbar from "@/components/Home/Navbar";
 import { CarType } from "@/types/type";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -42,10 +44,14 @@ export default async function Detail({ params }: { params: { slug: string } }) {
   const data = await detailProduct(params.slug);
 
   return (
-    <div className="bg-white w-full h-screen">
-      <div className="mt-10">
+    <>
+    <Navbar/>
+    <div className="bg-white w-full h-full">
+      <div className="pt-5 pb-5">
         <DetailCar data={data} />
       </div>
+      <Footer/>
     </div>
+    </>
   );
 }

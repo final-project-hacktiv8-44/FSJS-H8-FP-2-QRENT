@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { CarType } from "@/types/type";
 import Card from "@/components/Cars/CardCars";
+import Navbar from "@/components/Home/Navbar";
+import Footer from "@/components/Home/Footer";
 
 const CarsPage = () => {
   const [cars, setCars] = useState<CarType[]>([]);
@@ -28,8 +30,10 @@ const CarsPage = () => {
     }
   };
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen bg-white">
-      <div className="container mx-auto py-8 mt-24">
+      <div className="container mx-auto py-8 pt-28">
         <h1 className="text-3xl font-bold mb-8 text-center text-blue-400">
           Available Cars
         </h1>
@@ -40,6 +44,8 @@ const CarsPage = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

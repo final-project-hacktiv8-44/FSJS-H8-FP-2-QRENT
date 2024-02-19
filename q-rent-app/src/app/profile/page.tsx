@@ -21,17 +21,15 @@ export default function UserProfile() {
     fetchProfile();
   }, []);
 
-  // console.log(userProfile, "<<<<<");
-
   return (
-    <div className="bg-white w-full h-screen mt-20">
-      <div className="bg-white overflow-hidden shadow rounded-lg border">
+    <div className="bg-white w-full h-screen pt-20">
+      <div className="bg-white">
         <div className="px-4 py-5 sm:px-6">
-          <h1 className="text-3xl font-bold text-center text-blue-400 mt-28 justify-center">
+          <h1 className="text-3xl font-bold text-center text-blue-400 pt-28 justify-center">
             Your Profile
           </h1>
         </div>
-        <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
+        <div className="px-4 py-5 sm:p-0">
           <div className="flex justify-center items-center">
             <div className="flex flex-col items-center mr-4">
               {userProfile?.user.image ? (
@@ -42,7 +40,7 @@ export default function UserProfile() {
                 />
               ) : (
                 <Link href="/profile/profile-picture">
-                  <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
+                  <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-4">
                     Add Profile Picture
                   </p>
                 </Link>

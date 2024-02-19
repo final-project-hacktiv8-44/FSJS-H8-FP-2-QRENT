@@ -38,23 +38,23 @@ export default async function Home({
       <Navbar />
       <div className="bg-white w-full h-screen pt-20">
           <Hero />
-        <div className="bg-white w-full h-screen pt-40">
+        <div className="bg-white w-full h-screen">
           
           <div>
-            <div className="mb-4 pt-10">
+            <div className="mb-4">
               <h1 className="text-center text-[2rem] font-bold text-blue-400">
                 Featured Cars
               </h1>
             </div>
 
             <Link href="/cars">
-              <div className="flex justify-end mx-[5rem] mb-3 items-center text-blue-400 font-bold mb-10">
+              <div className="flex justify-end mx-[5rem] mb-3 items-center text-blue-400 font-bold mb-5">
                 <p className="mr-2 text-blue-400 font-bold">See All Cars</p>
                 <MdKeyboardDoubleArrowRight />
               </div>
             </Link>
             <div className="bg-white flex justify-center">
-            <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full mt-10 ">
+            <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full">
               {products.map((car, i) => (
                 <Card key={i} car={car} />
               ))}
