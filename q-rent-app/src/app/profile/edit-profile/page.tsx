@@ -4,8 +4,8 @@ import axios from "axios";
 import { ProfileType } from "@/types/type";
 import Link from "next/link";
 
-
 export default function UserProfile() {
+  const router = useRouter();
   const [userProfile, setUserProfile] = useState<ProfileType>();
   const [formData, setFormData] = useState({
     name: "",
@@ -34,8 +34,9 @@ export default function UserProfile() {
     e.preventDefault();
     try {
       await axios.post("/api/users", formData);
-      // Refresh the profile after submission
+
       fetchProfile();
+      router.push("/profile");
     } catch (error) {
       console.log(error);
     }
@@ -71,11 +72,10 @@ export default function UserProfile() {
                 </span>
               </Link>
             </div>
-            {/* User Info */}
+
             <form
               onSubmit={handleSubmit}
-              className="sm:divide-y sm:divide-gray-200"
-            >
+              className="sm:divide-y sm:divide-gray-200">
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 text-blue-400">
                 <dt className="text-sm font-medium text-gray-500">Full name</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -127,8 +127,7 @@ export default function UserProfile() {
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer"
-                >
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
                   Save Changes
                 </button>
               </div>

@@ -14,7 +14,7 @@ type MyResponse = {
 
 async function selectCars(page: number, pageSize: number): Promise<MyResponse> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/cars?page=${page}&pageSize=${pageSize}`,
+    `http://localhost:3000/api/cars?page=${page}&pageSize=${pageSize}`,
     {
       cache: "no-store",
     }
@@ -37,9 +37,8 @@ export default async function Home({
     <>
       <Navbar />
       <div className="bg-white w-full h-screen pt-20">
-          <Hero />
+        <Hero />
         <div className="bg-white w-full h-screen pt-40">
-          
           <div>
             <div className="mb-4 pt-10">
               <h1 className="text-center text-[2rem] font-bold text-blue-400">
@@ -48,17 +47,17 @@ export default async function Home({
             </div>
 
             <Link href="/cars">
-              <div className="flex justify-end mx-[5rem] mb-3 items-center text-blue-400 font-bold mb-10">
+              <div className="flex justify-end mx-[5rem] items-center text-blue-400 font-bold mb-10">
                 <p className="mr-2 text-blue-400 font-bold">See All Cars</p>
                 <MdKeyboardDoubleArrowRight />
               </div>
             </Link>
             <div className="bg-white flex justify-center">
-            <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full mt-10 ">
-              {products.map((car, i) => (
-                <Card key={i} car={car} />
-              ))}
-            </div>
+              <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full mt-10 ">
+                {products.map((car, i) => (
+                  <Card key={i} car={car} />
+                ))}
+              </div>
             </div>
 
             <ActiveSlider />

@@ -6,7 +6,6 @@ import Link from "next/link";
 
 export default function UserProfile() {
   const [userProfile, setUserProfile] = useState<ProfileType>();
-  const [user, setUser] = useState<UserType>();
 
   const fetchProfile = async () => {
     try {
@@ -20,8 +19,6 @@ export default function UserProfile() {
   useEffect(() => {
     fetchProfile();
   }, []);
-
-  // console.log(userProfile, "<<<<<");
 
   return (
     <div className="bg-white w-full h-screen mt-20">
@@ -38,7 +35,7 @@ export default function UserProfile() {
                 <img
                   src={userProfile?.user.image}
                   alt="Profile Picture"
-                  className="w-100 h-80 rounded-full mx-auto" // Memperbarui kelas untuk menyesuaikan ukuran gambar
+                  className="w-100 h-80 rounded-full mx-auto"
                 />
               ) : (
                 <Link href="/profile/profile-picture">
@@ -92,7 +89,7 @@ export default function UserProfile() {
                   {userProfile?.address}
                 </dd>
               </div>
-              <Link href="/profile/edit-profile">
+              <Link href={"/profile/edit-profile"}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10 mt-10">
                   Edit Profile
                 </button>

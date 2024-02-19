@@ -13,17 +13,15 @@ import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
 import { formatToRupiah } from "@/db/helpers/formatter";
+import ButtonStatus from "../buttonStatus/buttonStatus";
 import useMidtrans from "@/actions/useMidtrans";
 
 
 
 export default function DetailBooking({ data }: { data: BookingType }) {
-  console.log(data, "<<<<< data");
-  //   const { booking } = data;
   useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js")
 
   const prices = formatToRupiah(data.totalPrice);
-  //   const id = booking.CarId.toString();
   
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
 
@@ -33,14 +31,13 @@ export default function DetailBooking({ data }: { data: BookingType }) {
   const handlePayment = (token: string) => {
     window?.snap.pay(token, {
       onSuccess: function(result){
-        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
       },
       onPending: function(result){
-        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
       },
-      // Optional
       onError: function(result){
-        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
       }
     });
   }
@@ -135,9 +132,15 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               </span>
               Km: {data.car.kilometer}
             </p>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={() =>handlePayment("98cd5433-9a14-4373-a848-5efa99049b2c")}>
-                Payment
-              </button>
+            {data.user.role !== "customer" ? (
+              <Link href={`/booking/${data.car._id}`}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                  Payment
+                </button>
+              </Link>
+            ) : (
+              <ButtonStatus status={data.status} />
+            )}
           </div>
         </div>
       </div>
