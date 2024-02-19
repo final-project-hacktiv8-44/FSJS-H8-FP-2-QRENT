@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
         message: "You do not have permission. please login by your account.",
       },
       {
-        status: 401,
+        status: 403,
       }
     );
   }
@@ -38,5 +38,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/booking/:path*", "/api/users/:path*"],
+  matcher: ["/api/booking/:path*", "/api/users/:path*", "/api/feedback/:path*"],
 };

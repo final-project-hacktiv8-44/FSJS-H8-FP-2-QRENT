@@ -129,3 +129,10 @@ export type TravelType = {
   location: string;
   description: string;
 };
+
+export type TransactionType = {
+  _id: ObjectId;
+  UserId: ObjectId;
+  access_token: string;
+  BookingId: ObjectId;
+};

@@ -8,8 +8,8 @@ type Props = {
 };
 
 type BookingCar = {
-    booking: BookingType;
-  };
+  booking: BookingType;
+};
 
 // export async function generateMetadata(
 //   { params }: Props,
@@ -17,7 +17,7 @@ type BookingCar = {
 // ): Promise<Metadata> {
 //   const slug = params.slug;
 
-//   const data = (await fetch( `${process.env.NEXT_PUBLIC_BASE_URL}/api/cars/${slug}`,{
+//   const data = (await fetch( `http://localhost:3000/api/cars/${slug}`,{
 //     cache: 'no-store'
 //   }
 // )
@@ -33,29 +33,26 @@ type BookingCar = {
 //   };
 // }
 
+async function detailProduct(_id: string): Promise<BookingCar> {
+  const data = await fetch(`http://localhost:3000/api/booking/car/${_id}`, {
+    cache: "no-store",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: cookies().toString(),
+    },
+  });
 
-async function detailProduct(_id: string): Promise<BookingType> {
-  const data = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/${_id}`,{
-      cache: "no-store",
-      method: "GET",
-      headers:{
-        "Content-Type": "application/json",
-        Cookie: cookies().toString(),
-      }
-    }
-  );
-
-  return data.json()
+  return data.json();
 }
 
 export default async function Detail({ params }: { params: { _id: string } }) {
   const data = await detailProduct(params._id);
-// console.log(data, "<<<<<")
+  // console.log(data, "<<<<<");
   return (
     <div className="bg-white w-full h-screen">
       <div className="mt-20">
-      <DetailBooking data={data} />
+        <DetailBooking data={data.booking} />
       </div>
     </div>
   );

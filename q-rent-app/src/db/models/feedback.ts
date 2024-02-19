@@ -20,7 +20,8 @@ class FeedbackModel {
         UserId: new ObjectId(UserId),
       })
       .toArray();
-    return feedback as FeedbackType;
+
+    return feedback as FeedbackType[];
   }
 
   static async newFeedback(body: NewFeedbackType) {

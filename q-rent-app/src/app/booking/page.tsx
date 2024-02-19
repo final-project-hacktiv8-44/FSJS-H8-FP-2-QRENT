@@ -4,11 +4,11 @@ import { cookies } from "next/headers";
 
 type MyResponse = {
   listBooking: BookingType[];
-  message?: string;
+  // message?: string;
 };
 
 async function dataBooking(): Promise<MyResponse> {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/booking`, {
+  const data = await fetch(`http://localhost:3000/api/booking`, {
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",
@@ -19,6 +19,8 @@ async function dataBooking(): Promise<MyResponse> {
 }
 export default async function Booking() {
   const booking = await dataBooking();
+
+  // console.log(booking, ">>>>");
 
   return (
     <div className="bg-white w-full h-screen mt-20">
@@ -40,8 +42,8 @@ export default async function Booking() {
                 <th>Booking Start</th>
                 <th>Booking End</th>
                 <th>Total Price</th>
-                <th>User</th>
-                <th></th>
+                {/* <th>User</th> */}
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>

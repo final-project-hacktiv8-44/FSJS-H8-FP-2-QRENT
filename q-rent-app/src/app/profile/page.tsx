@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function UserProfile() {
   const [userProfile, setUserProfile] = useState<ProfileType>();
-  const [user, setUser] = useState<UserType>()
+  const [user, setUser] = useState<UserType>();
 
   const fetchProfile = async () => {
     try {
@@ -17,23 +17,33 @@ export default function UserProfile() {
     }
   };
 
-  const fetchUser = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:3000/api/users");
-      setUserProfile(data.user);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchUser = async () => {
+  //   try {
+  //     const { data } = await axios.get("http://localhost:3000/api/users");
+  //     setUserProfile(data.user);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
+
   console.log(userProfile, "<<<<<");
+  // console.log(user, "<<<<<");
+
   return (
     <div className="bg-white w-full h-screen mt-20">
       <div className="bg-white overflow-hidden shadow rounded-lg border">
         <div className="px-4 py-5 sm:px-6">
-      <h1 className="text-3xl font-bold text-center text-blue-400 mt-28 justify-center">Your Profile</h1>
+          <h1 className="text-3xl font-bold text-center text-blue-400 mt-28 justify-center">
+            Your Profile
+          </h1>
         </div>
         <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
           <div className="flex justify-center items-center">
@@ -52,11 +62,11 @@ export default function UserProfile() {
                 </Link>
               )}
               <Link href="/profile/profile-picture">
-              <span className="text-sm text-gray-500 mt-2 cursor-pointer">
-                Click to change profile picture
-              </span>
+                <span className="text-sm text-gray-500 mt-2 cursor-pointer">
+                  Click to change profile picture
+                </span>
               </Link>
-            </div>    
+            </div>
             {/* User Info */}
             <dl className="sm:divide-y sm:divide-gray-200">
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -98,9 +108,7 @@ export default function UserProfile() {
                 </dd>
               </div>
               <Link href="/profile/edit-profile">
-              <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10 mt-10" 
-                >
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10 mt-10">
                   Edit Profile
                 </button>
               </Link>
