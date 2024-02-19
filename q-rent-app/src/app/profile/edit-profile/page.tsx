@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ProfileType } from "@/types/type";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 
 export default function UserProfile() {
@@ -14,19 +13,15 @@ export default function UserProfile() {
     bio: "",
     birth: "",
   });
-  const router = useRouter();
   const fetchProfile = async () => {
     try {
       const { data } = await axios.get("http://localhost:3000/api/users");
-      
       setUserProfile(data.user);
-      
-      router.push("/profile");
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   useEffect(() => {
     fetchProfile();
   }, []);
