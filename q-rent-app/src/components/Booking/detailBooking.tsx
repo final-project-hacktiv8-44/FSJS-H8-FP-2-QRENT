@@ -13,13 +13,12 @@ import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
 import { formatToRupiah } from "@/db/helpers/formatter";
+import ButtonStatus from "../buttonStatus/buttonStatus";
 
 export default function DetailBooking({ data }: { data: BookingType }) {
-  console.log(data, "<<<<< data");
-  //   const { booking } = data;
+  console.log(data, "><><><><<><><");
 
   const prices = formatToRupiah(data.totalPrice);
-  //   const id = booking.CarId.toString();
 
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
 
@@ -118,11 +117,15 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               </span>
               Km: {data.car.kilometer}
             </p>
-            <Link href={`/booking/${data.car._id}`}>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-                Payment
-              </button>
-            </Link>
+            {data.user.role !== "customer" ? (
+              <Link href={`/booking/${data.car._id}`}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                  Payment
+                </button>
+              </Link>
+            ) : (
+              <ButtonStatus status={data.status} />
+            )}
           </div>
         </div>
       </div>
