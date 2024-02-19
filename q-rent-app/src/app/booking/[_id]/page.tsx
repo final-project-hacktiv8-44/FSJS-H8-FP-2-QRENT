@@ -19,7 +19,7 @@ const BookingCarId = ({ params }: { params: { _id: string } }) => {
     const auth_token = cookies().get("Authorization")?.value.split(" ")[1];
     console.log(auth_token);
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/${params._id}`,
+      `http://localhost:3000/api/booking/${params._id}`,
       {
         method: "POST",
         headers: {

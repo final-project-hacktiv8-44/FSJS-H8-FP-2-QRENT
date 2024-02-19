@@ -16,7 +16,7 @@ export async function ChangeStatus(
   const status = formData.get("status");
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/booking/status/${params._id}`,
+    `http://localhost:3000/api/booking/status/${params._id}`,
     {
       method: "POST",
       headers: {
