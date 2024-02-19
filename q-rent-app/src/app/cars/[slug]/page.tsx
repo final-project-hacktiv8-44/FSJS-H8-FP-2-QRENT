@@ -43,7 +43,7 @@ export default async function Detail({ params }: { params: { slug: string } }) {
 
   return (
     <div className="bg-white w-full h-screen">
-      <div className="mt-10">
+      <div className="pt-2">
         <DetailCar data={data} />
       </div>
     </div>

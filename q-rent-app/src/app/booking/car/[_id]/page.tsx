@@ -23,7 +23,7 @@ export default async function Detail({ params }: { params: { _id: string } }) {
   const data = await detailProduct(params._id);
   return (
     <div className="bg-white w-full h-screen">
-      <div className="mt-20">
+      <div className="pt-10">
         <DetailBooking data={data.booking} />
       </div>
     </div>

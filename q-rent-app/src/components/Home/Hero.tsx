@@ -1,10 +1,7 @@
-"use client";
-
+'use client'
 import { useState } from "react";
-
 import { Navigation, Thumbs, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -46,53 +43,53 @@ export default function Hero() {
 
   return (
     <div className="bg-white w-full h-screen">
-    <section className="pt-[2rem] pb-[2rem]">
-      <div className="mx-[5rem]">
-        <div className="border-8 bg-white border-white">
-          <Swiper
-            modules={[Navigation, Thumbs, Autoplay]}
-            loop={true}
-            slidesPerView={1}
-            pagination={{
-              clickable: true,
-            }}
-            autoplay={{
-              delay: 3000,
-              stopOnLastSlide: false,
-              disableOnInteraction: false,
-            }}
-            grabCursor={true}
-            navigation={true}
-            thumbs={{ swiper: activeThumb }}
-            onSwiper={(swiper) => setMainSwiper(swiper)}
-            className="thumbShow">
-            {imgList.map((image, index) => {
-              return (
+      <section className="pt-[2rem] pb-[2rem]">
+        <div className="mx-[5rem]">
+          <div className="border-8 bg-white border-white">
+            <Swiper
+              modules={[Navigation, Thumbs, Autoplay]}
+              loop={true}
+              slidesPerView={1}
+              pagination={{
+                clickable: true,
+              }}
+              autoplay={{
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+              }}
+              grabCursor={true}
+              navigation={true}
+              thumbs={{ swiper: activeThumb }}
+              onSwiper={(swiper) => setMainSwiper(swiper)}
+              className="thumbShow">
+              {imgList.map((image, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <img className="h-[20rem] w-[40rem]" src={image.img} alt="" />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <Swiper
+              onSwiper={setActiveThumb}
+              loop={true}
+              grabCursor={true}
+              spaceBetween={10}
+              slidesPerView={4}
+              modules={[Navigation, Thumbs]}
+              className="thumbBtn mt-5">
+              {imgList.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <img className="h-[40rem] w-[100rem]" src={image.img} alt="" />
+                  <div className="" onClick={() => handleImageSlide(index)}>
+                    <img src={item.img} alt="product images" />
+                  </div>
                 </SwiperSlide>
-              );
-            })}
-          </Swiper>
-          <Swiper
-            onSwiper={setActiveThumb}
-            loop={true}
-            grabCursor={true}
-            spaceBetween={10}
-            slidesPerView={4}
-            modules={[Navigation, Thumbs]}
-            className="thumbBtn mt-5">
-            {imgList.map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="" onClick={() => handleImageSlide(index)}>
-                  <img src={item.img} alt="product images" />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              ))}
+            </Swiper>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 }

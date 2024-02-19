@@ -21,10 +21,10 @@ export default function UserProfile() {
   }, []);
 
   return (
-    <div className="bg-white w-full h-screen mt-20">
-      <div className="bg-white overflow-hidden shadow rounded-lg border">
+    <div className="bg-white w-full h-screen pt-5 pb-10">
+      <div className="bg-white overflow-hidden">
         <div className="px-4 py-5 sm:px-6">
-          <h1 className="text-3xl font-bold text-center text-blue-400 mt-28 justify-center">
+          <h1 className="text-3xl font-bold text-center text-blue-400 pt-20 justify-center">
             Your Profile
           </h1>
         </div>
@@ -35,17 +35,17 @@ export default function UserProfile() {
                 <img
                   src={userProfile?.user.image}
                   alt="Profile Picture"
-                  className="w-100 h-80 rounded-full mx-auto"
+                  className="w-60 h-60 rounded-full border-4 object-cover mr-40 border-blue-400 mb-10"
                 />
               ) : (
                 <Link href="/profile/profile-picture">
-                  <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
+                  <p className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mr-40">
                     Add Profile Picture
                   </p>
                 </Link>
               )}
               <Link href="/profile/profile-picture">
-                <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
+                <span className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mr-40">
                   Click to change profile picture
                 </span>
               </Link>
@@ -90,7 +90,7 @@ export default function UserProfile() {
                 </dd>
               </div>
               <Link href={"/profile/edit-profile"}>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10 mt-10">
+                <button className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full cursor-pointer mb-10 mt-10">
                   Edit Profile
                 </button>
               </Link>

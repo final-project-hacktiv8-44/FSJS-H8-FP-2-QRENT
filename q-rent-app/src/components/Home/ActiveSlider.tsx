@@ -28,7 +28,7 @@ export default function ActiveSlider() {
 
   return (
     <div className="flex items-center justify-center flex-col h-[900px] bg-white">
-      <h1 className="text-4xl font-bold text-center text-orange-600 mb-16">
+      <h1 className="text-4xl font-bold text-center text-blue-400 mb-16">
         Travel Destination
       </h1>
       <Swiper

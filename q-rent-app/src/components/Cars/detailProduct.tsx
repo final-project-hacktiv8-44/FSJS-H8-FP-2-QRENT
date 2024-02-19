@@ -63,14 +63,14 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                 <div className="flex flex-row gap-2 items-center">
                   <h4 className="font-semibold">
                     <span className="mr-2">
-                      <IoMdColorPalette className="tex-blue-400 inline" />
+                      <IoMdColorPalette className="text-blue-400 inline" />
                     </span>
                     Warna: {data.car.color}
                   </h4>
                 </div>
                 <h4 className="font-semibold">
                   <span className="mr-2">
-                    <MdPlace className="tex-blue-400 inline" />
+                    <MdPlace className="text-blue-400 inline" />
                   </span>
                   Region: {data.car.region}
                 </h4>
@@ -83,47 +83,48 @@ export default function DetailCar({ data }: { data: MyResponse }) {
             </div>
           </div>
         </div>
+        
         <div className="flex flex-row justify-center">
           <div className="flex flex-row gap-5 bg-white rounded-lg p-8 text-black shadow-md">
             <p className="font-semibold">
               <span className="mr-2">
-                <IoMdCar className="tex-blue-400 inline" />
+                <IoMdCar className="text-blue-400 inline" />
               </span>
               Tipe: {data.car.type}
             </p>
             <p className="font-semibold">
               <span className="mr-2">
-                <FaAddressCard className="tex-blue-400 inline" />
+                <FaAddressCard className="text-blue-400 inline" />
               </span>
               Plat: {data.car.plat}
             </p>
             <p className="font-semibold">
               <span className="mr-2">
-                <IoMdCalendar className="tex-blue-400 inline" />
+                <IoMdCalendar className="text-blue-400 inline" />
               </span>
               Year: {data.car.year}
             </p>
             <p className="font-semibold">
               <span className="mr-2">
-                <GiKeyCard className="tex-blue-400 inline" />
+                <GiKeyCard className="text-blue-400 inline" />
               </span>
               Transmission: {data.car.transmission}
             </p>
             <p className="font-semibold">
               <span className="mr-2">
-                <BsFillFuelPumpFill className="tex-blue-400 inline" />
+                <BsFillFuelPumpFill className="text-blue-400 inline" />
               </span>
               Fuel: {data.car.BbmType}
             </p>
             <p className="font-semibold">
               <span className="mr-2">
-                <MdAirlineSeatReclineNormal className="tex-blue-400 inline" />
+                <MdAirlineSeatReclineNormal className="text-blue-400 inline" />
               </span>
               Seat: {data.car.seat} Seats
             </p>
             <p className="font-semibold">
               <span className="mr-2">
-                <IoMdSpeedometer className="tex-blue-400 inline" />
+                <IoMdSpeedometer className="text-blue-400 inline" />
               </span>
               Km: {data.car.kilometer}
             </p>
