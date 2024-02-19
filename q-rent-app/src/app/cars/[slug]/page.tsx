@@ -2,36 +2,38 @@ import DetailCar from "@/components/Cars/detailProduct";
 import { CarType } from "@/types/type";
 import type { Metadata, ResolvingMetadata } from "next";
 
-// type Props = {
-//   params: { slug: string };
-// };
+type Props = {
+  params: { slug: string };
+};
 
-// export async function generateMetadata(
-//   { params }: Props,
-//   parent: ResolvingMetadata
-// ): Promise<Metadata> {
-//   const slug = params.slug;
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
 
-//   const data = (await fetch(`http://localhost:3000/api/cars/${slug}`, {
-//     cache: "no-store",
-//   }).then((res) => res.json())) as MyResponse;
+  const data = (await fetch(`http://localhost:3000/api/cars/${slug}`, {
+    cache: "no-store",
+  }).then((res) => res.json())) as MyResponse;
 
-//   const previousImages = (await parent).openGraph?.images || [];
+  const previousImages = (await parent).openGraph?.images || [];
 
-//   return {
-//     title: `Select Cars | ${data.car.name}`,
-//     openGraph: {
-//       images: ["/some-specific-page-image.jpg", ...previousImages],
-//     },
-//   };
-// }
+  return {
+    title: `Select Cars | ${data.car.name}`,
+    openGraph: {
+      images: ["/some-specific-page-image.jpg", ...previousImages],
+    },
+  };
+}
 
 type MyResponse = {
   car: CarType;
 };
 
 async function detailProduct(slug: string): Promise<MyResponse> {
-  const data = await fetch(`http://localhost:3000/api/cars/${slug}`);
+  const data = await fetch(`http://localhost:3000/api/cars/${slug}`, {
+    cache: "no-store"
+  });
 
   return data.json();
 }

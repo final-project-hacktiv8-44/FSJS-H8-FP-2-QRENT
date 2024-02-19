@@ -6,7 +6,7 @@ import Card from "@/components/Cars/CardCars";
 const CarsPage = () => {
   const [cars, setCars] = useState<CarType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(20);
 
   useEffect(() => {
     fetchData();
@@ -15,7 +15,7 @@ const CarsPage = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `/api/cars?page=${currentPage}&limit=${pageSize}`
+        `/api/cars?page=${currentPage}&pageSize=${pageSize}`
       );
       const data = await response.json();
       if (response.ok) {

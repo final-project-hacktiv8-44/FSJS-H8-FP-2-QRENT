@@ -3,7 +3,7 @@
 import { isLogout } from "@/actions/logoutAction";
 export default function Logout() {
   return (
-    <div>
+    <div className="font-bold">
       <button onClick={() => isLogout()}>Logout</button>
     </div>
   );

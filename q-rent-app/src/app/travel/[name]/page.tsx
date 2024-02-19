@@ -77,9 +77,9 @@ export default function TravelPage({ params }: { params: { name: string } }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             className="text-center">
-            <p className="text-lg font-bold text-gray-600">
-              Loading...
+            <p className="text-blue-400 font-bold text-3xl">
               <Loader />
+              Loading...
             </p>
           </motion.div>
         )}

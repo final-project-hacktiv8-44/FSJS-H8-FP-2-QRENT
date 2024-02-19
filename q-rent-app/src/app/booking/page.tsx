@@ -19,12 +19,9 @@ async function dataBooking(): Promise<MyResponse> {
 }
 export default async function Booking() {
   const booking = await dataBooking();
-
-  // console.log(booking, ">>>>");
-
   return (
-    <div className="bg-white w-full h-screen mt-20">
-      <div className="bg-white w-full h-screen mt-28">
+    <div className="bg-white w-full h-screen flex justify-center">
+      <div className="bg-white w-full h-screen pt-40">
         <h1 className="text-3xl font-bold text-center text-blue-400 mb-10">
           My Booking
         </h1>

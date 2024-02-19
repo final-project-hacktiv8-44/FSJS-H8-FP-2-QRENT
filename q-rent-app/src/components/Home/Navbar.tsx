@@ -4,12 +4,26 @@ import logo from "@/assets/logo.png";
 import { FaInfoCircle, FaUserAlt } from "react-icons/fa";
 import { IoIosCar } from "react-icons/io";
 import { FaBookOpen } from "react-icons/fa6";
-import { IoLogOut } from "react-icons/io5";
 import Logout from "../Logout/logout";
 import { cookies } from "next/headers";
+import { ProfileType } from "@/types/type";
 
-export default function Navbar() {
+async function userProfile(): Promise<ProfileType> {
+  const response = await fetch(`http://localhost:3000/api/users`, {
+    method: "GET",
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: cookies().toString(),
+    },
+  });
+  return response.json();
+}
+
+export default async function Navbar() {
   const token = cookies().get("Authorization")?.value;
+  const user = await userProfile();
+  // console.log(user, "<<<<");
   return (
     <nav className="bg-white p-4 fixed w-full top-0 shadow-xl z-10">
       <div className="container mx-auto flex justify-between items-center">
@@ -23,41 +37,36 @@ export default function Navbar() {
         <div className="flex items-center space-x-4">
           <Link
             href="/cars"
-            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600">
+            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600"
+          >
             <IoIosCar className="inline-block mr-2" /> Select Cars
           </Link>
           <Link
             href="/about"
-            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600">
+            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600"
+          >
             <FaInfoCircle className="inline-block mr-2" /> About Us
           </Link>
           <Link
             href="/booking"
-            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600">
-            <FaBookOpen className="inline-block mr-2" /> My Booking
+            className="nav-link hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600"
+          >
+            <FaBookOpen className="inline-block mr-2"/> My Booking
           </Link>
           <div className="dropdown dropdown-end mr-20">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar">
-              <div className="w-[50] h-[50] rounded-full overflow-hidden hover:scale-150 transition duration-300">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
-              </div>
+            <div className="w-[50] h-[50] text-blue-400 hover:scale-110 transition duration-300 font-bold">
+              <button>
+                <FaUserAlt className="inline-block mr-2"/>User
+              </button>
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white text-blue-400 rounded-box w-52"
+            >
               <li>
-                <Link href={"/profile"} className="justify-between">
+                <Link href={"/profile"} className="justify-between font-bold">
                   Profile
                 </Link>
-              </li>
-              <li>
-                <a>Settings</a>
               </li>
               {token ? (
                 <li>

@@ -17,25 +17,12 @@ export default function UserProfile() {
     }
   };
 
-  // const fetchUser = async () => {
-  //   try {
-  //     const { data } = await axios.get("http://localhost:3000/api/users");
-  //     setUserProfile(data.user);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   useEffect(() => {
     fetchProfile();
   }, []);
 
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
+  // console.log(userProfile, "<<<<<");
 
-  console.log(userProfile, "<<<<<");
-  // console.log(user, "<<<<<");
 
   return (
     <div className="bg-white w-full h-screen mt-20">
@@ -67,7 +54,6 @@ export default function UserProfile() {
                 </span>
               </Link>
             </div>
-            {/* User Info */}
             <dl className="sm:divide-y sm:divide-gray-200">
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Full name</dt>

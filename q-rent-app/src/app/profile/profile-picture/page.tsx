@@ -1,14 +1,16 @@
-"use client";
-
+'use client'
 import { CloudinaryImage } from "@/types/type";
 import axios from "axios";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function ProfilePicture() {
   const [updateImage, setUpdateImage] = useState<CloudinaryImage>({
     image: "",
   });
+
+  const router = useRouter();
+
   const handleUploadImage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -27,7 +29,7 @@ export default function ProfilePicture() {
 
       setUpdateImage(data);
 
-      redirect("/profile");
+      router.push("/profile");
     } catch (error) {
       console.log(error);
     }
@@ -40,64 +42,41 @@ export default function ProfilePicture() {
     });
   };
 
-  console.log(updateImage, "???");
-
   return (
-    <div className="mt-[13rem]">
-      <h1>Profile Picture</h1>
-
-      <form onSubmit={handleUploadImage}>
-        <div>
-          <label>Image</label>
-          <input type="file" name="image" onChange={change} />
+    <div className="bg-white w-full h-screen flex justify-center items-center">
+      <div className="bg-gray-100 border border-gray-300 rounded-lg p-8">
+        <div className="flex flex-col items-center">
+          <img
+            src={updateImage.image}
+            alt="Profile Picture"
+            className="w-32 h-32 rounded-full object-cover mb-4"
+          />
+          <form onSubmit={handleUploadImage} className="flex flex-col items-center">
+            <h1 className="text-xl font-semibold mb-4">Profile Picture</h1>
+            <div className="mb-4">
+              <label htmlFor="image" className="block mb-2 cursor-pointer">
+                Choose an Image:
+              </label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                onChange={change}
+                className="hidden"
+              />
+              <div className="border border-dashed border-gray-400 p-4 rounded-lg w-64 cursor-pointer text-center">
+                <p className="text-gray-500">Drop Image here or click to upload</p>
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Upload
+            </button>
+          </form>
         </div>
-
-        <button type="submit">Upload</button>
-      </form>
+      </div>
     </div>
   );
 }
-
-// import { UpdateProfileImage } from "@/components/update/update";
-// import { CloudinaryImage } from "@/types/type";
-// import { cookies } from "next/headers";
-
-// import { redirect } from "next/navigation";
-
-// type MyResponse = {
-//   message?: string;
-//   image?: string;
-// };
-
-// export default function ProfilePicture() {
-//   const handleUploadImage = async (formData: FormData) => {
-//     "use server";
-//     const image = formData.get("image") as string;
-
-//     const response = await fetch("http://localhost:3000/api/users/profile", {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "multipart/form-data",
-//         Cookie: cookies().toString(),
-//       },
-//       body: formData.get("image"),
-//       cache: "no-store",
-//     });
-
-//     const result = (await response.json()) as MyResponse;
-
-//     if (!response.ok) {
-//       return redirect(`/profile/profile-picture?error=${result.message}`);
-//     }
-
-//     return redirect("/profile");
-//   };
-
-//   return (
-//     <div className="bg-white w-full h-screen mt-20">
-//       <h1 className="text-3xl font-bold text-center text-blue-400 mb-28 ">Profile Picture</h1>
-
-//       <UpdateProfileImage handleUploadImage={handleUploadImage} />
-//     </div>
-//   );
-// }
