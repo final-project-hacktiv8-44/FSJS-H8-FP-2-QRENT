@@ -31,6 +31,14 @@ class CarModel {
           as: "review",
         },
       },
+      {
+        $lookup: {
+          from: "users",
+          localField: "review.UserId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
     ];
 
     const car = await result.aggregate(agg).toArray();
