@@ -55,6 +55,7 @@ export type CarType = {
   thumbnail: string;
   carImage: ImageCar;
   kilometer: string;
+  review: FeedbackType;
 };
 
 export type ImageCar = [string, string, string];
@@ -113,12 +114,14 @@ export type FeedbackType = {
   _id: ObjectId;
   UserId: ObjectId;
   BookingId: ObjectId;
+  CarId: ObjectId;
   review: string;
 };
 
 export type NewFeedbackType = {
   UserId: string;
   BookingId: ObjectId;
+  CarId: ObjectId;
   review: string;
 };
 

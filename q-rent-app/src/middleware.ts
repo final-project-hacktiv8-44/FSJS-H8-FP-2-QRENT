@@ -38,5 +38,10 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/booking/:path*", "/api/users/:path*", "/api/feedback/:path*"],
+  matcher: [
+    "/api/booking/:path*",
+    "/api/users/:path*",
+    "/api/feedback/:path*",
+    "/api/user/:path*",
+  ],
 };

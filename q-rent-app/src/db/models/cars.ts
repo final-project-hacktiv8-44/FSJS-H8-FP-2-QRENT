@@ -16,10 +16,25 @@ class CarModel {
 
   static async detailCar(slug: string) {
     const result = CarModel.dbCar();
-    const car = await result.findOne({
-      slug: slug,
-    });
-    return car as CarType | null;
+
+    const agg = [
+      {
+        $match: {
+          slug: slug,
+        },
+      },
+      {
+        $lookup: {
+          from: "feedback",
+          localField: "_id",
+          foreignField: "CarId",
+          as: "review",
+        },
+      },
+    ];
+
+    const car = await result.aggregate(agg).toArray();
+    return car[0] as CarType | null;
   }
 
   static async detailCarById(_id: string) {

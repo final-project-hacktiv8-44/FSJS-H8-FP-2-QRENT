@@ -32,7 +32,7 @@ type MyResponse = {
 
 async function detailProduct(slug: string): Promise<MyResponse> {
   const data = await fetch(`http://localhost:3000/api/cars/${slug}`, {
-    cache: "no-store"
+    cache: "no-store",
   });
 
   return data.json();
@@ -40,6 +40,8 @@ async function detailProduct(slug: string): Promise<MyResponse> {
 
 export default async function Detail({ params }: { params: { slug: string } }) {
   const data = await detailProduct(params.slug);
+
+  console.log(data, "<><><><><>");
 
   return (
     <div className="bg-white w-full h-screen">
