@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { CloudinaryImage } from "@/types/type";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -43,8 +43,8 @@ export default function ProfilePicture() {
   };
 
   return (
-    <div className="bg-white w-full h-screen flex justify-center items-center">
-      <div className="bg-gray-100 border border-gray-300 rounded-lg p-8">
+    <div className="bg-white w-full h-screen flex justify-center items-center text-blue-400 pt-28">
+      <div className="bg-gray-100 border border-gray-300 rounded-lg p-8" style={{ width: '500px', height: '500px' }}>
         <div className="flex flex-col items-center">
           <img
             src={updateImage.image}

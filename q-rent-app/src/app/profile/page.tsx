@@ -23,7 +23,6 @@ export default function UserProfile() {
 
   // console.log(userProfile, "<<<<<");
 
-
   return (
     <div className="bg-white w-full h-screen mt-20">
       <div className="bg-white overflow-hidden shadow rounded-lg border">
@@ -39,7 +38,7 @@ export default function UserProfile() {
                 <img
                   src={userProfile?.user.image}
                   alt="Profile Picture"
-                  className="w-40 h-40 rounded-full"
+                  className="w-100 h-80 rounded-full mx-auto" // Memperbarui kelas untuk menyesuaikan ukuran gambar
                 />
               ) : (
                 <Link href="/profile/profile-picture">
@@ -49,7 +48,7 @@ export default function UserProfile() {
                 </Link>
               )}
               <Link href="/profile/profile-picture">
-                <span className="text-sm text-gray-500 mt-2 cursor-pointer">
+                <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
                   Click to change profile picture
                 </span>
               </Link>
