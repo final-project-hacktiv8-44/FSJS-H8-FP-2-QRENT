@@ -23,14 +23,13 @@ async function userProfile(): Promise<ProfileType> {
 export default async function Navbar() {
   const token = cookies().get("Authorization")?.value;
   const user = await userProfile();
-  // console.log(user, "<<<<");
   return (
     <nav className="bg-white p-4 fixed w-full top-0 shadow-xl z-10">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-center items-center">
         <div className="items-center">
           <Link href="/">
             <div className="hover:scale-110 transition duration-300">
-              <Image src={logo} alt="Logo" className="w-28 h-22 ml-10" />
+              <Image src={logo} alt="Logo" className="w-28 h-22 mr-80" />
             </div>
           </Link>
         </div>

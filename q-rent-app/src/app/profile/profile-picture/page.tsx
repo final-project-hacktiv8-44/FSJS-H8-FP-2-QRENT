@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { CloudinaryImage } from "@/types/type";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -43,39 +43,43 @@ export default function ProfilePicture() {
   };
 
   return (
-    <div className="bg-white w-full h-screen flex justify-center items-center text-blue-400 pt-28">
-      <div className="bg-gray-100 border border-gray-300 rounded-lg p-8" style={{ width: '500px', height: '500px' }}>
-        <div className="flex flex-col items-center">
-          <img
-            src={updateImage.image}
-            alt="Profile Picture"
-            className="w-32 h-32 rounded-full object-cover mb-4"
-          />
-          <form onSubmit={handleUploadImage} className="flex flex-col items-center">
-            <h1 className="text-xl font-semibold mb-4">Profile Picture</h1>
-            <div className="mb-4">
-              <label htmlFor="image" className="block mb-2 cursor-pointer">
-                Choose an Image:
-              </label>
-              <input
-                type="file"
-                id="image"
-                name="image"
-                onChange={change}
-                className="hidden"
-              />
-              <div className="border border-dashed border-gray-400 p-4 rounded-lg w-64 cursor-pointer text-center">
-                <p className="text-gray-500">Drop Image here or click to upload</p>
-              </div>
+    <div className="bg-white w-full h-screen flex justify-center items-center text-blue-400 pt-40">
+      <div
+        className="bg-blue-100 border border-blue-300 rounded-lg p-8 flex flex-col items-center"
+        style={{ width: "800px", height: "400px" }}
+      >
+        {" "}
+        {/* Menyesuaikan lebar dan tinggi */}
+        <form
+          className="flex flex-col items-center" onSubmit={handleUploadImage}
+        >
+          <h1 className="text-3xl font-bold mb-4 flex justify-center items-center">
+            Profile Picture
+          </h1>
+          <div className="mb-4" >
+            <input
+              type="file"
+              id="image"
+              name="image"
+              onChange={change}
+              className="hidden"
+            />
+            <div className="border border-dashed border-gray-400 p-4 rounded-lg w-64 cursor-pointer text-center">
+              <p className="text-gray-500">
+                Drop Image here or click to upload
+              </p>
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              Upload
-            </button>
-          </form>
-        </div>
+          </div>
+          <label htmlFor="image" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ">
+            Choose Your Image
+          </label>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+          >
+            Upload
+          </button>
+        </form>
       </div>
     </div>
   );

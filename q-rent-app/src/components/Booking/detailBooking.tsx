@@ -14,18 +14,33 @@ import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
 import { formatToRupiah } from "@/db/helpers/formatter";
 import ButtonStatus from "../buttonStatus/buttonStatus";
+import useMidtrans from "@/actions/useMidtrans";
+
+
 
 export default function DetailBooking({ data }: { data: BookingType }) {
-  console.log(data, "><><><><<><><");
+  useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js")
 
   const prices = formatToRupiah(data.totalPrice);
-
+  
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
 
   const handleSlideImage = (carImage: string) => {
     setImageSlide(carImage);
   };
-
+  const handlePayment = (token: string) => {
+    window?.snap.pay(token, {
+      onSuccess: function(result){
+        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+      },
+      onPending: function(result){
+        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+      },
+      onError: function(result){
+        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+      }
+    });
+  }
   return (
     <div className="flex flex-col mt-[5rem]">
       <div className="flex flex-row mx-[5rem] mt-[3rem] mb-[5rem]">
