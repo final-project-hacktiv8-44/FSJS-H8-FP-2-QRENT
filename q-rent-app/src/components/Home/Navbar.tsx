@@ -78,7 +78,7 @@ export default async function Navbar() {
                   </li>
                 ) : (
                   <li>
-                    <Link href="/login">Login</Link>
+                    <Link href="/login" className="justify-between font-bold text-orange-600">Login</Link>
                   </li>
                 )}
               </ul>

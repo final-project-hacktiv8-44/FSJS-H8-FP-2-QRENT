@@ -1,4 +1,4 @@
-// components/BookingForm.tsx
+'use client'
 type BookingProps = {
   handleSubmit: (formData: FormData) => Promise<never>;
 };

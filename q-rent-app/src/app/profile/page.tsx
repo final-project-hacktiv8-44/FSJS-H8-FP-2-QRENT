@@ -1,7 +1,7 @@
-"use client";
+'use client'
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ProfileType, UserType } from "@/types/type";
+import { ProfileType } from "@/types/type";
 import Link from "next/link";
 
 export default function UserProfile() {
@@ -54,13 +54,13 @@ export default function UserProfile() {
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Full name</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.name}
+                  {userProfile?.name || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">User name</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.user.username}
+                  {userProfile?.user.username || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -68,25 +68,25 @@ export default function UserProfile() {
                   Email address
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.user.email}
+                  {userProfile?.user.email || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Birth</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.birth}
+                  {userProfile?.birth || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Biodata</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.bio}
+                  "{userProfile?.bio || "--------------------"}"
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Address</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.address}
+                  {userProfile?.address || "--------------------"}
                 </dd>
               </div>
               <Link href={"/profile/edit-profile"}>
