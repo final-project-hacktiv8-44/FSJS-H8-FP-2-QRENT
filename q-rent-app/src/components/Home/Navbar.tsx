@@ -60,7 +60,7 @@ export default async function Navbar() {
               <div className="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-blue-100 hover:text-gray-900">
                 <button>
                   <FaUserAlt className="inline-block mr-2 h-4 w-4" />
-                  User
+                  Profile
                 </button>
               </div>
               <ul

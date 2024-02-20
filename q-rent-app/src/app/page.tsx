@@ -40,7 +40,7 @@ export default async function Home({
         <Hero />
         <div className="bg-white w-full h-screen pt-40">
           <div>
-            <div className="mb-4 pt-10">
+            <div className="mb-4 pt-5">
               <h1 className="text-center text-[2rem] font-bold text-blue-400">
                 Featured Cars
               </h1>
@@ -59,7 +59,6 @@ export default async function Home({
                 ))}
               </div>
             </div>
-
             <ActiveSlider />
             <FooterSection />
             <Footer />
