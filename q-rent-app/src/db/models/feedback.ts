@@ -85,8 +85,23 @@ class FeedbackModel {
       BookingId: new ObjectId(body.BookingId),
       CarId: new ObjectId(body.CarId),
       review: body.review,
+      CarId: new ObjectId(body.CarId)
     });
     return "Success giving feedback";
+  }
+
+  static async getFeedbackByCar(slug: string) {
+    const dbcars = database.collection("cars");
+    const car = await dbcars.findOne({
+      slug
+    })
+    
+    const result = FeedbackModel.dbFeedback();
+    const feedback = await result.find({
+      CarId: new ObjectId(car._id)
+    }).toArray()
+
+    return feedback as FeedbackType[]
   }
 }
 

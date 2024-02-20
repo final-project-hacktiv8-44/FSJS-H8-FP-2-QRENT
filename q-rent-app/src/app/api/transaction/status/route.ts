@@ -1,12 +1,16 @@
 import BookingModel from "@/db/models/booking";
 import TransactionModel from "@/db/models/transaction";
+import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 import { sha512 } from "js-sha512";
 
-export async function POST(request: Request) {
+export async function POST(
+  request: Request
+
+) {
   try {
     const body = await request.json();
-
+// ini yoga
     const verifyMidtrans = sha512(
       `${body.order_id}${body.status_code}${body.gross_amount}SB-Mid-server-3JXHxuI9_6OZJ2qyGrWsmUiL`
     );
@@ -22,7 +26,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const transaction = await TransactionModel.transactionById(body.order_id);
+    // const transaction = await TransactionModel.transactionById(body.order_id);
+    //ini dewa
+    const order_id = body.order_id.slice(0, body.order_id.length-5)
+    
+    const transaction = await TransactionModel.transactionById(order_id);
 
     if (!transaction) {
       return NextResponse.json(
@@ -35,7 +43,7 @@ export async function POST(request: Request) {
       );
     }
 
-    await BookingModel.updateStatus(body.order_id, {
+    await BookingModel.updateStatus(order_id, {
       status: "paid",
     });
 

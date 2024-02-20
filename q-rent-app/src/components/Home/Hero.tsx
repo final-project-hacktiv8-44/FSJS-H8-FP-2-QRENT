@@ -18,16 +18,16 @@ SwiperCore.use([Navigation, Thumbs, Autoplay]);
 
 const imgList = [
   {
-    img:"https://i.postimg.cc/28D6pwv3/banner1.png"
+    img:"https://i.postimg.cc/dVWjDXp8/Rent-Car.png"
   },
   {
-    img:"https://i.postimg.cc/44Yz6KSH/banner3.png"
+    img:"https://i.postimg.cc/9MnJnfyg/Rent-Car-1.png"
   },
   {
-    img:"https://i.postimg.cc/6qZ2DvkH/banner2.png"
+    img:"https://i.postimg.cc/BQXkBrfn/Rent-Car-3.png"
   },
   {
-    img:"https://i.postimg.cc/Cx0ZZd88/RENT-Car.png"
+    img:"https://i.postimg.cc/B66Yqz3z/Rent-Car-4.png"
   },
 ];
 
@@ -40,7 +40,6 @@ export default function Hero() {
       mainSwiper.slideTo(index);
     }
   };
-
   return (
     <div className="bg-white w-full h-screen">
       <section className="pt-[2rem] pb-[2rem]">
@@ -66,7 +65,7 @@ export default function Hero() {
               {imgList.map((image, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <img className="h-[20rem] w-[40rem]" src={image.img} alt="" />
+                    <img className="h-[30rem] w-[100rem]" src={image.img} alt="" />
                   </SwiperSlide>
                 );
               })}

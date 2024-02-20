@@ -19,10 +19,10 @@ const Card = ({ car }: { car: CarType }) => {
          </Link>
       </div>
       <div className="p-4">
-        <div className="flex justify-between items-center mb-2">
+        <div className="flex justify-between items-center">
           <p className="text-sm font-medium text-gray-600">{car.brand}</p>
         </div>
-        <p className="text-lg font-semibold text-gray-800 mb-2">{car.name}</p>
+        <p className="text-lg font-semibold text-gray-800">{car.name}</p>
         <div className="flex justify-between items-center">
           <div className="flex items-center text-gray-600 mr-2">
             <IoMdColorPalette className="mr-1" /> {car.color}

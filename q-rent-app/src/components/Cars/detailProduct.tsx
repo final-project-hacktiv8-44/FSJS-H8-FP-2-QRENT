@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { formatToRupiah } from "@/db/helpers/formatter";
-import { CarType } from "@/types/type";
+import { CarType, FeedbackType } from "@/types/type";
 import {
   IoMdCar,
   IoMdColorPalette,
@@ -13,13 +13,15 @@ import { GiKeyCard } from "react-icons/gi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
+import ReviewCard from "./ReviewCard";
 type MyResponse = {
   car: CarType;
+  feedback: FeedbackType[];
 };
 
 export default function DetailCar({ data }: { data: MyResponse }) {
   const prices = formatToRupiah(data.car.pricePerDay);
-  const id = data.car._id.toString();
+  console.log(data)
 
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
 
@@ -54,7 +56,9 @@ export default function DetailCar({ data }: { data: MyResponse }) {
           </div>
 
           <div className="bg-white border border-gray-100 rounded-lg p-8 shadow-md">
-            <h1 className="text-3xl font-bold mb-4 font-bold text-black">Detail Car</h1>
+            <h1 className="text-3xl font-bold mb-4 font-bold text-black">
+              Detail Car
+            </h1>
             <div className="flex flex-col gap-5 text-black">
               <div className="flex flex-col gap-2">
                 <h3 className="font-secondary text-[2rem]">{data.car.brand}</h3>
@@ -83,7 +87,7 @@ export default function DetailCar({ data }: { data: MyResponse }) {
             </div>
           </div>
         </div>
-        
+
         <div className="flex flex-row justify-center">
           <div className="flex flex-row gap-5 bg-white rounded-lg p-8 text-black shadow-md">
             <p className="font-semibold">
@@ -128,7 +132,14 @@ export default function DetailCar({ data }: { data: MyResponse }) {
               </span>
               Km: {data.car.kilometer}
             </p>
+            {/* {<ReviewCard review={data.car.review} user={data.car.user} />} */}
           </div>
+        </div>
+        <div className="m-8">
+          <h4 className="text-black font-bold">Feedback</h4>
+          {data.feedback.map((el, index) => {
+            return <p key={String(el._id)} className="text-black">{index+1}. {el.review}</p>
+          })}
         </div>
       </div>
     </div>
