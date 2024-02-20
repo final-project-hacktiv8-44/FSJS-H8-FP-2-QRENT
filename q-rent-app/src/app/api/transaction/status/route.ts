@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(
   request: Request
-  // { params }: { params: { _id: string } }
+
 ) {
   try {
     const body = await request.json();
