@@ -1,10 +1,26 @@
 import BookingModel from "@/db/models/booking";
 import TransactionModel from "@/db/models/transaction";
 import { NextResponse } from "next/server";
+import { sha512 } from "js-sha512";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+    const verifyMidtrans = sha512(
+      `${body.order_id}${body.status_code}${body.gross_amount}SB-Mid-server-3JXHxuI9_6OZJ2qyGrWsmUiL`
+    );
+
+    if (verifyMidtrans !== body.signature_key) {
+      return NextResponse.json(
+        {
+          message: "Your signature key is not valid",
+        },
+        {
+          status: 403,
+        }
+      );
+    }
 
     const transaction = await TransactionModel.transactionById(body.order_id);
 
