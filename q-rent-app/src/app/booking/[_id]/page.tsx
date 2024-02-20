@@ -17,7 +17,7 @@ const BookingCarId = ({ params }: { params: { _id: string } }) => {
     const sim = FormData.get("sim") == "on" ? true : false;
     const age = FormData.get("age");
     const auth_token = cookies().get("Authorization")?.value.split(" ")[1];
-    console.log(auth_token);
+
     const response = await fetch(
       `http://localhost:3000/api/booking/${params._id}`,
       {

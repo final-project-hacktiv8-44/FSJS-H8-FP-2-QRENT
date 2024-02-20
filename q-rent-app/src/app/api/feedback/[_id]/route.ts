@@ -8,7 +8,7 @@ export async function POST(
 ) {
   try {
     const body = await request.json();
-    
+
     const UserId = request.headers.get("x-UserId") as string;
     const userRole = request.headers.get("x-role") as string;
 
@@ -24,25 +24,34 @@ export async function POST(
         }
       );
     } else {
-      const feedback = await FeedbackModel.newFeedback({
-        UserId: UserId,
-        BookingId: booking._id,
-        CarId: booking.CarId,
-        review: body.review,
-        CarId: booking.CarId
-      });
+      if (booking.status === "returned") {
+        const feedback = await FeedbackModel.newFeedback({
+          UserId: UserId,
+          BookingId: booking._id,
+          CarId: booking.CarId,
+          review: body.review,
+        });
 
-      return NextResponse.json(
-        {
-          feedback,
-        },
-        {
-          status: 201,
-        }
-      );
+        return NextResponse.json(
+          {
+            feedback,
+          },
+          {
+            status: 201,
+          }
+        );
+      } else {
+        return NextResponse.json(
+          {
+            message: "Please, returned your rent of car first",
+          },
+          {
+            status: 403,
+          }
+        );
+      }
     }
   } catch (error) {
-    
     return NextResponse.json(
       {
         message: "Internal server error",

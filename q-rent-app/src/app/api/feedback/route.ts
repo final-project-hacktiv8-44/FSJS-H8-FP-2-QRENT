@@ -6,8 +6,6 @@ export async function GET(request: Request) {
     const UserId = request.headers.get("x-UserId") as string;
     const userRole = request.headers.get("x-role") as string;
 
-    console.log(UserId, "???");
-
     if (userRole === "admin") {
       return NextResponse.json(
         {

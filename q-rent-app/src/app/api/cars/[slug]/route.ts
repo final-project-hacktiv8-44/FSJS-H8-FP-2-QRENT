@@ -8,8 +8,8 @@ export async function GET(
 ) {
   try {
     const car = await CarModel.detailCar(params.slug);
-    console.log(car)
-    const feedback = await FeedbackModel.getFeedbackByCar(params.slug)
+
+    const feedback = await FeedbackModel.getFeedbackByCar(params.slug);
 
     if (!car) {
       return NextResponse.json(
@@ -25,7 +25,7 @@ export async function GET(
     return NextResponse.json(
       {
         car,
-        feedback
+        feedback,
       },
       {
         status: 200,

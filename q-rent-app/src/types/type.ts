@@ -57,6 +57,7 @@ export type CarType = {
   kilometer: string;
   review: FeedbackType | undefined;
   user: UserType | undefined;
+  feedback: FeedbackType[];
 };
 
 export type ImageCar = [string, string, string];
@@ -115,7 +116,6 @@ export type FeedbackType = {
   _id: ObjectId;
   UserId: ObjectId;
   BookingId: ObjectId;
-  CarId: ObjectId;
   review: string;
   CarId: ObjectId;
 };
@@ -123,7 +123,6 @@ export type FeedbackType = {
 export type NewFeedbackType = {
   UserId: string;
   BookingId: ObjectId;
-  CarId: ObjectId;
   review: string;
   CarId: ObjectId;
 };
@@ -141,4 +140,25 @@ export type TransactionType = {
   UserId: ObjectId;
   access_token: string;
   BookingId: ObjectId;
+};
+
+export type MidtransResponseType = {
+  transaction_type: string;
+  transaction_time: string;
+  transaction_status: string;
+  transaction_id: string;
+  status_message: string;
+  status_code: string;
+  signature_key: string;
+  settlement_time: string;
+  reference_id: string;
+  payment_type: string;
+  order_id: string;
+  merchant_id: string;
+  issuer: string;
+  gross_amount: string;
+  fraud_status: string;
+  expiry_time: string;
+  currency: string;
+  acquirer: string;
 };
