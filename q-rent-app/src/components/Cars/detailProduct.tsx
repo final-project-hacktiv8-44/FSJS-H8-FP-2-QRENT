@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { formatToRupiah } from "@/db/helpers/formatter";
-import { CarType } from "@/types/type";
+import { CarType, FeedbackType } from "@/types/type";
 import {
   IoMdCar,
   IoMdColorPalette,
@@ -15,11 +15,12 @@ import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
 type MyResponse = {
   car: CarType;
+  feedback: FeedbackType[];
 };
 
 export default function DetailCar({ data }: { data: MyResponse }) {
   const prices = formatToRupiah(data.car.pricePerDay);
-  const id = data.car._id.toString();
+  console.log(data)
 
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
 
@@ -128,6 +129,12 @@ export default function DetailCar({ data }: { data: MyResponse }) {
               Km: {data.car.kilometer}
             </p>
           </div>
+        </div>
+        <div className="m-8">
+          <h4 className="text-black font-bold">Feedback</h4>
+          {data.feedback.map((el, index) => {
+            return <p key={String(el._id)} className="text-black">{index+1}. {el.review}</p>
+          })}
         </div>
       </div>
     </div>

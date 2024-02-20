@@ -7,7 +7,7 @@ const useMidtrans = (url: string) => {
     script.src = url;
     script.async = true;
 ;
-    const myMidtransClientKey = 'SB-Mid-client-tSrNr5V_HLdte9Yy';
+    const myMidtransClientKey = 'SB-Mid-client-DLbvm64rSpzf_Ro_';
     script.setAttribute('data-client-key', myMidtransClientKey);
 
     document.body.appendChild(script);

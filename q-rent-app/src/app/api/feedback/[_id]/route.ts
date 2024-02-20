@@ -8,6 +8,7 @@ export async function POST(
 ) {
   try {
     const body = await request.json();
+    
     const UserId = request.headers.get("x-UserId") as string;
     const userRole = request.headers.get("x-role") as string;
 
@@ -27,6 +28,7 @@ export async function POST(
         UserId: UserId,
         BookingId: booking._id,
         review: body.review,
+        CarId: booking.CarId
       });
 
       return NextResponse.json(
@@ -39,6 +41,7 @@ export async function POST(
       );
     }
   } catch (error) {
+    
     return NextResponse.json(
       {
         message: "Internal server error",

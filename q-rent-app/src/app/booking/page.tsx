@@ -1,10 +1,11 @@
 import BookingAllCard from "@/components/Booking/BookingAllCard";
 import { BookingType } from "@/types/type";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 type MyResponse = {
   listBooking: BookingType[];
-  // message?: string;
+  message?: string;
 };
 
 async function dataBooking(): Promise<MyResponse> {
@@ -19,6 +20,10 @@ async function dataBooking(): Promise<MyResponse> {
 }
 export default async function Booking() {
   const booking = await dataBooking();
+  if(booking.message) {
+    redirect('/login')
+  }
+  
   return (
     <div className="bg-white w-full h-screen flex justify-center">
       <div className="bg-white w-full h-screen pt-40">

@@ -13,12 +13,16 @@ export async function POST(
 
     let snap = new midtransClient.Snap({
       isProduction: false,
-      serverKey: "SB-Mid-server-3JXHxuI9_6OZJ2qyGrWsmUiL" as string,
+      serverKey: "SB-Mid-server-7Hb2ZvQ0V5ngN6dFDhaEwcHT" as string,
     });
+
+    const date = new Date().toISOString()
+    console.log(date);
+    
 
     let parameter = {
       transaction_details: {
-        order_id: book._id,
+        order_id: book._id + date.slice(date.length-5),
         gross_amount: book.totalPrice,
       },
       item_details: [

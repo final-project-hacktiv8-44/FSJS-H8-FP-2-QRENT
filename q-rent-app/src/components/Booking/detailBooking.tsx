@@ -14,13 +14,18 @@ import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
 import { formatToRupiah } from "@/db/helpers/formatter";
 import useMidtrans from "@/actions/useMidtrans";
+import { useRouter } from "next/navigation";
+import { getCookies } from 'cookies-next';
 
 
 
 export default function DetailBooking({ data }: { data: BookingType }) {
   console.log(data, "<<<<< data");
   //   const { booking } = data;
+  const [rev, setRev] = useState(false)
+  const [textRev, setTextRev] = useState('')
   useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js")
+  const router = useRouter()
 
   const prices = formatToRupiah(data.totalPrice);
   //   const id = booking.CarId.toString();
@@ -33,14 +38,16 @@ export default function DetailBooking({ data }: { data: BookingType }) {
   const handlePayment = (token: string) => {
     window?.snap.pay(token, {
       onSuccess: function(result){
-        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+        router.push('/booking')
       },
-      onPending: function(result){
-        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+      onClose: function(result) {
+        router.push('/booking')
       },
-      // Optional
-      onError: function(result){
-        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+      onError: function(result) {
+        router.push('/booking')
+      },
+      onPending: function (result) {
+        router.push('/booking')
       }
     });
   }
@@ -135,9 +142,51 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               </span>
               Km: {data.car.kilometer}
             </p>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={() =>handlePayment("98cd5433-9a14-4373-a848-5efa99049b2c")}>
+            {
+              rev && <input className="bg-white border-blue-400 border rounded-lg text-black outline-none p-4" onChange={({ target }) => {
+                setTextRev(target.value)
+              }}/>
+            }
+            {data.status !== "paid" ?
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
+                try {
+                  const resp = await fetch(`http://localhost:3000/api/booking/payment/${data._id}`, {
+                    cache: "no-store",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Cookie: getCookies().toString(),
+                    },
+                    method: 'POST'
+                  });
+                  
+                  const respJson = await resp.json();
+  
+                  handlePayment(respJson.transactionToken)
+                } catch (error) {
+                  router.push('/booking')
+                }
+              }}>
                 Payment
               </button>
+              :
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
+                if(rev === false) {
+                  setRev(true)
+                } else {
+                  if(!textRev) return
+                  console.log(getCookies())
+                  const response = await fetch(
+                    `http://localhost:3000/api/feedback/${data._id}`, {
+                      method: 'POST',
+                      body: JSON.stringify({ review: textRev })
+                    }
+                  );
+                  router.push(`/cars/${data.car.slug}`)
+                  
+                }
+              }}>Review</button>
+            }
+            
           </div>
         </div>
       </div>
