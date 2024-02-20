@@ -55,8 +55,8 @@ export type CarType = {
   thumbnail: string;
   carImage: ImageCar;
   kilometer: string;
-  review: FeedbackType | undefined;
-  user: UserType | undefined;
+  review: FeedbackType[] | undefined;
+  user: UserType[] | undefined;
   feedback: FeedbackType[];
 };
 

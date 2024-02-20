@@ -47,13 +47,13 @@ export default async function Home({
             </div>
 
             <Link href="/cars">
-              <div className="flex justify-end mx-[20rem] items-center text-blue-400 font-bold mb-5">
+              <div className="flex justify-end mx-[15rem] items-center text-blue-400 font-bold mb-5">
                 <p className="mr-2 text-blue-400 font-bold">See All Cars</p>
                 <MdKeyboardDoubleArrowRight />
               </div>
             </Link>
             <div className="bg-white flex justify-center mx-[10rem]">
-              <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full mt-8 ">
+              <div className="flex justify-between mx-[5rem] object-cover w-full h-full mt-8 gap-8">
                 {products.map((car, i) => (
                   <Card key={i} car={car} />
                 ))}
