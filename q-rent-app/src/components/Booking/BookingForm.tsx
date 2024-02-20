@@ -1,4 +1,4 @@
-// components/BookingForm.tsx
+'use client'
 type BookingProps = {
   handleSubmit: (formData: FormData) => Promise<never>;
 };
@@ -13,7 +13,7 @@ const BookingForm = ({ handleSubmit }: BookingProps) => {
     <div className="mb-4 w-full mt-10">
       <label
         htmlFor="bookingStart"
-        className="block text-orange-600 font-bold mb-2"
+        className="block text-blue-400 font-bold mb-2"
       >
         Booking Start Date:
       </label>
@@ -27,7 +27,7 @@ const BookingForm = ({ handleSubmit }: BookingProps) => {
     <div className="mb-4 w-full">
       <label
         htmlFor="bookingEnd"
-        className="block text-orange-600 font-bold mb-2"
+        className="block text-blue-400 font-bold mb-2"
       >
         Booking End Date:
       </label>
@@ -39,7 +39,7 @@ const BookingForm = ({ handleSubmit }: BookingProps) => {
       />
     </div>
     <div className="mb-4 w-full">
-      <label htmlFor="ktp" className="block text-orange-600 font-bold">
+      <label htmlFor="ktp" className="block text-blue-400 font-bold">
         <input
           type="checkbox"
           id="ktp"
@@ -50,7 +50,7 @@ const BookingForm = ({ handleSubmit }: BookingProps) => {
       </label>
     </div>
     <div className="mb-4 w-full">
-      <label htmlFor="sim" className="block text-orange-600 font-bold">
+      <label htmlFor="sim" className="block text-blue-400 font-bold">
         <input
           type="checkbox"
           id="sim"
@@ -61,7 +61,7 @@ const BookingForm = ({ handleSubmit }: BookingProps) => {
       </label>
     </div>
     <div className="mb-4 w-full">
-      <label htmlFor="age" className="block text-orange-600 font-bold mb-2">
+      <label htmlFor="age" className="block text-blue-400 font-bold mb-2">
         Age:
       </label>
       <input

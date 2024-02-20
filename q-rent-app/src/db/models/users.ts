@@ -9,10 +9,18 @@ class UserModel {
     return result;
   }
 
+  static async user(UserId: string) {
+    const result = UserModel.dbUser();
+    const user = await result.findOne({
+      _id: new ObjectId(UserId),
+    });
+
+    return user as UserType;
+  }
+
   static async userByEmail(email: string) {
     const result = UserModel.dbUser();
     const login = await result.findOne({ email: email });
-
     return login as UserType;
   }
 

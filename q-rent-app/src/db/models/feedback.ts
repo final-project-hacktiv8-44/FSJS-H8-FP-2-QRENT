@@ -15,11 +15,65 @@ class FeedbackModel {
 
   static async allFeedback(UserId: string) {
     const result = FeedbackModel.dbFeedback();
-    const feedback = await result
-      .find({
-        UserId: new ObjectId(UserId),
-      })
-      .toArray();
+
+    const agg = [
+      {
+        $match: {
+          UserId: new ObjectId(UserId),
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "UserId",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $unwind: {
+          path: "$user",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          user: {
+            password: 0,
+          },
+        },
+      },
+      {
+        $lookup: {
+          from: "booking",
+          localField: "BookingId",
+          foreignField: "_id",
+          as: "booking",
+        },
+      },
+      {
+        $unwind: {
+          path: "$booking",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "cars",
+          localField: "CarId",
+          foreignField: "_id",
+          as: "car",
+        },
+      },
+      {
+        $unwind: {
+          path: "$car",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+    ];
+
+    const feedback = await result.aggregate(agg).toArray();
 
     return feedback as FeedbackType[];
   }
@@ -29,6 +83,7 @@ class FeedbackModel {
     await result.insertOne({
       UserId: new ObjectId(body.UserId),
       BookingId: new ObjectId(body.BookingId),
+      CarId: new ObjectId(body.CarId),
       review: body.review,
       CarId: new ObjectId(body.CarId)
     });

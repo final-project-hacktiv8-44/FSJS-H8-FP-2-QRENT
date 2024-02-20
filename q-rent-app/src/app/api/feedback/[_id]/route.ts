@@ -27,6 +27,7 @@ export async function POST(
       const feedback = await FeedbackModel.newFeedback({
         UserId: UserId,
         BookingId: booking._id,
+        CarId: booking.CarId,
         review: body.review,
         CarId: booking.CarId
       });

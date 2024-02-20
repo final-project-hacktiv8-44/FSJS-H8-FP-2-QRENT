@@ -45,7 +45,7 @@ export default function FooterSection() {
   return (
     <section className="pt-[7rem] pb-[2rem] bg-white">
       <div className="lg:mx-auto max-w-5xl">
-        <h1 className="text-[3rem] font-bold text-orange-600 mb-[2rem] text-center">
+        <h1 className="text-[3rem] font-bold text-blue-400 mb-[2rem] text-center">
           How To Rent Our Cars
         </h1>
         {data.length > 0 && (

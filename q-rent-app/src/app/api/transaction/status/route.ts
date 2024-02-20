@@ -29,20 +29,6 @@ export async function POST(
       status: "paid",
     });
 
-    // const userRole = request.headers.get("x-role") as string;
-
-    // if (userRole !== "admin") {
-    //   return NextResponse.json(
-    //     {
-    //       message: "Only admins are allowed to update status",
-    //     },
-    //     {
-    //       status: 403,
-    //     }
-    //   );
-    // } else {
-    // await BookingModel.updateStatus(params._id, body);
-
     return NextResponse.json(
       {
         message: "Status updated successfully",

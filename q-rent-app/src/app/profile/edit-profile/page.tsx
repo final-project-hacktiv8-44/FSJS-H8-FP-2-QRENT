@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ProfileType } from "@/types/type";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 
 export default function UserProfile() {
+  const router = useRouter();
   const [userProfile, setUserProfile] = useState<ProfileType>();
   const [formData, setFormData] = useState({
     name: "",
@@ -34,16 +35,17 @@ export default function UserProfile() {
     e.preventDefault();
     try {
       await axios.post("/api/users", formData);
-      // Refresh the profile after submission
+
       fetchProfile();
+      router.push("/profile");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="bg-white w-full h-screen mt-20 text-blue-400">
-      <div className="bg-white overflow-hidden shadow rounded-lg border">
+    <div className="bg-white w-full h-screen pt-5 text-blue-400">
+      <div className="bg-white overflow-hidden">
         <div className="px-4 py-5 sm:px-6">
           <h1 className="text-3xl font-bold text-center text-blue-400 mt-28 justify-center">
             Your Profile
@@ -56,26 +58,25 @@ export default function UserProfile() {
                 <img
                   src={userProfile?.user.image}
                   alt="Profile Picture"
-                  className="w-100 h-80 rounded-full mx-auto"
+                  className="w-60 h-60 rounded-full border-4 object-cover mr-10 mb-10"
                 />
               ) : (
                 <Link href="/profile/profile-picture">
-                  <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10">
+                  <p className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10">
                     Add Profile Picture
                   </p>
                 </Link>
               )}
               <Link href="/profile/profile-picture">
-                <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
+                <span className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
                   Click to change profile picture
                 </span>
               </Link>
             </div>
-            {/* User Info */}
+
             <form
               onSubmit={handleSubmit}
-              className="sm:divide-y sm:divide-gray-200"
-            >
+              className="sm:divide-y sm:divide-gray-200">
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 text-blue-400">
                 <dt className="text-sm font-medium text-gray-500">Full name</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -127,8 +128,7 @@ export default function UserProfile() {
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer"
-                >
+                  className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
                   Save Changes
                 </button>
               </div>

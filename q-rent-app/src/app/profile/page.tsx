@@ -1,12 +1,11 @@
-"use client";
+'use client'
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ProfileType, UserType } from "@/types/type";
+import { ProfileType } from "@/types/type";
 import Link from "next/link";
 
 export default function UserProfile() {
   const [userProfile, setUserProfile] = useState<ProfileType>();
-  const [user, setUser] = useState<UserType>();
 
   const fetchProfile = async () => {
     try {
@@ -21,13 +20,11 @@ export default function UserProfile() {
     fetchProfile();
   }, []);
 
-  // console.log(userProfile, "<<<<<");
-
   return (
-    <div className="bg-white w-full h-screen mt-20">
-      <div className="bg-white overflow-hidden shadow rounded-lg border">
+    <div className="bg-white w-full h-screen pt-5 pb-10">
+      <div className="bg-white overflow-hidden">
         <div className="px-4 py-5 sm:px-6">
-          <h1 className="text-3xl font-bold text-center text-blue-400 mt-28 justify-center">
+          <h1 className="text-3xl font-bold text-center text-blue-400 pt-20 justify-center">
             Your Profile
           </h1>
         </div>
@@ -38,17 +35,17 @@ export default function UserProfile() {
                 <img
                   src={userProfile?.user.image}
                   alt="Profile Picture"
-                  className="w-100 h-80 rounded-full mx-auto" // Memperbarui kelas untuk menyesuaikan ukuran gambar
+                  className="w-60 h-60 rounded-full border-4 object-cover mr-40 border-blue-400 mb-10"
                 />
               ) : (
                 <Link href="/profile/profile-picture">
-                  <p className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
+                  <p className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mr-40">
                     Add Profile Picture
                   </p>
                 </Link>
               )}
               <Link href="/profile/profile-picture">
-                <span className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer">
+                <span className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mr-40">
                   Click to change profile picture
                 </span>
               </Link>
@@ -57,13 +54,13 @@ export default function UserProfile() {
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Full name</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.name}
+                  {userProfile?.name || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">User name</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.user.username}
+                  {userProfile?.user.username || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -71,29 +68,29 @@ export default function UserProfile() {
                   Email address
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.user.email}
+                  {userProfile?.user.email || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Birth</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.birth}
+                  {userProfile?.birth || "--------------------"}
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Biodata</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.bio}
+                  "{userProfile?.bio || "--------------------"}"
                 </dd>
               </div>
               <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Address</dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {userProfile?.address}
+                  {userProfile?.address || "--------------------"}
                 </dd>
               </div>
-              <Link href="/profile/edit-profile">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline cursor-pointer mb-10 mt-10">
+              <Link href={"/profile/edit-profile"}>
+                <button className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded-full cursor-pointer mb-10 mt-10">
                   Edit Profile
                 </button>
               </Link>

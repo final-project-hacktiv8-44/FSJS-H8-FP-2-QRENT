@@ -1,7 +1,5 @@
 import { LoginForm } from "@/components/Login/LoginForm";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-export const dynamic = "force-dynamic";
 
 type MyResponse = {
   message?: string;
@@ -25,16 +23,10 @@ export default function LoginPage() {
       }),
       cache: "no-store",
     });
-
     const result = (await response.json()) as MyResponse;
-
-    if (!response.ok) {
-      return redirect(`/login?error=${result.message}`);
-    }
-
     cookies().set("Authorization", `Bearer ${result.access_token}`);
-
-    return redirect("/");
+    
+    // return redirect("/");
   };
   return (
     <div>

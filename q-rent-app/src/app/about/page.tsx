@@ -33,7 +33,7 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
         >
           {/* Bagian 1 */}
-          <div className="flex items-center justify-center min-h-screen mt-16 bg-white">
+          <div className="flex items-center justify-center min-h-screen pt-10 bg-white">
             <div className="container mx-auto flex">
               <div className="w-1/2 border-r border-blue-400 pr-5">
                 <img
