@@ -12,14 +12,13 @@ import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import { formatToRupiah } from "@/db/helpers/formatter";
 import useMidtrans from "@/actions/useMidtrans";
-//ini dewa 
+//ini dewa
 import { useRouter } from "next/navigation";
-import { getCookies } from 'cookies-next';
+import { getCookies } from "cookies-next";
 //ini wahyu
 import ButtonStatus from "../buttonStatus/buttonStatus";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 
 export default function DetailBooking({ data }: { data: BookingType }) {
   const [user, setUser] = useState<UserType>();
@@ -33,40 +32,43 @@ export default function DetailBooking({ data }: { data: BookingType }) {
     }
   };
 
-//ini dewa
-export default function DetailBooking({ data }: { data: BookingType }) {
-  console.log(data, "<<<<< data");
-  //   const { booking } = data;
-  const [rev, setRev] = useState(false)
-  const [textRev, setTextRev] = useState('')
-  useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js")
-  const router = useRouter()
-//ini wahyu
   useEffect(() => {
     fetchUser();
   }, []);
 
+  //ini dewa
+  // export default function DetailBooking({ data }: { data: BookingType }) {
+  console.log(data, "<<<<< data");
+  //   const { booking } = data;
+  const [rev, setRev] = useState(false);
+  const [textRev, setTextRev] = useState("");
   useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js");
+  const router = useRouter();
+  //ini wahyu
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
 
+  // useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js");
 
   const prices = formatToRupiah(data.totalPrice);
 
   const handlePayment = (token: string) => {
     window?.snap.pay(token, {
-//ini dewa
-      onSuccess: function(result){
-        router.push('/booking')
-      },
-      onClose: function(result) {
-        router.push('/booking')
-      },
-      onError: function(result) {
-        router.push('/booking')
-      },
-      onPending: function (result) {
-        router.push('/booking')
-      }
-//ini wahyu
+      //ini dewa
+      // onSuccess: function(result){
+      //   router.push('/booking')
+      // },
+      // onClose: function(result) {
+      //   router.push('/booking')
+      // },
+      // onError: function(result) {
+      //   router.push('/booking')
+      // },
+      // onPending: function (result) {
+      //   router.push('/booking')
+      // }
+      //ini wahyu
       onSuccess: function (result) {
         document.getElementById("result-json").innerHTML += JSON.stringify(
           result,
@@ -88,7 +90,6 @@ export default function DetailBooking({ data }: { data: BookingType }) {
           2
         );
       },
-
     });
   };
 
@@ -177,54 +178,65 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               </span>
               Km: {data.car.kilometer}
             </p>
-//ini dewa
-            {
-              rev && <input className="bg-white border-blue-400 border rounded-lg text-black outline-none p-4" onChange={({ target }) => {
-                setTextRev(target.value)
-              }}/>
-            }
-            {data.status !== "paid" ?
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
-                try {
-                  const resp = await fetch(`http://localhost:3000/api/booking/payment/${data._id}`, {
-                    cache: "no-store",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Cookie: getCookies().toString(),
-                    },
-                    method: 'POST'
-                  });
-                  
-                  const respJson = await resp.json();
-  
-                  handlePayment(respJson.transactionToken)
-                } catch (error) {
-                  router.push('/booking')
-                }
-              }}>
+            //ini dewa
+            {rev && (
+              <input
+                className="bg-white border-blue-400 border rounded-lg text-black outline-none p-4"
+                onChange={({ target }) => {
+                  setTextRev(target.value);
+                }}
+              />
+            )}
+            {data.status !== "paid" ? (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                onClick={async () => {
+                  try {
+                    const resp = await fetch(
+                      `http://localhost:3000/api/booking/payment/${data._id}`,
+                      {
+                        cache: "no-store",
+                        headers: {
+                          "Content-Type": "application/json",
+                          Cookie: getCookies().toString(),
+                        },
+                        method: "POST",
+                      }
+                    );
+
+                    const respJson = await resp.json();
+
+                    handlePayment(respJson.transactionToken);
+                  } catch (error) {
+                    router.push("/booking");
+                  }
+                }}>
                 Payment
               </button>
-              :
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
-                if(rev === false) {
-                  setRev(true)
-                } else {
-                  if(!textRev) return
-                  console.log(getCookies())
-                  const response = await fetch(
-                    `http://localhost:3000/api/feedback/${data._id}`, {
-                      method: 'POST',
-                      body: JSON.stringify({ review: textRev })
-                    }
-                  );
-                  router.push(`/cars/${data.car.slug}`)
-                  
-                }
-              }}>Review</button>
-            }
-            
-//ini wahyu
-            <div>
+            ) : (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                onClick={async () => {
+                  if (rev === false) {
+                    setRev(true);
+                  } else {
+                    if (!textRev) return;
+                    console.log(getCookies());
+                    const response = await fetch(
+                      `http://localhost:3000/api/feedback/${data._id}`,
+                      {
+                        method: "POST",
+                        body: JSON.stringify({ review: textRev }),
+                      }
+                    );
+                    router.push(`/cars/${data.car.slug}`);
+                  }
+                }}>
+                Review
+              </button>
+            )}
+            //ini wahyu
+            {/* <div>
               {user?.role !== "customer" ? (
                 <ButtonStatus _id={_id} status={data.status} />
               ) : (
@@ -236,7 +248,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
                   Payment
                 </button>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
