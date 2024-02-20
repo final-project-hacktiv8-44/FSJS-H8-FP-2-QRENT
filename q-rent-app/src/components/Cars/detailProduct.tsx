@@ -14,6 +14,7 @@ import { GiKeyCard } from "react-icons/gi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
+import ReviewCard from "./ReviewCard";
 
 type MyResponse = {
   car: CarType;
@@ -40,8 +41,7 @@ export default function DetailCar({ data }: { data: MyResponse }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col mt-[5rem]"
-    >
+      className="flex flex-col mt-[5rem]">
       {isLoading ? (
         <div className="flex items-center justify-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
@@ -69,12 +69,10 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                   alt={data.car.name}
                 />
               </div>
-          </div>
+            </div>
 
             <div className="bg-white border border-gray-100 rounded-lg p-8 shadow-md">
-              <h1 className="text-3xl font-bold mb-4 font-bold text-black">
-                Detail Car
-              </h1>
+              <h1 className="text-3xl mb-4 font-bold text-black">Detail Car</h1>
               <div className="flex flex-col gap-5 text-black">
                 <div className="flex flex-col gap-2">
                   <h3 className="font-secondary text-[2rem]">
@@ -154,7 +152,7 @@ export default function DetailCar({ data }: { data: MyResponse }) {
               </p>
             </div>
           </div>
-          <ReviewCard/>
+          <ReviewCard />
           <div className="pt-10">
             <h4 className="text-black font-bold">Feedback</h4>
             {data.feedback.map((el, index) => {
