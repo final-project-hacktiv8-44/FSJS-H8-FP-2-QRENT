@@ -2,6 +2,7 @@ import BookingModel from "@/db/models/booking";
 import TransactionModel from "@/db/models/transaction";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
+import { sha512 } from "js-sha512";
 
 export async function POST(
   request: Request
@@ -9,7 +10,24 @@ export async function POST(
 ) {
   try {
     const body = await request.json();
+// ini yoga
+    const verifyMidtrans = sha512(
+      `${body.order_id}${body.status_code}${body.gross_amount}SB-Mid-server-3JXHxuI9_6OZJ2qyGrWsmUiL`
+    );
 
+    if (verifyMidtrans !== body.signature_key) {
+      return NextResponse.json(
+        {
+          message: "Your signature key is not valid",
+        },
+        {
+          status: 403,
+        }
+      );
+    }
+
+    // const transaction = await TransactionModel.transactionById(body.order_id);
+    //ini dewa
     const order_id = body.order_id.slice(0, body.order_id.length-5)
     
     const transaction = await TransactionModel.transactionById(order_id);
