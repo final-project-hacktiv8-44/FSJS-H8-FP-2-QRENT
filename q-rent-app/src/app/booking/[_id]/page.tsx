@@ -1,5 +1,6 @@
 import BookingForm from "@/components/Booking/BookingForm";
 import ActiveSlider from "@/components/Home/ActiveSlider";
+import { CarType } from "@/types/type";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -8,7 +9,19 @@ type MyResponse<T = {}> = {
   data?: T;
 };
 
-const BookingCarId = ({ params }: { params: { _id: string } }) => {
+type CarResponse = {
+  car: CarType;
+};
+
+async function detailProduct(_id: string): Promise<CarResponse> {
+  const data = await fetch(`http://localhost:3000/api/cars/detail/${_id}`, {
+    cache: "no-store",
+  });
+  return data.json();
+}
+
+const BookingCarId = async ({ params }: { params: { _id: string} }) => {
+  const data = await detailProduct(params._id);
   const handleSubmit = async (FormData: FormData) => {
     "use server";
     const bookingStart = FormData.get("bookingStart");
@@ -39,7 +52,7 @@ const BookingCarId = ({ params }: { params: { _id: string } }) => {
   return (
     <>
       <div className="pt-10 flex flex-col items-center justify-center text-blue-400 bg-white w-full h-screen">
-        <BookingForm handleSubmit={handleSubmit} />
+        <BookingForm handleSubmit={handleSubmit} data={data.car} />
       </div>
       <ActiveSlider />
     </>
