@@ -1,4 +1,5 @@
 import CarModel from "@/db/models/cars";
+import FeedbackModel from "@/db/models/feedback";
 import { NextResponse } from "next/server";
 
 export async function GET(
@@ -7,6 +8,8 @@ export async function GET(
 ) {
   try {
     const car = await CarModel.detailCar(params.slug);
+    console.log(car)
+    const feedback = await FeedbackModel.getFeedbackByCar(params.slug)
 
     if (!car) {
       return NextResponse.json(
@@ -22,6 +25,7 @@ export async function GET(
     return NextResponse.json(
       {
         car,
+        feedback
       },
       {
         status: 200,

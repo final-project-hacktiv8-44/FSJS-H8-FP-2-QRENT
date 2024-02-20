@@ -32,6 +32,7 @@ export default async function Home({
   const pageSize = params.pageSize || 5;
   const page = 1;
   const { products } = await selectCars(page, pageSize);
+  console.log(products)
 
   return (
     <>

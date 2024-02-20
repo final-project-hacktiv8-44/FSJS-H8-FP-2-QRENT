@@ -1,12 +1,18 @@
 import BookingModel from "@/db/models/booking";
 import TransactionModel from "@/db/models/transaction";
+import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST(
+  request: Request
+
+) {
   try {
     const body = await request.json();
 
-    const transaction = await TransactionModel.transactionById(body.order_id);
+    const order_id = body.order_id.slice(0, body.order_id.length-5)
+    
+    const transaction = await TransactionModel.transactionById(order_id);
 
     if (!transaction) {
       return NextResponse.json(
@@ -19,7 +25,7 @@ export async function POST(request: Request) {
       );
     }
 
-    await BookingModel.updateStatus(body.order_id, {
+    await BookingModel.updateStatus(order_id, {
       status: "paid",
     });
 

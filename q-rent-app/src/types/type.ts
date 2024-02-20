@@ -117,6 +117,7 @@ export type FeedbackType = {
   BookingId: ObjectId;
   CarId: ObjectId;
   review: string;
+  CarId: ObjectId;
 };
 
 export type NewFeedbackType = {
@@ -124,6 +125,7 @@ export type NewFeedbackType = {
   BookingId: ObjectId;
   CarId: ObjectId;
   review: string;
+  CarId: ObjectId;
 };
 
 export type TravelType = {
