@@ -1,6 +1,6 @@
 import ReviewCard from "@/components/Cars/ReviewCard";
 import DetailCar from "@/components/Cars/detailProduct";
-import { CarType } from "@/types/type";
+import { CarType, FeedbackType } from "@/types/type";
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
@@ -28,6 +28,7 @@ export async function generateMetadata(
 
 type MyResponse = {
   car: CarType;
+  feedback: FeedbackType[];
 };
 
 async function detailProduct(slug: string): Promise<MyResponse> {
@@ -40,8 +41,6 @@ async function detailProduct(slug: string): Promise<MyResponse> {
 
 export default async function Detail({ params }: { params: { slug: string } }) {
   const data = await detailProduct(params.slug);
-
-  console.log(data, "<><><><><>");
 
   return (
     <div className="bg-white w-full h-min-screen">

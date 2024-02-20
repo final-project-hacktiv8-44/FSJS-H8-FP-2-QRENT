@@ -21,7 +21,6 @@ async function userProfile(): Promise<ProfileType> {
   return response.json();
 }
 
-
 export default async function Navbar() {
   const token = cookies().get("Authorization")?.value;
   const user = await userProfile();
@@ -37,22 +36,19 @@ export default async function Navbar() {
             <Link
               aria-current="page"
               className="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-blue-100 hover:text-gray-900"
-              href="/cars"
-            >
+              href="/cars">
               <IoIosCar className="inline-block mr-2 h-5 w-5" />
               Select Cars
             </Link>
             <Link
               className="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-blue-100 hover:text-gray-900"
-              href="/about"
-            >
+              href="/about">
               <FaInfoCircle className="inline-block mr-2 h-4 w-4" />
               About Us
             </Link>
             <Link
               className="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-blue-100 hover:text-gray-900"
-              href="/booking"
-            >
+              href="/booking">
               <FaBookOpen className="inline-block mr-2 h-4 w-4" />
               Booking
             </Link>
@@ -65,8 +61,7 @@ export default async function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white text-blue-400 rounded-box w-52"
-              >
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white text-blue-400 rounded-box w-52">
                 <li>
                   <Link href={"/profile"} className="justify-between font-bold">
                     Profile
@@ -78,7 +73,11 @@ export default async function Navbar() {
                   </li>
                 ) : (
                   <li>
-                    <Link href="/login" className="justify-between font-bold text-orange-600">Login</Link>
+                    <Link
+                      href="/login"
+                      className="justify-between font-bold text-orange-600">
+                      Login
+                    </Link>
                   </li>
                 )}
               </ul>
@@ -87,9 +86,8 @@ export default async function Navbar() {
           <div className="flex items-center justify-end gap-3">
             <Link
               aria-current="page"
-              className="inline-block rounded-lg px-2 py-1 text-sm font-medium hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600"
-              href="/"
-            >
+              className="inline-block rounded-lg px-2 py-1 hover:scale-110 text-blue-400 transition duration-300 font-bold text-lg hover:text-orange-600"
+              href="/">
               <MdHome className="inline-block mr-2 h-5 w-5" />
               Home
             </Link>

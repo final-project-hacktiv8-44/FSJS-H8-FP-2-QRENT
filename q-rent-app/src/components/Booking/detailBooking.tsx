@@ -1,5 +1,5 @@
 "use client";
-import { BookingType, UserType } from "@/types/type";
+import { BookingType, MidtransResponseType, UserType } from "@/types/type";
 import {
   IoMdCar,
   IoMdColorPalette,
@@ -17,11 +17,36 @@ import { useRouter } from "next/navigation";
 import { getCookies } from "cookies-next";
 //ini wahyu
 import ButtonStatus from "../buttonStatus/buttonStatus";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function DetailBooking({ data }: { data: BookingType }) {
+  console.log(data, "?????");
+
   const [user, setUser] = useState<UserType>();
+  const [review, setReview] = useState({
+    review: "",
+  });
+
+  const createReview = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await axios.post(
+        `http://localhost:3000/api/feedback/${data._id}`,
+        review
+      );
+      router.push(`/cars/${data.car.slug}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const change = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setReview({
+      ...review,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const fetchUser = async () => {
     try {
@@ -32,29 +57,32 @@ export default function DetailBooking({ data }: { data: BookingType }) {
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-  //ini dewa
-  // export default function DetailBooking({ data }: { data: BookingType }) {
-  console.log(data, "<<<<< data");
-  //   const { booking } = data;
   const [rev, setRev] = useState(false);
   const [textRev, setTextRev] = useState("");
   useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js");
   const router = useRouter();
-  //ini wahyu
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
-
-  // useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js");
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   const prices = formatToRupiah(data.totalPrice);
 
-  const handlePayment = (token: string) => {
-    window?.snap.pay(token, {
+  const handlePayment = async () => {
+    const response = await fetch(
+      `http://localhost:3000/api/booking/payment/${data._id}`,
+      {
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: getCookies().toString(),
+        },
+        method: "POST",
+      }
+    );
+
+    const respJson = await response.json();
+
+    window?.snap.pay(respJson.transactionToken, {
       //ini dewa
       // onSuccess: function(result){
       //   router.push('/booking')
@@ -69,21 +97,47 @@ export default function DetailBooking({ data }: { data: BookingType }) {
       //   router.push('/booking')
       // }
       //ini wahyu
-      onSuccess: function (result) {
+      onSuccess: async function (result: MidtransResponseType) {
+        console.log(result, "ini result >>>>>>>>");
+
+        const response = await fetch(
+          `http://localhost:3000/api/transaction/status`,
+          {
+            cache: "no-store",
+            headers: {
+              "Content-Type": "application/json",
+              Cookie: getCookies().toString(),
+            },
+            method: "POST",
+            body:
+              (result.order_id,
+              JSON.stringify({
+                status: "paid",
+              })),
+          }
+        );
+
+        const res = await response.json();
+
+        console.log(res, "?????????");
+
+        router.push(`/booking/transaction/${data._id}`);
+        // document.getElementById("result-json").innerHTML += JSON.stringify(
+        //   result,
+        //   null,
+        //   2
+        // );
+      },
+      onPending: function (result: MidtransResponseType) {
+        console.log(result, "ini result ========");
+
         document.getElementById("result-json").innerHTML += JSON.stringify(
           result,
           null,
           2
         );
       },
-      onPending: function (result) {
-        document.getElementById("result-json").innerHTML += JSON.stringify(
-          result,
-          null,
-          2
-        );
-      },
-      onError: function (result) {
+      onError: function (result: MidtransResponseType) {
         document.getElementById("result-json").innerHTML += JSON.stringify(
           result,
           null,
@@ -178,79 +232,104 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               </span>
               Km: {data.car.kilometer}
             </p>
-            //ini dewa
-            {rev && (
-              <input
-                className="bg-white border-blue-400 border rounded-lg text-black outline-none p-4"
-                onChange={({ target }) => {
-                  setTextRev(target.value);
-                }}
-              />
-            )}
-            {data.status !== "paid" ? (
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-                onClick={async () => {
-                  try {
-                    const resp = await fetch(
-                      `http://localhost:3000/api/booking/payment/${data._id}`,
-                      {
-                        cache: "no-store",
-                        headers: {
-                          "Content-Type": "application/json",
-                          Cookie: getCookies().toString(),
-                        },
-                        method: "POST",
-                      }
-                    );
-
-                    const respJson = await resp.json();
-
-                    handlePayment(respJson.transactionToken);
-                  } catch (error) {
-                    router.push("/booking");
-                  }
-                }}>
+            {/* //ini dewa
+            {
+              rev && <input className="bg-white border-blue-400 border rounded-lg text-black outline-none p-4" onChange={({ target }) => {
+                setTextRev(target.value)
+              }}/>
+            }
+            {data.status !== "paid" ?
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
+                try {
+                  const resp = await fetch(`http://localhost:3000/api/booking/payment/${data._id}`, {
+                    cache: "no-store",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Cookie: getCookies().toString(),
+                    },
+                    method: 'POST'
+                  });
+                  
+                  const respJson = await resp.json();
+  
+                  handlePayment(respJson.transactionToken)
+                } catch (error) {
+                  router.push('/booking')
+                }
+              }}>
                 Payment
               </button>
-            ) : (
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-                onClick={async () => {
-                  if (rev === false) {
-                    setRev(true);
-                  } else {
-                    if (!textRev) return;
-                    console.log(getCookies());
-                    const response = await fetch(
-                      `http://localhost:3000/api/feedback/${data._id}`,
-                      {
-                        method: "POST",
-                        body: JSON.stringify({ review: textRev }),
-                      }
-                    );
-                    router.push(`/cars/${data.car.slug}`);
-                  }
-                }}>
-                Review
-              </button>
-            )}
-            //ini wahyu
-            {/* <div>
+              :
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
+                if(rev === false) {
+                  setRev(true)
+                } else {
+                  if(!textRev) return
+                  console.log(getCookies())
+                  const response = await fetch(
+                    `http://localhost:3000/api/feedback/${data._id}`, {
+                      method: 'POST',
+                      body: JSON.stringify({ review: textRev })
+                    }
+                  );
+                  router.push(`/cars/${data.car.slug}`)
+                  
+                }
+              }}>Review</button>
+            }
+            
+//ini wahyu */}
+            <div>
               {user?.role !== "customer" ? (
                 <ButtonStatus _id={_id} status={data.status} />
               ) : (
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
-                  onClick={() =>
-                    handlePayment("98cd5433-9a14-4373-a848-5efa99049b2c")
-                  }>
-                  Payment
-                </button>
+                <div>
+                  {data.status !== "returned" ? (
+                    <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
+                      // onClick={() =>
+                      //   // handlePayment("98cd5433-9a14-4373-a848-5efa99049b2c")
+                      // }>
+                      onClick={handlePayment}>
+                      Payment
+                    </button>
+                  ) : (
+                    <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
+                      onClick={() => {
+                        setRev(true);
+                      }}>
+                      Review
+                    </button>
+                  )}
+                </div>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
+      </div>
+      <div className="mx-[5rem] mr-[10rem] mt-[2rem] mb-12">
+        {rev === true ? (
+          <form onSubmit={createReview}>
+            <div>
+              <input
+                type="text"
+                name="review"
+                value={review.review}
+                onChange={change}
+                className="w-[65rem] h-[5rem] rounded-lg bg-white outline outline-1 outline-black pl-4 text-black"
+                placeholder="Give your best feedback"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[8rem] mt-5">
+              Submit
+            </button>
+          </form>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

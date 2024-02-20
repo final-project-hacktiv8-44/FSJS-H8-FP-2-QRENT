@@ -16,13 +16,9 @@ export async function POST(
       serverKey: "SB-Mid-server-7Hb2ZvQ0V5ngN6dFDhaEwcHT" as string,
     });
 
-    const date = new Date().toISOString()
-    console.log(date);
-    
-
     let parameter = {
       transaction_details: {
-        order_id: book._id + date.slice(date.length-5),
+        order_id: book._id,
         gross_amount: book.totalPrice,
       },
       item_details: [
@@ -53,7 +49,6 @@ export async function POST(
     };
 
     const transaction = await snap.createTransaction(parameter);
-    console.log(transaction, "??><><??");
 
     let transactionToken = transaction.token;
     console.log("transactionToken:", transactionToken);
@@ -75,8 +70,6 @@ export async function POST(
       }
     );
   } catch (error) {
-    console.log(error, "?????");
-
     return NextResponse.json(
       {
         message: "Internal server error",

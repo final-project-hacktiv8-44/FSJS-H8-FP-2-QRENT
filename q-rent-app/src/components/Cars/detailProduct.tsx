@@ -14,7 +14,6 @@ import { GiKeyCard } from "react-icons/gi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
-import ReviewCard from "./ReviewCard";
 
 type MyResponse = {
   car: CarType;
@@ -23,6 +22,7 @@ type MyResponse = {
 
 export default function DetailCar({ data }: { data: MyResponse }) {
   const prices = formatToRupiah(data.car.pricePerDay);
+
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,10 +66,10 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                 <img
                   className="w-[47rem] h-[30rem] rounded-lg shadow-md transition duration-300 transform"
                   src={imageSlide}
-                  alt=""
+                  alt={data.car.name}
                 />
               </div>
-            </div>
+          </div>
 
             <div className="bg-white border border-gray-100 rounded-lg p-8 shadow-md">
               <h1 className="text-3xl font-bold mb-4 font-bold text-black">

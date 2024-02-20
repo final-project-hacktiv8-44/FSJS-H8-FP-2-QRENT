@@ -107,8 +107,6 @@ class BookingModel {
   }
 
   static async bookingById(_id: string) {
-    console.log(_id, "iin");
-    
     const result = BookingModel.dbBooking();
     const agg = [
       {
