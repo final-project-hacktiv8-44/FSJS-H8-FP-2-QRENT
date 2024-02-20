@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { TravelType } from "@/types/type";
@@ -10,13 +10,16 @@ type MyResponse = {
 
 async function travelDetail(name: string): Promise<MyResponse> {
   const response = await fetch(`http://localhost:3000/api/travel/${name}`, {
-    cache: 'no-store',
+    cache: "no-store",
   });
-
   return response.json();
 }
 
-export default function TravelPage({ params }: { params: { name: string } }) {
+export default function TravelPage({
+  params,
+}: {
+  params: { name: string };
+}) {
   const [travel, setTravel] = useState<TravelType | null>(null);
 
   useEffect(() => {
@@ -33,7 +36,7 @@ export default function TravelPage({ params }: { params: { name: string } }) {
   }, [params.name]);
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center flex-col mt-20 bg-white">
+    <div className="w-full min-h-screen flex justify-center items-center flex-col pt-10 bg-white">
       <div className="bg-white w-full min-h-screen flex justify-center items-center flex-col">
         <h1 className="text-3xl font-bold text-blue-400 mt-10 mb-10 text-center">
           Travel Details
@@ -47,29 +50,30 @@ export default function TravelPage({ params }: { params: { name: string } }) {
             <motion.img
               src={travel.image}
               alt={travel.name}
-              className="w-100 h-auto rounded shadow-lg"
+              className="w-full max-w-lg h-auto rounded shadow-lg"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
               style={{ objectFit: "cover" }}
             />
-            <div className="mt-8 text-center">
+            <div className="mt-8 text-center w-full max-w-lg">
               <h1 className="text-3xl font-bold text-blue-400 mb-4">
                 {travel.name}
               </h1>
               <h2 className="text-xl mb-4 font-bold text-blue-400">
                 Location: {travel.location}
               </h2>
-              <div className="flex flex-col items-center justify-center font-bold border border-blue-400">
+              <div className="flex flex-col items-center justify-center text-black rounded-lg border border-gray-100">
                 <motion.div
-                  className="bg-gray-100 rounded-lg p-4"
+                  className="bg-gray-50 rounded-lg p-4 w-full"
                   transition={{ duration: 0.2, ease: "easeIn" }}>
-                  <p className="text-lg text-blue-400 mb-4">
+                  <p className="text-lg mb-4 text-center">
                     {travel.description}
                   </p>
                 </motion.div>
               </div>
             </div>
           </motion.div>
+          
         )}
         {!travel && (
           <motion.div

@@ -1,3 +1,4 @@
+
 import Footer from "@/components/Home/Footer";
 import Navbar from "@/components/Home/Navbar";
 import type { Metadata } from "next";
@@ -20,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );

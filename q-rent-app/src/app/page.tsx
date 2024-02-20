@@ -29,32 +29,32 @@ export default async function Home({
     pageSize: number;
   };
 }) {
-  const pageSize = params.pageSize || 5;
+  const pageSize = params.pageSize || 4;
   const page = 1;
   const { products } = await selectCars(page, pageSize);
-  console.log(products)
+  // console.log(products)
 
   return (
     <>
       <Navbar />
       <div className="bg-white w-full h-screen pt-20">
         <Hero />
-        <div className="bg-white w-full h-screen pt-40">
+        <div className="bg-white w-full h-screen pt-20">
           <div>
-            <div className="mb-4 pt-5">
+            <div className="mb-4 pt-1">
               <h1 className="text-center text-[2rem] font-bold text-blue-400">
                 Featured Cars
               </h1>
             </div>
 
             <Link href="/cars">
-              <div className="flex justify-end mx-[5rem] items-center text-blue-400 font-bold mb-10">
+              <div className="flex justify-end mx-[20rem] items-center text-blue-400 font-bold mb-5">
                 <p className="mr-2 text-blue-400 font-bold">See All Cars</p>
                 <MdKeyboardDoubleArrowRight />
               </div>
             </Link>
-            <div className="bg-white flex justify-center">
-              <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full mt-10 ">
+            <div className="bg-white flex justify-center mx-[10rem]">
+              <div className="flex justify-between mx-[5rem] gap-3 object-cover w-full h-full mt-8 ">
                 {products.map((car, i) => (
                   <Card key={i} car={car} />
                 ))}
