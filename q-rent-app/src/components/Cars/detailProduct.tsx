@@ -23,6 +23,8 @@ type MyResponse = {
 };
 
 export default function DetailCar({ data }: { data: MyResponse }) {
+  console.log(data, ">?><><><?><><");
+
   const prices = formatToRupiah(data.car.pricePerDay);
 
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
@@ -39,12 +41,12 @@ export default function DetailCar({ data }: { data: MyResponse }) {
   const handleBooking = () => {
     // Tampilkan SweetAlert
     Swal.fire({
-      title: 'Booking Confirmation',
-      text: 'Are you sure you want to book this car?',
-      icon: 'info',
+      title: "Booking Confirmation",
+      text: "Are you sure you want to book this car?",
+      icon: "info",
       showCancelButton: true,
-      confirmButtonText: 'Yes, book it!',
-      cancelButtonText: 'Cancel'
+      confirmButtonText: "Yes, book it!",
+      cancelButtonText: "Cancel",
     }).then((result) => {
       // Jika pengguna menekan tombol "Yes"
       if (result.isConfirmed) {
@@ -60,8 +62,7 @@ export default function DetailCar({ data }: { data: MyResponse }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col mt-[5rem]"
-    >
+      className="flex flex-col mt-[5rem]">
       {isLoading ? (
         <div className="flex items-center justify-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
@@ -92,7 +93,9 @@ export default function DetailCar({ data }: { data: MyResponse }) {
             </div>
 
             <div className="bg-white border border-gray-100 rounded-lg p-8 shadow-md text-center">
-              <h1 className="text-3xl mb-10 font-bold text-black">Detail Car</h1>
+              <h1 className="text-3xl mb-10 font-bold text-black">
+                Detail Car
+              </h1>
               <div className="flex flex-col text-black">
                 <div className="flex flex-col">
                   <h3 className="font-secondary text-[2rem]">
@@ -101,7 +104,9 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                   <h3 className="font-secondary text-[2rem] mb-10">
                     {data.car.name}
                   </h3>
-                  <h4 className="text-3xl font-bold flex flex-col mb-10">{prices}</h4>
+                  <h4 className="text-3xl font-bold flex flex-col mb-10">
+                    {prices}
+                  </h4>
                   <div className="flex flex-row gap-2 items-center">
                     <h4 className="font-semibold">
                       <span className="mr-2">
@@ -117,7 +122,9 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                     Region: {data.car.region}
                   </h4>
                   <div className="flex flex-row gap-2 items-center mt-16">
-                    <button onClick={handleBooking} className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded w-full flex justify-center ">
+                    <button
+                      onClick={handleBooking}
+                      className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded w-full flex justify-center ">
                       Book Now
                     </button>
                   </div>
@@ -177,9 +184,10 @@ export default function DetailCar({ data }: { data: MyResponse }) {
             {data.car.review?.map((feed, i) => {
               return (
                 <div key={i}>
-                  {data.car.user?.map((el, i) => {
-                    return <ReviewCard key={i} review={feed} user={el} />;
-                  })}
+                  {/* {data.car.user?.map((el, i) => { */}
+                  return{" "}
+                  <ReviewCard key={i} review={feed} users={data.car.user} />;
+                  {/* })} */}
                 </div>
               );
             })}

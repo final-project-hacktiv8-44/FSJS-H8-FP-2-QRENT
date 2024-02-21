@@ -78,13 +78,15 @@ export default function DetailBooking({ data }: { data: BookingType }) {
 
     const respJson = await response.json();
 
-    window?.snap.pay(respJson.transactionToken, {
-      onSuccess: async function (result: MidtransResponseType) {
-        router.refresh();
-      },
-      onPending: function (result: MidtransResponseType) {},
-      onError: function (result: MidtransResponseType) {},
-    });
+    if (typeof window !== "undefined") {
+      (window as any)?.snap.pay(respJson.transactionToken, {
+        onSuccess: async function (result: MidtransResponseType) {
+          router.refresh();
+        },
+        onPending: function (result: MidtransResponseType) {},
+        onError: function (result: MidtransResponseType) {},
+      });
+    }
   };
 
   const _id = data._id.toString();

@@ -13,7 +13,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
         <div className="p-4 ml-[2rem]">
           <img
             src={data.thumbnail}
-            alt=""
+            alt={data.name}
             className="w-[40rem] h-[20rem] mb-2 rounded"
           />
           <div className="flex flex-col items-center">
