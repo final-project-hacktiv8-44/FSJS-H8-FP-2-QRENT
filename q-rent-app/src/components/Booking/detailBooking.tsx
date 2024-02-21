@@ -18,6 +18,25 @@ import ButtonStatus from "../buttonStatus/buttonStatus";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const statusType = [
+  {
+    label: "approved",
+    value: "unpaid",
+  },
+  {
+    label: "on rent",
+    value: "rent",
+  },
+  {
+    label: "returned",
+    value: "returned",
+  },
+  {
+    label: "canceled",
+    value: "canceled",
+  },
+];
+
 export default function DetailBooking({ data }: { data: BookingType }) {
   const [user, setUser] = useState<UserType>();
   const [review, setReview] = useState({
@@ -91,6 +110,32 @@ export default function DetailBooking({ data }: { data: BookingType }) {
 
   const _id = data._id.toString();
 
+  const [changeStat, setChangeStat] = useState({
+    status: "",
+  });
+  const handleStatus = async (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.patch(
+        `http://localhost:3000/api/booking/status/${_id}`,
+        {
+          status: changeStat.status,
+        }
+      );
+      setChangeStat(data);
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setChangeStat({
+      ...changeStat,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="flex flex-col mt-[5rem] ml-[10rem]">
       <div className="mx-[5rem] flex flex-row gap-8">
@@ -107,25 +152,14 @@ export default function DetailBooking({ data }: { data: BookingType }) {
         <div className="flex flex-col gap-4">
           <div className="flex flex-row justify-end">
             <div>
-              <p className="px-2 py-1 bg-orange-500 rounded w-[7rem] h-[2rem] text-white font-bold text-md text-center mr-2">
+              <p className="px-2 py-1 bg-orange-500 rounded w-[7rem] h-[2rem] text-white font-bold text-md text-center">
                 {data.status}
               </p>
             </div>
-            <div>
-              <form>
-                <div className="form-control">
-                  <label className="text-black"></label>
-                  <select className="px-2 py-1 bg-white rounded border border-blue-400 text-black">
-                    <option>unpaid</option>
-                    <option>rent</option>
-                    <option>returned</option>
-                    <option>cancel</option>
-                  </select>
-                </div>
-              </form>
-            </div>
           </div>
-          <p className="px-6 py-1 bg-blue-400 rounded w-[18rem] h-[2rem] text-white font-bold text-md text-center mr-2">{_id}</p>
+          <p className="py-1 bg-blue-400 rounded w-[20rem] h-[4rem] text-white font-bold text-md text-center">
+            Booking Number: {_id}
+          </p>
 
           <div className="border border-gray-100 rounded-lg p-8 shadow-xl">
             <div className="flex flex-col gap-5 text-black">
@@ -196,25 +230,51 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               Km: {data.car.kilometer}
             </p>
 
-            <div>
+            <div className="mt-[1rem]">
               {user?.role !== "customer" ? (
-                <ButtonStatus _id={_id} status={data.status} />
+                <div>
+                  <form onSubmit={handleStatus}>
+                    <div className="mb-[1rem]">
+                      <select
+                        className="text-center px-2 py-1 bg-white rounded border border-blue-400 text-black w-[15rem]"
+                        name="status"
+                        value={changeStat.status}
+                        onChange={handleChange}>
+                        <option selected>Select Status</option>
+                        {statusType.map((el, i) => {
+                          return (
+                            <option key={i} value={el.value}>
+                              {el.label}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <ButtonStatus />
+                  </form>
+                </div>
               ) : (
                 <div>
                   {data.status !== "returned" ? (
-                    <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
-                      onClick={handlePayment}
-                    >
-                      Payment
-                    </button>
+                    <div>
+                      {data.status === "paid" ||
+                      data.status === "rent" ||
+                      data.status === "canceled" ? (
+                        <div></div>
+                      ) : (
+                        <button
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
+                          onClick={handlePayment}>
+                          Payment
+                        </button>
+                      )}
+                    </div>
                   ) : (
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5 transition-all duration-300"
                       onClick={() => {
                         setRev(true);
-                      }}
-                    >
+                      }}>
                       Review
                     </button>
                   )}
@@ -239,8 +299,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
             </div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[8rem] mt-5 transition-all duration-300"
-            >
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[8rem] mt-5 transition-all duration-300">
               Submit
             </button>
           </form>

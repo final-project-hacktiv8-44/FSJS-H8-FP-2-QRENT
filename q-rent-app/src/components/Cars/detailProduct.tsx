@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import { formatToRupiah } from "@/db/helpers/formatter";
 import { CarType, FeedbackType } from "@/types/type";
 import {
@@ -13,9 +12,24 @@ import { MdAirlineSeatReclineNormal, MdPlace } from "react-icons/md";
 import { GiKeyCard } from "react-icons/gi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
-import Link from "next/link";
-import Swal from "sweetalert2"; // import SweetAlert
+import Swal from "sweetalert2";
 import ReviewCard from "./ReviewCard";
+
+import * as React from "react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/thumbs";
+import "swiper/css/effect-coverflow";
+import "swiper/css/mousewheel";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
+import "swiper/css/grid";
+
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination } from "swiper/modules";
 
 type MyResponse = {
   car: CarType;
@@ -23,8 +37,6 @@ type MyResponse = {
 };
 
 export default function DetailCar({ data }: { data: MyResponse }) {
-  console.log(data, ">?><><><?><><");
-
   const prices = formatToRupiah(data.car.pricePerDay);
 
   const [imageSlide, setImageSlide] = useState<string>(data.car.carImage[0]);
@@ -179,15 +191,38 @@ export default function DetailCar({ data }: { data: MyResponse }) {
               </p>
             </div>
           </div>
-          <div className="pt-10 flex flex-col">
-            <h4 className="text-black font-bold text-center">Feedback</h4>
-            {data.car.review?.map((feed, i) => {
-              return (
-                <div key={i}>
-                  return <ReviewCard review={feed} users={data.car.user} />;
+          <div className="pt-10 flex flex-col mb-12">
+            <h4 className="text-black font-bold text-center mb-6 text-[2rem]">
+              Testimoni
+            </h4>
+            <div className="w-[100rem]">
+              <Swiper
+                modules={[EffectCoverflow, Pagination]}
+                effect={"coverflow"}
+                loop={true}
+                spaceBetween={1}
+                slidesPerView={4}
+                pagination={{
+                  clickable: true,
+                }}
+                centeredSlides={true}
+                grabCursor={true}
+                coverflowEffect={{
+                  // rotate: 0,
+                  slideShadows: true,
+                }}
+                className="coverflow">
+                <div className="flex flex-row flex-wrap justify-center gap-3">
+                  {data.car.review?.map((feed, i) => {
+                    return (
+                      <SwiperSlide key={i}>
+                        <ReviewCard review={feed} users={data.car.user} />
+                      </SwiperSlide>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </Swiper>
+            </div>
           </div>
         </div>
       )}
