@@ -8,6 +8,7 @@ export default function ProfilePicture() {
   const [updateImage, setUpdateImage] = useState<CloudinaryImage>({
     image: "",
   });
+  const [previewImage, setPreviewImage] = useState<string>("");
 
   const router = useRouter();
 
@@ -29,7 +30,7 @@ export default function ProfilePicture() {
 
       setUpdateImage(data);
 
-      router.push("/profile");
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -40,16 +41,21 @@ export default function ProfilePicture() {
       ...updateImage,
       [event.target.name]: event.target.files,
     });
+    if (!event.target.files) return;
+    setPreviewImage(URL.createObjectURL(event.target.files[0]));
   };
 
   return (
     <div className="bg-white w-full h-screen flex justify-center items-center text-blue-400 pt-40">
       <div
         className="bg-blue-100 border border-blue-300 rounded-lg p-8 flex flex-col items-center"
-        style={{ width: "800px", height: "400px" }}>
+        style={{ width: "800px", height: "400px" }}
+      >
         <form
           className="flex flex-col items-center"
-          onSubmit={handleUploadImage}>
+          onSubmit={handleUploadImage}
+        >
+          <img src={previewImage} />
           <h1 className="text-3xl font-bold mb-4 flex justify-center items-center">
             Profile Picture
           </h1>
@@ -69,12 +75,14 @@ export default function ProfilePicture() {
           </div>
           <label
             htmlFor="image"
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ">
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 "
+          >
             Choose Your Image
           </label>
           <button
             type="submit"
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4">
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+          >
             Upload
           </button>
         </form>
