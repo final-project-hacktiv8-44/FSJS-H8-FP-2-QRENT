@@ -172,11 +172,11 @@ export default function DetailCar({ data }: { data: MyResponse }) {
               </p>
             </div>
           </div>
-          <div className="pt-10">
-            <h4 className="text-black font-bold">Feedback</h4>
+          <div className="pt-10 flex flex-col">
+            <h4 className="text-black font-bold text-center">Feedback</h4>
             {data.car.review?.map((feed, i) => {
               return (
-                <div key={i}>
+                <div className="flex flex-row flex-wrap" key={i}>
                   {data.car.user?.map((el, i) => {
                     return <ReviewCard key={i} review={feed} user={el} />;
                   })}
