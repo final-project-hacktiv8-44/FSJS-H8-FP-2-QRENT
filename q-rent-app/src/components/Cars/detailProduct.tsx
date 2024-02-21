@@ -14,6 +14,7 @@ import { GiKeyCard } from "react-icons/gi";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import Link from "next/link";
+import Swal from "sweetalert2"; // import SweetAlert
 import ReviewCard from "./ReviewCard";
 
 type MyResponse = {
@@ -35,19 +36,38 @@ export default function DetailCar({ data }: { data: MyResponse }) {
     setImageSlide(carImage);
   };
 
+  const handleBooking = () => {
+    // Tampilkan SweetAlert
+    Swal.fire({
+      title: 'Booking Confirmation',
+      text: 'Are you sure you want to book this car?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, book it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      // Jika pengguna menekan tombol "Yes"
+      if (result.isConfirmed) {
+        // Redirect ke halaman booking
+        window.location.href = `/booking/${data.car._id}`;
+      }
+    });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col mt-[5rem]">
+      className="flex flex-col mt-[5rem]"
+    >
       {isLoading ? (
         <div className="flex items-center justify-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
         </div>
       ) : (
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
           <div className="flex flex-row mx-[5rem] mt-[3rem] mb-[5rem]">
             <div className="flex flex-col gap-4 mr-[1rem]">
               {data.car.carImage.map((el, i) => (
@@ -71,17 +91,17 @@ export default function DetailCar({ data }: { data: MyResponse }) {
               </div>
             </div>
 
-            <div className="bg-white border border-gray-100 rounded-lg p-8 shadow-md">
-              <h1 className="text-3xl mb-4 font-bold text-black">Detail Car</h1>
-              <div className="flex flex-col gap-5 text-black">
-                <div className="flex flex-col gap-2">
+            <div className="bg-white border border-gray-100 rounded-lg p-8 shadow-md text-center">
+              <h1 className="text-3xl mb-10 font-bold text-black">Detail Car</h1>
+              <div className="flex flex-col text-black">
+                <div className="flex flex-col">
                   <h3 className="font-secondary text-[2rem]">
                     {data.car.brand}
                   </h3>
-                  <h3 className="font-secondary text-[2rem]">
+                  <h3 className="font-secondary text-[2rem] mb-10">
                     {data.car.name}
                   </h3>
-                  <h4 className="text-[1rem]">{prices}</h4>
+                  <h4 className="text-3xl font-bold flex flex-col mb-10">{prices}</h4>
                   <div className="flex flex-row gap-2 items-center">
                     <h4 className="font-semibold">
                       <span className="mr-2">
@@ -96,18 +116,18 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                     </span>
                     Region: {data.car.region}
                   </h4>
-                  <Link href={`/booking/${data.car._id}`}>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full flex justify-center mt-16">
-                      Booking
+                  <div className="flex flex-row gap-2 items-center mt-16">
+                    <button onClick={handleBooking} className="bg-blue-500 hover:bg-orange-600 transition duration-300 text-white font-bold py-2 px-4 rounded w-full flex justify-center ">
+                      Book Now
                     </button>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-row justify-center pb-20">
-            <div className="flex flex-row gap-5 bg-white rounded-lg p-8 text-black shadow-md">
+          <div className="flex flex-row justify-center items-center">
+            <div className="flex flex-row gap-5 bg-white rounded-lg p-8 text-black shadow-lg">
               <p className="font-semibold">
                 <span className="mr-2">
                   <IoMdCar className="text-blue-400 inline" />

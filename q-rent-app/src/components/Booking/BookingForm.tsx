@@ -6,22 +6,23 @@ type BookingProps = {
   data: CarType;
 };
 
+
+
 const BookingForm = ({ handleSubmit, data }: BookingProps) => {
   return (
-    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-md">
-      <div className="flex flex-row items-center">
-        <div className="p-4">
-          <img
-            src={data.thumbnail}
-            alt=""
-            className="w-[40rem] h-[20rem] mb-2"
-          />
-          <div className="flex flex-col items-center">
-            <div className="flex items-center mb-2">
-              <p className="text-2xl font-semibold text-gray-800 text-center">
-                {data.brand} {data.name}
-              </p>
-            </div>
+    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-lg">
+    <div className="flex flex-row items-center">
+      <div className="p-4">
+        <img
+          src={data.thumbnail}
+          alt=""
+          className="w-[40rem] h-[20rem] mb-2"
+        />
+        <div className="flex flex-col items-center">
+          <div className="flex items-center mb-2">
+            <p className="text-2xl font-semibold text-gray-800 text-center">
+              {data.brand} {data.name}
+            </p>
           </div>
         </div>
         <div>
