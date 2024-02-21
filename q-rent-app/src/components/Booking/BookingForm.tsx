@@ -8,7 +8,7 @@ type BookingProps = {
 
 const BookingForm = ({ handleSubmit, data }: BookingProps) => {
   return (
-    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-md h-[40rem] mt-[2rem]">
+    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-md h-[40rem] mt-[6rem]">
       <div className="flex flex-row items-center mt-[3rem]">
         <div className="p-4 ml-[2rem]">
           <img
@@ -32,7 +32,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
           </div>
           <form
             action={handleSubmit}
-            className="bg-white max-w-md h-[30rem] mt-3 p-4 flex-col items-center gap-4 mr-[15rem] pl-[2rem]"
+            className="bg-white max-w-md h-[30rem] mt-3 p-4 flex-col items-center gap-4 mr-[10rem] pl-[2rem]"
             style={{ width: "200%" }}>
             <div className="mb-4 w-full">
               <label

@@ -28,19 +28,16 @@ export default async function Booking() {
   return (
     <>
       <div className="bg-white w-full h-screen flex justify-center">
-        <div className="bg-white w-full h-screen pt-24 max-w-6xl">
+        <div className="bg-white w-full h-screen pt-28 max-w-6xl">
           <h1 className="text-3xl font-bold text-center text-blue-400 mb-10">
             My Booking
           </h1>
           <div className="overflow-x-auto text-black">
-            <table className="table w-full mx-auto">
+            <table className="table w-full mx-auto text-center">
               <thead>
                 <tr>
                   <th>Car Image</th>
-                  <th>Car Name</th>
-                  <th>Car Type</th>
-                  <th>Car Brand</th>
-                  <th>Color</th>
+                  <th>info</th>
                   <th>Region</th>
                   <th>Booking Start</th>
                   <th>Booking End</th>
