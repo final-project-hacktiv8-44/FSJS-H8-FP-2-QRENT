@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { CloudinaryImage } from "@/types/type";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,7 @@ export default function ProfilePicture() {
 
       setUpdateImage(data);
 
-      router.refresh();
+      router.push('/profile');
     } catch (error) {
       console.log(error);
     }
@@ -49,13 +49,17 @@ export default function ProfilePicture() {
     <div className="bg-white w-full h-screen flex justify-center items-center text-blue-400 pt-40">
       <div
         className="bg-blue-100 border border-blue-300 rounded-lg p-8 flex flex-col items-center"
-        style={{ width: "800px", height: "400px" }}
+        style={{ width: "800px", height: "500px" }}
       >
         <form
           className="flex flex-col items-center"
           onSubmit={handleUploadImage}
         >
-          <img src={previewImage} />
+          <img
+            src={previewImage}
+            className="rounded-full w-32 h-32 object-cover mb-4"
+            alt="Preview"
+          />
           <h1 className="text-3xl font-bold mb-4 flex justify-center items-center">
             Profile Picture
           </h1>

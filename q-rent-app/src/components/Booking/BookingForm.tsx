@@ -42,7 +42,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
               </label>
               <input
                 type="date"
-                className="w-full px-3 py-2 border-1 outline outline-black bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
+                className="w-full px-3 py-2 border-1 outline outline-gray-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                 id="bookingStart"
                 name="bookingStart"
               />
@@ -55,7 +55,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
               </label>
               <input
                 type="date"
-                className="w-full px-3 py-2 border rounded-md text-blue-400 focus:outline-none focus:border-blue-400"
+                className="w-full px-3 py-2 border-1 outline outline-gray-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                 id="bookingEnd"
                 name="bookingEnd"
               />
@@ -90,7 +90,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
               </label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border rounded-md text-blue-400 focus:outline-none focus:border-blue-400"
+                className="w-full px-3 py-2 border-1 outline outline-gray-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                 id="age"
                 name="age"
               />

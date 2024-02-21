@@ -85,7 +85,7 @@ export default function UserProfile() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="border border-gray-300 rounded-md w-full px-3 py-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-blue-400"
+                    className="w-full px-3 py-2 border-1 outline outline-gray-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                   />
                 </dd>
               </div>
@@ -97,7 +97,7 @@ export default function UserProfile() {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="border border-gray-300 rounded-md w-full px-3 py-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-blue-400"
+                    className="w-full px-3 py-2 border-1 outline outline-gray-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                   />
                 </dd>
               </div>
@@ -109,7 +109,7 @@ export default function UserProfile() {
                     name="bio"
                     value={formData.bio}
                     onChange={handleChange}
-                    className="border border-gray-300 rounded-md w-full px-3 py-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-blue-400"
+                    className="w-full px-3 py-2 border-1 outline outline-gray-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                   />
                 </dd>
               </div>
@@ -121,7 +121,7 @@ export default function UserProfile() {
                     name="birth"
                     value={formData.birth}
                     onChange={handleChange}
-                    className="border border-gray-300 rounded-md w-full px-3 py-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-blue-400"
+                    className="w-full px-3 py-2 border-1 outline outline-geay-100 bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                   />
                 </dd>
               </div>

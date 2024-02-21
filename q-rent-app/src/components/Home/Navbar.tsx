@@ -27,7 +27,7 @@ export default async function Navbar() {
   
   return (
     <div className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-gray-100 bg-white/80 py-3 shadow backdrop-blur-lg md:top-6 md:rounded-3xl lg:max-w-screen-lg">
-      {user.user.role !== "customer" ? (
+      {user?.user?.role !== "customer" ? (
         <div className="px-4">
           <div className="flex items-center justify-between">
             <div className="flex shrink-0">
@@ -46,9 +46,9 @@ export default async function Navbar() {
                   <button className="flex flex-row items-center gap-1">
                     {/* <FaUserAlt className="inline-block mr-2 h-4 w-4" /> */}
                     <img
-                      className="rounded-[50%] w-[2rem] h-[2rem]"
-                      src={user.user.image}
-                      alt={user.user.username}
+                      className="rounded-[30%] w-[2rem] h-[2rem] object-cover"
+                      src={user.user?.image}
+                      alt={user.user?.username}
                     />
                     Profile
                   </button>
