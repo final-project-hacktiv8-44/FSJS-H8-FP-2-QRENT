@@ -1,15 +1,14 @@
 import BookingModel from "@/db/models/booking";
 import TransactionModel from "@/db/models/transaction";
-import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 import { sha512 } from "js-sha512";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    // ini yoga
+
     const verifyMidtrans = sha512(
-      `${body.order_id}${body.status_code}${body.gross_amount}SB-Mid-server-3JXHxuI9_6OZJ2qyGrWsmUiL`
+      `${body.order_id}${body.status_code}${body.gross_amount}SB-Mid-server-7Hb2ZvQ0V5ngN6dFDhaEwcHT`
     );
 
     if (verifyMidtrans !== body.signature_key) {
@@ -22,10 +21,6 @@ export async function POST(request: Request) {
         }
       );
     }
-
-    // const transaction = await TransactionModel.transactionById(body.order_id);
-    //ini dewa
-    // const order_id = body.order_id.slice(0, body.order_id.length - 5);
 
     const transaction = await TransactionModel.transactionById(body.order_id);
 
@@ -52,7 +47,6 @@ export async function POST(request: Request) {
         status: 200,
       }
     );
-    // }
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json(

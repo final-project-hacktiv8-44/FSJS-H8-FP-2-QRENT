@@ -12,17 +12,13 @@ import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaAddressCard } from "react-icons/fa";
 import { formatToRupiah } from "@/db/helpers/formatter";
 import useMidtrans from "@/actions/useMidtrans";
-//ini dewa
 import { useRouter } from "next/navigation";
 import { getCookies } from "cookies-next";
-//ini wahyu
 import ButtonStatus from "../buttonStatus/buttonStatus";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function DetailBooking({ data }: { data: BookingType }) {
-  console.log(data, "?????");
-
   const [user, setUser] = useState<UserType>();
   const [review, setReview] = useState({
     review: "",
@@ -83,67 +79,11 @@ export default function DetailBooking({ data }: { data: BookingType }) {
     const respJson = await response.json();
 
     window?.snap.pay(respJson.transactionToken, {
-      //ini dewa
-      // onSuccess: function(result){
-      //   router.push('/booking')
-      // },
-      // onClose: function(result) {
-      //   router.push('/booking')
-      // },
-      // onError: function(result) {
-      //   router.push('/booking')
-      // },
-      // onPending: function (result) {
-      //   router.push('/booking')
-      // }
-      //ini wahyu
       onSuccess: async function (result: MidtransResponseType) {
-        console.log(result, "ini result >>>>>>>>");
-
-        const response = await fetch(
-          `http://localhost:3000/api/transaction/status`,
-          {
-            cache: "no-store",
-            headers: {
-              "Content-Type": "application/json",
-              Cookie: getCookies().toString(),
-            },
-            method: "POST",
-            body:
-              (result.order_id,
-              JSON.stringify({
-                status: "paid",
-              })),
-          }
-        );
-
-        const res = await response.json();
-
-        console.log(res, "?????????");
-
-        router.push(`/booking/transaction/${data._id}`);
-        // document.getElementById("result-json").innerHTML += JSON.stringify(
-        //   result,
-        //   null,
-        //   2
-        // );
+        router.refresh();
       },
-      onPending: function (result: MidtransResponseType) {
-        console.log(result, "ini result ========");
-
-        document.getElementById("result-json").innerHTML += JSON.stringify(
-          result,
-          null,
-          2
-        );
-      },
-      onError: function (result: MidtransResponseType) {
-        document.getElementById("result-json").innerHTML += JSON.stringify(
-          result,
-          null,
-          2
-        );
-      },
+      onPending: function (result: MidtransResponseType) {},
+      onError: function (result: MidtransResponseType) {},
     });
   };
 
@@ -151,21 +91,22 @@ export default function DetailBooking({ data }: { data: BookingType }) {
   return (
     <div className="flex flex-col mt-[5rem] ml-[10rem]">
       <div className="mx-[5rem] flex flex-row gap-8">
-        {/* Detail */}
         <div className="flex flex-col gap-4">
           <div className="border border-gray-100 rounded-lg shadow-md">
             <img
               className="w-[47rem] h-[30rem] rounded-lg shadow-md transition duration-300 transform"
               src={data.car.thumbnail}
-              alt=""
+              alt={data.car.name}
             />
           </div>
         </div>
 
-        {/* Informasi */}
         <div className="flex flex-col gap-4">
           <div className="border border-gray-100 rounded-lg p-8 shadow-xl">
             <div className="flex flex-col gap-5 text-black">
+              <div>
+                <p>{data.status}</p>
+              </div>
               <div className="flex flex-col gap-2">
                 <h3 className="font-secondary text-[2rem]">{data.car.brand}</h3>
                 <h3 className="font-secondary text-[2rem]">{data.car.name}</h3>
@@ -188,7 +129,6 @@ export default function DetailBooking({ data }: { data: BookingType }) {
             </div>
           </div>
 
-          {/* Informasi */}
           <div className="border border-gray-100 rounded-lg p-8 shadow-xl text-black gap-4">
             <p className="font-semibold">
               <span className="mr-2">
@@ -232,53 +172,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
               </span>
               Km: {data.car.kilometer}
             </p>
-            {/* //ini dewa
-            {
-              rev && <input className="bg-white border-blue-400 border rounded-lg text-black outline-none p-4" onChange={({ target }) => {
-                setTextRev(target.value)
-              }}/>
-            }
-            {data.status !== "paid" ?
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
-                try {
-                  const resp = await fetch(`http://localhost:3000/api/booking/payment/${data._id}`, {
-                    cache: "no-store",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Cookie: getCookies().toString(),
-                    },
-                    method: 'POST'
-                  });
-                  
-                  const respJson = await resp.json();
-  
-                  handlePayment(respJson.transactionToken)
-                } catch (error) {
-                  router.push('/booking')
-                }
-              }}>
-                Payment
-              </button>
-              :
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" onClick={async () => {
-                if(rev === false) {
-                  setRev(true)
-                } else {
-                  if(!textRev) return
-                  console.log(getCookies())
-                  const response = await fetch(
-                    `http://localhost:3000/api/feedback/${data._id}`, {
-                      method: 'POST',
-                      body: JSON.stringify({ review: textRev })
-                    }
-                  );
-                  router.push(`/cars/${data.car.slug}`)
-                  
-                }
-              }}>Review</button>
-            }
-            
-//ini wahyu */}
+
             <div>
               {user?.role !== "customer" ? (
                 <ButtonStatus _id={_id} status={data.status} />
@@ -287,9 +181,6 @@ export default function DetailBooking({ data }: { data: BookingType }) {
                   {data.status !== "returned" ? (
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
-                      // onClick={() =>
-                      //   // handlePayment("98cd5433-9a14-4373-a848-5efa99049b2c")
-                      // }>
                       onClick={handlePayment}>
                       Payment
                     </button>

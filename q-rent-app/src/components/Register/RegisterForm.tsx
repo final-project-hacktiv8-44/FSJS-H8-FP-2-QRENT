@@ -18,9 +18,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
       <div className="max-w-md w-full mx-auto bg-white shadow rounded-lg p-7 space-y-6">
         <form
           action={handleRegister}
-          className="max-w-md w-full mx-auto bg-white shadow rounded-lg p-7 space-y-6"
-        >
-          {/* Username Input */}
+          className="max-w-md w-full mx-auto bg-white shadow rounded-lg p-7 space-y-6">
           <div className="flex flex-col">
             <label className="text-sm font-bold text-gray-600 mb-1">
               Username
@@ -32,7 +30,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
               placeholder="Enter your Username"
             />
           </div>
-          {/* Email Input */}
+
           <div className="flex flex-col">
             <label className="text-sm font-bold text-gray-600 mb-1">
               Email Address
@@ -44,7 +42,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
               placeholder="Enter your Email Address"
             />
           </div>
-          {/* Password Input */}
+
           <div className="flex flex-col">
             <label className="text-sm font-bold text-gray-600 mb-1">
               Password
@@ -56,7 +54,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
               placeholder="Enter your Password"
             />
           </div>
-          {/* Gender Input */}
+
           <div className="flex flex-col">
             <label className="text-sm font-bold text-gray-600 mb-1">
               Gender
@@ -68,7 +66,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
               placeholder="Enter your gender"
             />
           </div>
-          {/* Remember me Checkbox */}
+
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-2">
               <input
@@ -85,7 +83,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
               </a>
             </div>
           </div>
-          {/* Submit Button */}
+
           <div>
             <SubmitButton />
           </div>
@@ -97,8 +95,7 @@ export function RegisterForm({ handleRegister }: RegisterProps) {
           Or -&gt;
           <Link
             href="/login"
-            className="font-medium text-indigo-600 border-b border-indigo-600"
-          >
+            className="font-medium text-indigo-600 border-b border-indigo-600">
             Login To Your Account
           </Link>
         </p>

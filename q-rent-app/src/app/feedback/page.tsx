@@ -21,8 +21,6 @@ async function fetchFeedback(): Promise<MyResponse> {
 export default async function Feedback() {
   const feed = await fetchFeedback();
 
-  console.log(feed, ">>>>>>");
-
   return (
     <div>
       <h1>Feedback</h1>
