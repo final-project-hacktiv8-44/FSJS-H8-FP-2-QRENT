@@ -54,7 +54,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
   };
 
   const [rev, setRev] = useState(false);
-  const [textRev, setTextRev] = useState("");
+
   useMidtrans("https://app.sandbox.midtrans.com/snap/snap.js");
   const router = useRouter();
   useEffect(() => {
