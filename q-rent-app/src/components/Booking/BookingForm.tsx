@@ -6,31 +6,35 @@ type BookingProps = {
   data: CarType;
 };
 
-
-
 const BookingForm = ({ handleSubmit, data }: BookingProps) => {
   return (
-    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-lg">
-    <div className="flex flex-row items-center">
-      <div className="p-4">
-        <img
-          src={data.thumbnail}
-          alt=""
-          className="w-[40rem] h-[20rem] mb-2"
-        />
-        <div className="flex flex-col items-center">
-          <div className="flex items-center mb-2">
-            <p className="text-2xl font-semibold text-gray-800 text-center">
-              {data.brand} {data.name}
-            </p>
+    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-md h-[40rem] mt-[6rem]">
+      <div className="flex flex-row items-center mt-[3rem]">
+        <div className="p-4 ml-[2rem]">
+          <img
+            src={data.thumbnail}
+            alt=""
+            className="w-[40rem] h-[20rem] mb-2 rounded"
+          />
+          <div className="flex flex-col items-center">
+            <div className="flex items-center mb-2">
+              <p className="text-2xl font-semibold text-gray-800 text-center">
+                {data.brand} {data.name}
+              </p>
+            </div>
           </div>
         </div>
-        <div>
+        <div className="border-1 border-black shadow-lg rounded-xl mx-[2rem]">
+          <div className="flex justify-center items-center mt-3">
+            <h1 className="text-[2rem] text-gray-500 font-semibold">
+              Booking Form
+            </h1>
+          </div>
           <form
             action={handleSubmit}
-            className="bg-white max-w-md p-4 flex-col items-center gap-4 mt-2 mr-80"
+            className="bg-white max-w-md h-[30rem] mt-3 p-4 flex-col items-center gap-4 mr-[10rem] pl-[2rem]"
             style={{ width: "200%" }}>
-            <div className="mb-4 w-full mt-10">
+            <div className="mb-4 w-full">
               <label
                 htmlFor="bookingStart"
                 className="block text-blue-400 font-bold mb-2">
@@ -38,7 +42,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
               </label>
               <input
                 type="date"
-                className="w-full px-3 py-2 border rounded-md text-blue-400 focus:outline-none focus:border-blue-400"
+                className="w-full px-3 py-2 border-1 outline outline-black bg-slate-200 rounded-md text-slate-800 focus:outline-none focus:border-blue-400"
                 id="bookingStart"
                 name="bookingStart"
               />
@@ -78,7 +82,7 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
                 SIM (Driving License)
               </label>
             </div>
-            <div className="mb-4 w-full">
+            <div className="mb-1 w-full">
               <label
                 htmlFor="age"
                 className="block text-blue-400 font-bold mb-2">
@@ -91,11 +95,13 @@ const BookingForm = ({ handleSubmit, data }: BookingProps) => {
                 name="age"
               />
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 mt-5 items-center">
-              Submit
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 mt-5 items-center">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

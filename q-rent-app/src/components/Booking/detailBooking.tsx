@@ -88,13 +88,14 @@ export default function DetailBooking({ data }: { data: BookingType }) {
   };
 
   const _id = data._id.toString();
+
   return (
     <div className="flex flex-col mt-[5rem] ml-[10rem]">
       <div className="mx-[5rem] flex flex-row gap-8">
         <div className="flex flex-col gap-4">
-          <div className="border border-gray-100 rounded-lg shadow-md">
+          <div>
             <img
-              className="w-[47rem] h-[30rem] rounded-lg shadow-md transition duration-300 transform"
+              className="w-[47rem] h-[30rem]"
               src={data.car.thumbnail}
               alt={data.car.name}
             />
@@ -102,14 +103,34 @@ export default function DetailBooking({ data }: { data: BookingType }) {
         </div>
 
         <div className="flex flex-col gap-4">
+          <div className="flex flex-row justify-end">
+            <div>
+              <p className="px-2 py-1 bg-orange-500 rounded w-[7rem] h-[2rem] text-white font-bold text-md text-center mr-2">
+                {data.status}
+              </p>
+            </div>
+            <div>
+              <form>
+                <div className="form-control">
+                  <label className="text-black"></label>
+                  <select className="px-2 py-1 bg-white rounded border border-blue-400 text-black">
+                    <option>unpaid</option>
+                    <option>rent</option>
+                    <option>returned</option>
+                    <option>cancel</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+          <p className="px-6 py-1 bg-blue-400 rounded w-[18rem] h-[2rem] text-white font-bold text-md text-center mr-2">{_id}</p>
+
           <div className="border border-gray-100 rounded-lg p-8 shadow-xl">
             <div className="flex flex-col gap-5 text-black">
-              <div>
-                <p>{data.status}</p>
-              </div>
               <div className="flex flex-col gap-2">
-                <h3 className="font-secondary text-[2rem]">{data.car.brand}</h3>
-                <h3 className="font-secondary text-[2rem]">{data.car.name}</h3>
+                <h3 className="font-secondary text-[2rem]">
+                  {data.car.brand} {data.car.name}
+                </h3>
                 <h4 className="text-[1rem]">{prices}</h4>
                 <div className="flex flex-row gap-2 items-center">
                   <h4 className="font-semibold">
@@ -129,7 +150,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
             </div>
           </div>
 
-          <div className="border border-gray-100 rounded-lg p-8 shadow-xl text-black gap-4">
+          <div className="border border-gray-100 rounded-lg p-8 shadow-xl text-black flex flex-col gap-2">
             <p className="font-semibold">
               <span className="mr-2">
                 <IoMdCar className="text-blue-400 inline" />
@@ -181,15 +202,17 @@ export default function DetailBooking({ data }: { data: BookingType }) {
                   {data.status !== "returned" ? (
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
-                      onClick={handlePayment}>
+                      onClick={handlePayment}
+                    >
                       Payment
                     </button>
                   ) : (
                     <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mt-5 transition-all duration-300"
                       onClick={() => {
                         setRev(true);
-                      }}>
+                      }}
+                    >
                       Review
                     </button>
                   )}
@@ -214,7 +237,8 @@ export default function DetailBooking({ data }: { data: BookingType }) {
             </div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[8rem] mt-5">
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[8rem] mt-5 transition-all duration-300"
+            >
               Submit
             </button>
           </form>
