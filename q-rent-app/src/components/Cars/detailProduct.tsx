@@ -29,7 +29,7 @@ export default function DetailCar({ data }: { data: MyResponse }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(false); // Setelah komponen dimuat, set isLoading menjadi false
+    setIsLoading(false);
   }, []);
 
   const handleSlideImage = (carImage: string) => {
@@ -75,7 +75,7 @@ export default function DetailCar({ data }: { data: MyResponse }) {
                   <img
                     className="w-[14.9rem] h-[10rem] border-2 border-gray-100 cursor-pointer rounded-lg shadow-md transition duration-300 transform hover:scale-110"
                     src={el}
-                    alt=""
+                    alt={data.car.name}
                   />
                 </div>
               ))}
