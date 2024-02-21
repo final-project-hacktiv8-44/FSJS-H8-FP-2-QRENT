@@ -6,10 +6,12 @@ type BookingProps = {
   data: CarType;
 };
 
+
+
 const BookingForm = ({ handleSubmit, data }: BookingProps) => {
   return (
     // information
-    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-md">
+    <div className="border border-gray-100 rounded-2xl overflow-hidden shadow-lg">
     <div className="flex flex-row items-center">
       <div className="p-4">
         <img
