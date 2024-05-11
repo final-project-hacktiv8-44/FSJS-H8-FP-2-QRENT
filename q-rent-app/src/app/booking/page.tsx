@@ -36,6 +36,7 @@ export default async function Booking() {
             <table className="table w-full mx-auto text-center">
               <thead>
                 <tr>
+                  <th>Username</th>
                   <th>Car Image</th>
                   <th>info</th>
                   <th>Region</th>

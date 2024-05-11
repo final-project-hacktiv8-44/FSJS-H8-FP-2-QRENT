@@ -8,6 +8,7 @@ const BookingAllCard = ({ booking }: { booking: BookingType }) => {
   const end = booking.bookingEnd.toString();
   return (
     <tr>
+      <td>{booking.user.username}</td>
       <td>
         <img
           src={booking.car.thumbnail}
