@@ -21,7 +21,7 @@ export default function FooterSection() {
   const [data, setData] = useState<SectionType[]>([]);
   const fetchSection = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/section`, {
+      const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/section`, {
         method: "GET",
         cache: "no-store",
         headers: {

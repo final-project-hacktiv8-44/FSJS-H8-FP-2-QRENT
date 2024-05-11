@@ -10,7 +10,7 @@ import { ProfileType } from "@/types/type";
 import { MdHome } from "react-icons/md";
 
 async function userProfile(): Promise<ProfileType> {
-  const response = await fetch(`http://localhost:3000/api/user`, {
+  const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/user`, {
     method: "GET",
     cache: "no-store",
     headers: {

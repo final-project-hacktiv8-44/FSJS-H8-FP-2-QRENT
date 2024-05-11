@@ -47,7 +47,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
     e.preventDefault();
     try {
       await axios.post(
-        `http://localhost:3000/api/feedback/${data._id}`,
+        process.env.NEXT_PUBLIC_BASE_URL + `/api/feedback/${data._id}`,
         review
       );
       router.push(`/cars/${data.car.slug}`);
@@ -65,7 +65,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/api/user`);
+      const { data } = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + `/api/user`);
       setUser(data.user);
     } catch (error) {
       console.log(error);
@@ -84,7 +84,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
 
   const handlePayment = async () => {
     const response = await fetch(
-      `http://localhost:3000/api/booking/payment/${data._id}`,
+      process.env.NEXT_PUBLIC_BASE_URL + `/api/booking/payment/${data._id}`,
       {
         cache: "no-store",
         headers: {
@@ -117,7 +117,7 @@ export default function DetailBooking({ data }: { data: BookingType }) {
     e.preventDefault();
     try {
       const { data } = await axios.patch(
-        `http://localhost:3000/api/booking/status/${_id}`,
+        process.env.NEXT_PUBLIC_BASE_URL + `/api/booking/status/${_id}`,
         {
           status: changeStat.status,
         }

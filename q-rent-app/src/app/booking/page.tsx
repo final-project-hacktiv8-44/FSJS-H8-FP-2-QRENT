@@ -10,7 +10,7 @@ type MyResponse = {
 };
 
 async function dataBooking(): Promise<MyResponse> {
-  const data = await fetch(`http://localhost:3000/api/booking`, {
+  const data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/booking`, {
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",

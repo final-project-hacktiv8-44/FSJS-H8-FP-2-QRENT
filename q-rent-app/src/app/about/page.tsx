@@ -68,7 +68,7 @@ export default function AboutPage() {
                 Qrent offers a wide variety of car types, catering to various needs
                 and preferences. From family cars to sleek sedans and luxurious
                 models, we provide a comprehensive selection to accommodate every
-                customer. Whether you're planning a family road trip, a business
+                customer. Whether you are planning a family road trip, a business
                 trip, or a special occasion, we have the perfect car for you. With
                 Qrent, you can choose the vehicle that best suits your requirements,
                 ensuring a comfortable and enjoyable driving experience.
@@ -103,7 +103,7 @@ export default function AboutPage() {
                   high-quality services, which is why we offer some of the most
                   competitive and affordable car rental prices in the industry. Our
                   pricing structure is designed to cater to a wide range of budgets,
-                  whether you're planning a short weekend getaway or an extended
+                  whether you are planning a short weekend getaway or an extended
                   road trip
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
               </h1>
               <p className="text-lg mb-4 text-orange-600 leading-loose">
                 At Qrent, we believe that exceptional customer service is the
-                cornerstone of our business. We're committed to going above and
+                cornerstone of our business. We are committed to going above and
                 beyond to exceed your expectations and make your car rental
                 experience with us a positive and memorable one. Experience the
                 difference of professional customer service with Qrent today. Our
@@ -151,9 +151,9 @@ export default function AboutPage() {
                   5. Safety and Comfort
                 </h1>
                 <p className="text-lg mb-4 text-blue-400 leading-loose">
-                  At Qrent, your safety and comfort are our top priorities. That's
+                  At Qrent, your safety and comfort are our top priorities. That is
                   why we meticulously maintain our fleet of rental cars to ensure
-                  they're always in optimal condition for your peace of mind. Our
+                  they are always in optimal condition for your peace of mind. Our
                   vehicles undergo regular maintenance checks and inspections by
                   certified technicians to uphold the highest safety standards. From
                   routine oil changes to thorough inspections of brakes, tires, and

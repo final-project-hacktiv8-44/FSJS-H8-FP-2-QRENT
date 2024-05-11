@@ -9,7 +9,7 @@ export default function UserProfile() {
 
   const fetchProfile = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/api/users");
+      const { data } = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + "/api/users");
       setUserProfile(data.user);
     } catch (error) {
       console.log(error);

@@ -21,7 +21,7 @@ const CarsPage = () => {
   useEffect(() => {
     const fetchCars = async (region: string) => {
       try {
-        let url = `http://localhost:3000/api/cars`;
+        let url = process.env.NEXT_PUBLIC_BASE_URL + `/api/cars`;
 
         if (region) {
           url += `?region=${region}`;

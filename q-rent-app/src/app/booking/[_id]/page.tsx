@@ -14,7 +14,7 @@ type CarResponse = {
 };
 
 async function detailProduct(_id: string): Promise<CarResponse> {
-  const data = await fetch(`http://localhost:3000/api/cars/detail/${_id}`, {
+  const data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/cars/detail/${_id}`, {
     cache: "no-store",
   });
   return data.json();
@@ -32,7 +32,7 @@ const BookingCarId = async ({ params }: { params: { _id: string} }) => {
     const auth_token = cookies().get("Authorization")?.value.split(" ")[1];
 
     const response = await fetch(
-      `http://localhost:3000/api/booking/${params._id}`,
+      process.env.NEXT_PUBLIC_BASE_URL + `/api/booking/${params._id}`,
       {
         method: "POST",
         headers: {

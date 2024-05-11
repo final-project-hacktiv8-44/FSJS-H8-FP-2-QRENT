@@ -7,7 +7,7 @@ type BookingCar = {
 };
 
 async function detailProduct(_id: string): Promise<BookingCar> {
-  const data = await fetch(`http://localhost:3000/api/booking/car/${_id}`, {
+  const data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/booking/car/${_id}`, {
     cache: "no-store",
     method: "GET",
     headers: {

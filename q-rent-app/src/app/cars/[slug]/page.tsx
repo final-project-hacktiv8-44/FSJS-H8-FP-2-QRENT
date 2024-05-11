@@ -12,7 +12,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const data = (await fetch(`http://localhost:3000/api/cars/${slug}`, {
+  const data = (await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/cars/${slug}`, {
     cache: "no-store",
   }).then((res) => res.json())) as MyResponse;
 
@@ -32,7 +32,7 @@ type MyResponse = {
 };
 
 async function detailProduct(slug: string): Promise<MyResponse> {
-  const data = await fetch(`http://localhost:3000/api/cars/${slug}`, {
+  const data = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/cars/${slug}`, {
     cache: "no-store",
   });
 

@@ -14,7 +14,7 @@ export default function ActiveSlider() {
   const [travel, setTravel] = useState<TravelType[]>([]);
   const fetchTravel = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/api/travel`);
+      const { data } = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + `/api/travel`);
 
       setTravel(data.travel);
     } catch (error) {

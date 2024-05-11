@@ -6,7 +6,7 @@ type MyResponse = {
 };
 
 async function fetchFeedback(): Promise<MyResponse> {
-  const response = await fetch("http://localhost:3000/api/feedback", {
+  const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/feedback", {
     method: "GET",
     cache: "no-store",
     headers: {

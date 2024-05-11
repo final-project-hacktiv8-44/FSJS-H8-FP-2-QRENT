@@ -14,7 +14,7 @@ type MyResponse = {
 
 async function selectCars(page: number, pageSize: number): Promise<MyResponse> {
   const response = await fetch(
-    `http://localhost:3000/api/cars?page=${page}&pageSize=${pageSize}`,
+    process.env.NEXT_PUBLIC_BASE_URL + `/api/cars?page=${page}&pageSize=${pageSize}`,
     {
       cache: "no-store",
     }

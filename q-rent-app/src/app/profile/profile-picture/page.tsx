@@ -19,7 +19,7 @@ export default function ProfilePicture() {
       formData.append("file", updateImage.image[0]);
 
       const { data } = await axios.patch(
-        "http://localhost:3000/api/users/profile",
+        process.env.NEXT_PUBLIC_BASE_URL + "/api/users/profile",
         formData,
         {
           headers: {

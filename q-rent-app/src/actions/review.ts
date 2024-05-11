@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export async function UserReview(_id: string, formData: FormData) {
   const review = formData.get("review");
   const response = await fetch(
-    `http://localhost:3000/api/booking/status/${_id}`,
+    process.env.NEXT_PUBLIC_BASE_URL + `/api/booking/status/${_id}`,
     {
       method: "POST",
       headers: {

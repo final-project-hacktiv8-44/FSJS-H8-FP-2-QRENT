@@ -16,11 +16,11 @@ export default function Footer() {
             <p className="text-base text-center leading-6 text-gray-500 hover:text-blue-400">
               Q-Rent stands out as a premier car rental service, offering a
               comprehensive selection of top-quality vehicles tailored to meet
-              your diverse travel demands. Whether you're planning a weekend
+              your diverse travel demands. Whether you are planning a weekend
               getaway, a family vacation, or a business trip, Q-Rent is your
               go-to destination for finding the perfect vehicle to enhance your
               travel experience.Discover the freedom and flexibility of renting
-              a car with Q-Rent today. Whether you're a seasoned traveler or
+              a car with Q-Rent today. Whether you are a seasoned traveler or
               embarking on your first journey, trust Q-Rent to provide you with
               the perfect vehicle to make your trip unforgettable.
             </p>
